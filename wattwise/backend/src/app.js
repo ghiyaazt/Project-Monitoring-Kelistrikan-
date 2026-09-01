@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 
+const sensorRoutes = require("./routes/sensorRoutes");
+
 const app = express();
 
 app.use(cors());
@@ -11,5 +13,7 @@ app.get("/", (req, res) => {
         message: "WattWise Backend is running!"
     });
 });
+
+app.use("/api/sensor", sensorRoutes);
 
 module.exports = app;
