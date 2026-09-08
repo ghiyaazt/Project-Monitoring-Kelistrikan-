@@ -1,6 +1,6 @@
-/* =========================
+/* =====================================================
    GLOBAL
-========================= */
+===================================================== */
 
 * {
   box-sizing: border-box;
@@ -20,9 +20,9 @@ body {
   background: #f8fafc;
 }
 
-/* =========================
+/* =====================================================
    LOGIN PAGE
-========================= */
+===================================================== */
 
 .login-page {
   width: 100%;
@@ -33,9 +33,9 @@ body {
   background: #f8fafc;
 }
 
-/* =========================
-   LEFT PANEL
-========================= */
+/* =====================================================
+   LOGIN - LEFT PANEL
+===================================================== */
 
 .login-left {
   width: 33%;
@@ -125,9 +125,9 @@ body {
   color: rgba(255, 255, 255, 0.55);
 }
 
-/* =========================
-   RIGHT PANEL
-========================= */
+/* =====================================================
+   LOGIN - RIGHT PANEL
+===================================================== */
 
 .login-right {
   flex: 1;
@@ -165,9 +165,9 @@ body {
   font-size: 13px;
 }
 
-/* =========================
-   FORM
-========================= */
+/* =====================================================
+   LOGIN - FORM
+===================================================== */
 
 .form-group {
   margin-bottom: 17px;
@@ -214,9 +214,9 @@ body {
   box-shadow: 0 0 0 3px rgba(0, 166, 60, 0.08);
 }
 
-/* =========================
+/* =====================================================
    PASSWORD
-========================= */
+===================================================== */
 
 .password-wrapper {
   position: relative;
@@ -249,12 +249,13 @@ body {
   color: #64748b;
 }
 
-/* =========================
+/* =====================================================
    FORGOT PASSWORD
-========================= */
+===================================================== */
 
 .forgot-password {
   width: 100%;
+
   display: flex;
   justify-content: flex-end;
 
@@ -264,11 +265,15 @@ body {
 
 .forgot-password button {
   padding: 0;
+
   border: none;
+
   background: transparent;
 
   color: #2563eb;
+
   font-family: Arial, Helvetica, sans-serif;
+
   font-size: 10px;
   line-height: 1.2;
 
@@ -279,9 +284,9 @@ body {
   text-decoration: underline;
 }
 
-/* =========================
+/* =====================================================
    LOGIN BUTTON
-========================= */
+===================================================== */
 
 .login-button {
   width: 100%;
@@ -318,9 +323,9 @@ body {
   cursor: not-allowed;
 }
 
-/* =========================
-   ERROR
-========================= */
+/* =====================================================
+   LOGIN ERROR
+===================================================== */
 
 .login-error {
   margin-bottom: 15px;
@@ -337,9 +342,9 @@ body {
   font-size: 12px;
 }
 
-/* =========================
+/* =====================================================
    DEMO LOGIN
-========================= */
+===================================================== */
 
 .demo-login {
   margin-top: 17px;
@@ -357,44 +362,28 @@ body {
   font-family: monospace;
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 900px) {
-  .login-left {
-    display: none;
-  }
-
-  .login-right {
-    width: 100%;
-    min-height: 100vh;
-
-    padding: 25px;
-  }
-
-  .login-form-container {
-    max-width: 400px;
-  }
-}
 /* =====================================================
    DASHBOARD LAYOUT
-   ===================================================== */
+===================================================== */
 
 .dashboard-layout {
   min-height: 100vh;
+
   display: flex;
+
   background: #f8fafc;
 }
 
 /* =====================================================
    SIDEBAR
-   ===================================================== */
+===================================================== */
 
 .sidebar {
   position: fixed;
+
   top: 0;
   left: 0;
+
   width: 250px;
   height: 100vh;
 
@@ -404,9 +393,11 @@ body {
   padding: 22px 16px;
 
   background: #ffffff;
+
   border-right: 1px solid #e2e8f0;
 
   transition: width 0.25s ease;
+
   z-index: 100;
 }
 
@@ -416,17 +407,20 @@ body {
 
 /* =====================================================
    SIDEBAR LOGO
-   ===================================================== */
+===================================================== */
 
 .sidebar-logo {
   display: flex;
   align-items: center;
+
   gap: 10px;
 
   min-height: 48px;
+
   margin-bottom: 28px;
 
   color: #0f172a;
+
   font-size: 17px;
   font-weight: 700;
 }
@@ -459,12 +453,15 @@ body {
   justify-content: center;
 
   border: 1px solid #e2e8f0;
+
   border-radius: 6px;
 
   background: #ffffff;
+
   color: #64748b;
 
   cursor: pointer;
+
   font-size: 14px;
 }
 
@@ -474,11 +471,12 @@ body {
 
 /* =====================================================
    SIDEBAR NAVIGATION
-   ===================================================== */
+===================================================== */
 
 .sidebar-nav {
   display: flex;
   flex-direction: column;
+
   gap: 6px;
 }
 
@@ -514,6 +512,7 @@ body {
   color: #64748b;
 
   font-family: inherit;
+
   font-size: 13px;
 
   text-align: left;
@@ -525,18 +524,23 @@ body {
 
 .sidebar-item:hover {
   background: #f1f5f9;
+
   color: #0f172a;
 }
 
 .sidebar-item.active {
   background: #ecfdf3;
+
   color: #00a63c;
+
   font-weight: 600;
 }
 
 .sidebar-item.active-blue {
   background: #eff6ff;
+
   color: #2563eb;
+
   font-weight: 600;
 }
 
@@ -564,7 +568,7 @@ body {
 
 /* =====================================================
    SIDEBAR BOTTOM
-   ===================================================== */
+===================================================== */
 
 .sidebar-bottom {
   display: flex;
@@ -585,12 +589,13 @@ body {
 
 .sidebar-item.logout:hover {
   background: #fef2f2;
+
   color: #dc2626;
 }
 
 /* =====================================================
    MAIN CONTENT
-   ===================================================== */
+===================================================== */
 
 .dashboard-main {
   width: calc(100% - 250px);
@@ -607,8 +612,8 @@ body {
 }
 
 /* =====================================================
-   HEADER
-   ===================================================== */
+   DASHBOARD HEADER
+===================================================== */
 
 .dashboard-header {
   display: flex;
@@ -638,6 +643,7 @@ body {
 .dashboard-date {
   display: flex;
   align-items: center;
+
   gap: 7px;
 
   padding: 9px 12px;
@@ -653,8 +659,8 @@ body {
 }
 
 /* =====================================================
-   STATISTICS
-   ===================================================== */
+   DASHBOARD STATISTICS
+===================================================== */
 
 .dashboard-stats {
   display: grid;
@@ -745,8 +751,8 @@ body {
 }
 
 /* =====================================================
-   SECTION
-   ===================================================== */
+   DASHBOARD SECTION
+===================================================== */
 
 .dashboard-section {
   margin-bottom: 24px;
@@ -796,8 +802,8 @@ body {
 }
 
 /* =====================================================
-   MONITORING CARD
-   ===================================================== */
+   DASHBOARD MONITORING CARD
+===================================================== */
 
 .monitor-card {
   padding: 22px;
@@ -843,6 +849,7 @@ body {
 .live-status {
   display: flex;
   align-items: center;
+
   gap: 6px;
 
   padding: 6px 9px;
@@ -867,8 +874,8 @@ body {
 }
 
 /* =====================================================
-   SIMPLE CHART
-   ===================================================== */
+   DASHBOARD SIMPLE CHART
+===================================================== */
 
 .chart {
   position: relative;
@@ -907,6 +914,7 @@ body {
 
   left: 3%;
   right: 3%;
+
   top: 25%;
 
   height: 55%;
@@ -923,6 +931,7 @@ body {
   height: 9px;
 
   border: 2px solid #ffffff;
+
   border-radius: 50%;
 
   background: #00a63c;
@@ -979,8 +988,8 @@ body {
 }
 
 /* =====================================================
-   BOTTOM CONTENT
-   ===================================================== */
+   DASHBOARD BOTTOM
+===================================================== */
 
 .dashboard-bottom {
   display: grid;
@@ -1038,8 +1047,8 @@ body {
 }
 
 /* =====================================================
-   ANOMALY
-   ===================================================== */
+   DASHBOARD ANOMALY
+===================================================== */
 
 .anomaly-item {
   display: flex;
@@ -1055,6 +1064,31 @@ body {
 .anomaly-item:last-child {
   border-bottom: none;
 }
+
+.anomaly-info {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.anomaly-info strong {
+  color: #334155;
+
+  font-size: 11px;
+}
+
+.anomaly-info span {
+  color: #94a3b8;
+
+  font-size: 9px;
+}
+
+/* =====================================================
+   DASHBOARD DEVICE ICON
+===================================================== */
 
 .device-icon {
   width: 38px;
@@ -1083,26 +1117,9 @@ body {
   background: #fef3c7;
 }
 
-.anomaly-info {
-  flex: 1;
-
-  display: flex;
-  flex-direction: column;
-
-  gap: 4px;
-}
-
-.anomaly-info strong {
-  color: #334155;
-
-  font-size: 11px;
-}
-
-.anomaly-info span {
-  color: #94a3b8;
-
-  font-size: 9px;
-}
+/* =====================================================
+   DASHBOARD BADGES
+===================================================== */
 
 .badge-danger,
 .badge-warning {
@@ -1116,17 +1133,19 @@ body {
 
 .badge-danger {
   background: #fee2e2;
+
   color: #dc2626;
 }
 
 .badge-warning {
   background: #fef3c7;
+
   color: #d97706;
 }
 
 /* =====================================================
-   ROOM STATUS
-   ===================================================== */
+   DASHBOARD ROOM STATUS
+===================================================== */
 
 .room-summary {
   display: flex;
@@ -1223,10 +1242,11 @@ body {
 
 /* =====================================================
    COLLAPSED SIDEBAR
-   ===================================================== */
+===================================================== */
 
 .sidebar-collapsed + .dashboard-main {
   width: calc(100% - 76px);
+
   margin-left: 76px;
 }
 
@@ -1244,8 +1264,1724 @@ body {
 }
 
 /* =====================================================
-   RESPONSIVE
-   ===================================================== */
+   ELECTRICITY PAGE
+===================================================== */
+
+.electricity-page {
+  width: 100%;
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+/* =====================================================
+   ELECTRICITY HEADER
+===================================================== */
+
+.electricity-page .electricity-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.electricity-page .electricity-header h1 {
+  margin: 0 0 6px;
+  color: #0f172a;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.electricity-page .electricity-header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+/* =====================================================
+   IOT STATUS
+===================================================== */
+
+.electricity-page .iot-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 9px 16px;
+
+  border: 1px solid #bbf7d0;
+  border-radius: 20px;
+
+  background: #f0fdf4;
+  color: #059669;
+
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.electricity-page .status-dot {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+
+  border-radius: 50%;
+  background: #16a34a;
+}
+
+/* =====================================================
+   ELECTRICITY FILTER
+===================================================== */
+
+.electricity-page .electricity-filter {
+  display: flex;
+  gap: 16px;
+
+  margin-bottom: 20px;
+  padding: 18px 20px;
+
+  border: 1px solid #dce4ef;
+  border-radius: 12px;
+
+  background: #ffffff;
+}
+
+.electricity-page .electricity-filter > div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.electricity-page .electricity-filter label {
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.electricity-page .electricity-filter select {
+  min-width: 180px;
+  height: 38px;
+
+  padding: 0 12px;
+
+  border: 1px solid #d5deeb;
+  border-radius: 7px;
+
+  outline: none;
+
+  background: #ffffff;
+  color: #1e293b;
+
+  font-size: 13px;
+}
+
+.electricity-page .electricity-filter select:focus {
+  border-color: #00a63c;
+}
+
+/* =====================================================
+   ELECTRICITY STATISTICS
+===================================================== */
+
+.electricity-page .electricity-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+
+  margin-bottom: 24px;
+}
+
+.electricity-page .electricity-stat-card {
+  min-height: 105px;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  padding: 20px;
+
+  border: 1px solid #dce4ef;
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  box-shadow: 0 2px 5px rgba(15, 23, 42, 0.03);
+}
+
+.electricity-page .electricity-stat-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 11px;
+  font-size: 20px;
+}
+
+.electricity-page .electricity-stat-icon.green {
+  background: #dcfce7;
+}
+
+.electricity-page .electricity-stat-icon.blue {
+  background: #dbeafe;
+}
+
+.electricity-page .electricity-stat-icon.orange {
+  background: #ffedd5;
+}
+
+.electricity-page .electricity-stat-icon.purple {
+  background: #ede9fe;
+}
+
+.electricity-page .electricity-stat-card span {
+  display: block;
+  margin-bottom: 5px;
+
+  color: #64748b;
+  font-size: 12px;
+}
+
+.electricity-page .electricity-stat-card h2 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 21px;
+}
+
+.electricity-page .electricity-stat-card small {
+  display: block;
+  margin-top: 5px;
+
+  color: #8da0bf;
+  font-size: 11px;
+}
+
+.electricity-page .electricity-stat-card .danger-text {
+  color: #ef4444;
+}
+
+/* =====================================================
+   GENERAL ELECTRICITY CARD
+===================================================== */
+
+.electricity-page .electricity-card {
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 22px;
+  margin-bottom: 24px;
+
+  border: 1px solid #dce4ef;
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  box-shadow: 0 2px 5px rgba(15, 23, 42, 0.03);
+}
+
+.electricity-page .electricity-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  margin-bottom: 22px;
+}
+
+.electricity-page .electricity-card-header h2 {
+  margin: 0;
+
+  color: #0f172a;
+  font-size: 18px;
+}
+
+.electricity-page .electricity-card-header p {
+  margin: 5px 0 0;
+
+  color: #7183a3;
+  font-size: 12px;
+}
+
+/* =====================================================
+   LIVE BADGE
+===================================================== */
+
+.electricity-page .live-badge {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+
+  padding: 6px 12px;
+
+  border-radius: 15px;
+
+  background: #ecfdf5;
+  color: #059669;
+
+  font-size: 11px;
+}
+
+.electricity-page .live-badge span {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+  background: #16a34a;
+}
+
+/* =====================================================
+   MONITORING KAMAR
+   SESUAI DENGAN ELECTRICITY.JSX
+===================================================== */
+
+.electricity-page .room-monitor-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.electricity-page .room-monitor-card {
+  min-width: 0;
+  padding: 20px;
+
+  border: 1px solid #dbe2ea;
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.electricity-page .room-monitor-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+}
+
+/* BORDER STATUS KAMAR */
+
+.electricity-page .room-monitor-card.normal {
+  border-color: #dbe2ea;
+}
+
+.electricity-page .room-monitor-card.warning {
+  border-color: #fde68a;
+}
+
+.electricity-page .room-monitor-card.danger {
+  border-color: #fecaca;
+}
+
+/* =====================================================
+   ROOM CARD TOP
+===================================================== */
+
+.electricity-page .room-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.electricity-page .room-name {
+  color: #334155;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.electricity-page .room-label {
+  display: block;
+  margin-bottom: 7px;
+
+  color: #64748b;
+  font-size: 11px;
+}
+
+/* =====================================================
+   ROOM STATUS
+===================================================== */
+
+.electricity-page .room-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 6px 12px;
+
+  border-radius: 20px;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+.electricity-page .room-status.normal {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.electricity-page .room-status.warning {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.electricity-page .room-status.danger {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+/* kompatibilitas dengan class lama */
+
+.electricity-page .room-status.anomaly {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+/* =====================================================
+   ROOM CONSUMPTION
+===================================================== */
+
+.electricity-page .room-monitor-card > h2 {
+  margin: 0;
+
+  color: #0f172a;
+
+  font-size: 25px;
+  font-weight: 700;
+}
+
+/* =====================================================
+   ROOM DIVIDER
+===================================================== */
+
+.electricity-page .room-card-divider {
+  height: 1px;
+
+  margin: 18px 0;
+
+  background: #eef2f7;
+}
+
+/* =====================================================
+   ROOM POWER
+===================================================== */
+
+.electricity-page .room-power {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 12px;
+}
+
+.electricity-page .room-power > div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.electricity-page .room-power strong {
+  color: #0f172a;
+  font-size: 16px;
+}
+
+.electricity-page .room-power span {
+  color: #94a3b8;
+  font-size: 10px;
+}
+
+/* =====================================================
+   ROOM DETAIL BUTTON
+===================================================== */
+
+.electricity-page .room-detail-button {
+  flex-shrink: 0;
+
+  padding: 9px 12px;
+
+  border: 1px solid #dbe2ea;
+  border-radius: 7px;
+
+  background: #ffffff;
+  color: #2563eb;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: background 0.2s ease;
+}
+
+.electricity-page .room-detail-button:hover {
+  background: #eff6ff;
+}
+
+/* =====================================================
+   ANOMALY COUNT
+===================================================== */
+
+.electricity-page .anomaly-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 7px 14px;
+
+  border-radius: 15px;
+
+  background: #fee2e2;
+  color: #ef4444;
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* =====================================================
+   ELECTRICITY TABLE
+===================================================== */
+
+.electricity-page .electricity-table {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.electricity-page .table-row {
+  display: grid;
+
+  /*
+    6 kolom karena JSX:
+    Kamar
+    Total Konsumsi
+    Daya Saat Ini
+    Durasi
+    Status
+    Aksi
+  */
+  grid-template-columns:
+    1.1fr
+    1.4fr
+    1.2fr
+    0.9fr
+    1fr
+    0.9fr;
+
+  align-items: center;
+
+  min-height: 55px;
+
+  border-top: 1px solid #edf2f7;
+
+  color: #17345c;
+  font-size: 12px;
+}
+
+.electricity-page .table-head {
+  min-height: 40px;
+
+  border-top: none;
+
+  color: #8da0bf;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.electricity-page .table-row > span {
+  min-width: 0;
+}
+
+/* =====================================================
+   TABLE STATUS
+===================================================== */
+
+.electricity-page .table-row .room-status {
+  width: fit-content;
+}
+
+/* =====================================================
+   TABLE DETAIL BUTTON
+===================================================== */
+
+.electricity-page .table-detail-button {
+  width: fit-content;
+
+  padding: 7px 11px;
+
+  border: 1px solid #dbe2ea;
+  border-radius: 7px;
+
+  background: #ffffff;
+  color: #2563eb;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.electricity-page .table-detail-button:hover {
+  background: #eff6ff;
+}
+
+/* =====================================================
+   DETAIL MODAL OVERLAY
+===================================================== */
+
+.electricity-page .room-detail-overlay {
+  position: fixed;
+  inset: 0;
+
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 30px;
+
+  background: rgba(15, 23, 42, 0.45);
+
+  overflow-y: auto;
+}
+
+/* =====================================================
+   DETAIL MODAL PANEL
+===================================================== */
+
+.electricity-page .room-detail-panel {
+  width: min(100%, 1050px);
+  max-height: calc(100vh - 60px);
+
+  padding: 28px;
+
+  border-radius: 16px;
+
+  background: #ffffff;
+
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.18);
+
+  overflow-y: auto;
+}
+
+/* =====================================================
+   DETAIL PANEL HEADER
+===================================================== */
+
+.electricity-page .detail-panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 22px;
+}
+
+.electricity-page .detail-panel-header h2 {
+  margin: 0;
+
+  color: #0f172a;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.electricity-page .detail-panel-header p {
+  margin: 5px 0 0;
+
+  color: #7183a3;
+  font-size: 12px;
+}
+
+/* =====================================================
+   CLOSE BUTTON
+===================================================== */
+
+.electricity-page .detail-close {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #f8fafc;
+  color: #64748b;
+
+  font-size: 23px;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.electricity-page .detail-close:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+/* =====================================================
+   DETAIL ALERT
+===================================================== */
+
+.electricity-page .detail-alert {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  padding: 15px 16px;
+
+  margin-bottom: 22px;
+
+  border: 1px solid #dcfce7;
+  border-radius: 10px;
+
+  background: #f0fdf4;
+}
+
+.electricity-page .detail-alert.warning {
+  border-color: #fde68a;
+  background: #fffbeb;
+}
+
+.electricity-page .detail-alert.danger {
+  border-color: #fecaca;
+  background: #fff7f7;
+}
+
+.electricity-page .detail-alert.normal {
+  border-color: #bbf7d0;
+  background: #f0fdf4;
+}
+
+.electricity-page .detail-alert-icon {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 10px;
+
+  background: #dcfce7;
+  color: #16a34a;
+
+  font-size: 18px;
+}
+
+.electricity-page .detail-alert.warning .detail-alert-icon {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.electricity-page .detail-alert.danger .detail-alert-icon {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.electricity-page .detail-alert > div:nth-child(2) {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+.electricity-page .detail-alert strong {
+  color: #334155;
+  font-size: 13px;
+}
+
+.electricity-page .detail-alert span:not(.room-status) {
+  color: #64748b;
+  font-size: 11px;
+}
+
+/* =====================================================
+   DETAIL STATS
+===================================================== */
+
+.electricity-page .detail-stats {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 14px;
+
+  margin-bottom: 22px;
+}
+
+.electricity-page .detail-stat {
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  padding: 15px;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+
+  background: #ffffff;
+}
+
+.electricity-page .detail-stat-icon {
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 9px;
+
+  font-size: 17px;
+}
+
+.electricity-page .green-icon {
+  background: #dcfce7;
+}
+
+.electricity-page .blue-icon {
+  background: #dbeafe;
+}
+
+.electricity-page .orange-icon {
+  background: #ffedd5;
+}
+
+.electricity-page .purple-icon {
+  background: #ede9fe;
+}
+
+.electricity-page .detail-stat > div {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.electricity-page .detail-stat strong {
+  color: #0f172a;
+  font-size: 14px;
+}
+
+.electricity-page .detail-stat span {
+  color: #94a3b8;
+  font-size: 10px;
+}
+
+/* =====================================================
+   DETAIL CHART CARD
+===================================================== */
+
+.electricity-page .detail-chart-card {
+  padding: 20px;
+
+  margin-bottom: 22px;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+
+  background: #ffffff;
+}
+
+.electricity-page .detail-chart-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 20px;
+}
+
+.electricity-page .detail-chart-header h3 {
+  margin: 0;
+
+  color: #0f172a;
+  font-size: 15px;
+}
+
+.electricity-page .detail-chart-header p {
+  margin: 5px 0 0;
+
+  color: #7183a3;
+  font-size: 11px;
+}
+
+.electricity-page .detail-chart-header select {
+  min-width: 140px;
+
+  padding: 8px 10px;
+
+  border: 1px solid #d5deeb;
+  border-radius: 7px;
+
+  outline: none;
+
+  background: #ffffff;
+  color: #334155;
+
+  font-size: 11px;
+}
+
+/* =====================================================
+   DETAIL CHART
+===================================================== */
+
+.electricity-page .detail-chart {
+  position: relative;
+
+  height: 220px;
+
+  margin: 0 10px 0 45px;
+
+  border-bottom: 1px solid #cbd5e1;
+}
+
+/* =====================================================
+   CHART GRID
+===================================================== */
+
+.electricity-page .chart-grid {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  height: 1px;
+
+  border-top: 1px dashed #e2e8f0;
+}
+
+.electricity-page .grid-a {
+  top: 0;
+}
+
+.electricity-page .grid-b {
+  top: 33.33%;
+}
+
+.electricity-page .grid-c {
+  top: 66.66%;
+}
+
+.electricity-page .grid-d {
+  bottom: 0;
+}
+
+/* =====================================================
+   CHART LINES
+===================================================== */
+
+.electricity-page .normal-line {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  top: 48%;
+
+  height: 2px;
+
+  background: #16a34a;
+
+  opacity: 0.75;
+
+  transform: rotate(0.5deg);
+}
+
+.electricity-page .actual-line {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  top: 38%;
+
+  height: 3px;
+
+  background: #2563eb;
+
+  transform: rotate(-1deg);
+}
+
+/* =====================================================
+   CHART VALUES
+===================================================== */
+
+.electricity-page .chart-values {
+  position: absolute;
+
+  left: -40px;
+  top: 0;
+  bottom: 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 0 0 2px;
+
+  color: #94a3b8;
+
+  font-size: 9px;
+}
+
+/* =====================================================
+   CHART LABELS
+===================================================== */
+
+.electricity-page .detail-chart-labels {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+
+  bottom: -23px;
+
+  display: flex;
+  justify-content: space-between;
+
+  color: #94a3b8;
+
+  font-size: 9px;
+}
+
+/* =====================================================
+   CHART LEGEND
+===================================================== */
+
+.electricity-page .chart-legend {
+  display: flex;
+  align-items: center;
+
+  gap: 20px;
+
+  margin-top: 35px;
+
+  color: #64748b;
+
+  font-size: 10px;
+}
+
+.electricity-page .chart-legend span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.electricity-page .chart-legend i {
+  width: 20px;
+  height: 2px;
+
+  display: inline-block;
+}
+
+.electricity-page .legend-normal {
+  background: #16a34a;
+}
+
+.electricity-page .legend-actual {
+  background: #2563eb;
+}
+
+.electricity-page .legend-limit {
+  border-top: 2px dashed #ef4444;
+}
+
+/* =====================================================
+   DETAIL INFO GRID
+===================================================== */
+
+.electricity-page .detail-info-grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 16px;
+
+  margin-bottom: 22px;
+}
+
+/* =====================================================
+   INFO CARD
+===================================================== */
+
+.electricity-page .info-card {
+  padding: 20px;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+
+  background: #ffffff;
+}
+
+.electricity-page .info-card h3 {
+  margin: 0 0 17px;
+
+  color: #0f172a;
+
+  font-size: 15px;
+}
+
+.electricity-page .info-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding: 9px 0;
+
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.electricity-page .info-row:last-child {
+  border-bottom: none;
+}
+
+.electricity-page .info-row > span:first-child {
+  color: #94a3b8;
+  font-size: 10px;
+}
+
+.electricity-page .info-row strong {
+  color: #334155;
+  font-size: 11px;
+
+  text-align: right;
+}
+
+.electricity-page .active-status {
+  padding: 5px 10px;
+
+  border-radius: 15px;
+
+  background: #dcfce7;
+  color: #16a34a;
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* =====================================================
+   CONTACT CARD
+===================================================== */
+
+.electricity-page .contact-card p {
+  margin: 0 0 17px;
+
+  color: #64748b;
+
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.electricity-page .contact-whatsapp,
+.electricity-page .contact-phone {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 9px 13px;
+
+  border-radius: 7px;
+
+  font-size: 10px;
+  font-weight: 600;
+
+  text-decoration: none;
+}
+
+.electricity-page .contact-whatsapp {
+  margin-right: 8px;
+
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.electricity-page .contact-whatsapp:hover {
+  background: #bbf7d0;
+}
+
+.electricity-page .contact-phone {
+  border: 1px solid #dbe2ea;
+
+  background: #ffffff;
+  color: #2563eb;
+}
+
+.electricity-page .contact-phone:hover {
+  background: #eff6ff;
+}
+
+/* =====================================================
+   RECOMMENDATION
+===================================================== */
+
+.electricity-page .recommendation-section {
+  margin-top: 4px;
+}
+
+.electricity-page .recommendation-section > h3 {
+  margin: 0 0 14px;
+
+  color: #0f172a;
+  font-size: 15px;
+}
+
+.electricity-page .recommendation-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 12px;
+}
+
+.electricity-page .recommendation-card {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 10px;
+
+  padding: 14px;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+
+  background: #f8fafc;
+}
+
+.electricity-page .recommendation-card > span {
+  flex-shrink: 0;
+
+  font-size: 16px;
+}
+
+.electricity-page .recommendation-card p {
+  margin: 0;
+
+  color: #475569;
+
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+/* =====================================================
+   LEGACY / COMPATIBILITY CLASSES
+   Tidak mengganggu JSX Electricity sekarang
+===================================================== */
+
+.electricity-page .device-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.electricity-page .device-card {
+  padding: 18px;
+
+  border: 1px solid #dce4ef;
+  border-radius: 10px;
+
+  background: #ffffff;
+}
+
+.electricity-page .device-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 16px;
+}
+
+.electricity-page .device-icon {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 9px;
+
+  font-size: 18px;
+}
+
+.electricity-page .green-device {
+  background: #dcfce7;
+}
+
+.electricity-page .yellow-device {
+  background: #fef3c7;
+}
+
+.electricity-page .blue-device {
+  background: #dbeafe;
+}
+
+.electricity-page .orange-device {
+  background: #ffedd5;
+}
+
+.electricity-page .device-card h3 {
+  margin: 0 0 5px;
+
+  color: #0f172a;
+  font-size: 14px;
+}
+
+.electricity-page .device-card p {
+  margin: 0;
+
+  color: #7183a3;
+  font-size: 11px;
+}
+
+.electricity-page .device-power {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  margin-top: 18px;
+  padding-top: 14px;
+
+  border-top: 1px solid #edf2f7;
+}
+
+.electricity-page .device-power strong {
+  color: #0f172a;
+  font-size: 16px;
+}
+
+.electricity-page .device-power span {
+  color: #8da0bf;
+  font-size: 10px;
+}
+
+/* =====================================================
+   OLD BADGES
+===================================================== */
+
+.electricity-page .normal-badge,
+.electricity-page .anomaly-badge,
+.electricity-page .warning-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 58px;
+
+  padding: 5px 13px;
+
+  border-radius: 15px;
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.electricity-page .normal-badge {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.electricity-page .anomaly-badge {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+.electricity-page .warning-badge {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+/* =====================================================
+   OLD ROOM CLASSES
+===================================================== */
+
+.electricity-page .room-electricity-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.electricity-page .room-electricity-card {
+  padding: 20px;
+
+  border: 1px solid #dbe2ea;
+  border-radius: 12px;
+
+  background: #ffffff;
+}
+
+.electricity-page .room-electricity-card.room-anomaly,
+.electricity-page .room-electricity-card.anomaly-room {
+  border-color: #fecaca;
+}
+
+.electricity-page .room-electricity-card.room-warning {
+  border-color: #fde68a;
+}
+
+.electricity-page .room-electricity-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  gap: 10px;
+}
+
+.electricity-page .room-electricity-card h3 {
+  margin: 0;
+
+  color: #0f172a;
+  font-size: 18px;
+}
+
+.electricity-page .room-electricity-card > p {
+  margin: 8px 0 17px;
+
+  color: #94a3b8;
+  font-size: 10px;
+}
+
+.electricity-page .room-consumption {
+  margin-top: 18px;
+
+  color: #0f172a;
+
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.electricity-page .room-subtitle {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #94a3b8;
+  font-size: 10px;
+}
+
+/* =====================================================
+   OLD DETAIL ROOM
+===================================================== */
+
+.electricity-page .back-button {
+  padding: 0;
+  margin-bottom: 10px;
+
+  border: none;
+
+  background: transparent;
+  color: #2563eb;
+
+  font-size: 12px;
+
+  cursor: pointer;
+}
+
+.electricity-page .back-button:hover {
+  text-decoration: underline;
+}
+
+.electricity-page .room-detail-card {
+  margin-bottom: 20px;
+}
+
+.electricity-page .detail-room-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.electricity-page .detail-label {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.electricity-page .detail-room-header h2 {
+  margin: 0;
+
+  color: #0f172a;
+  font-size: 20px;
+}
+
+.electricity-page .room-tenant {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: 20px;
+  padding-top: 18px;
+
+  border-top: 1px solid #eef2f7;
+}
+
+.electricity-page .tenant-avatar {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #eff6ff;
+
+  font-size: 17px;
+}
+
+.electricity-page .room-tenant > div:not(.tenant-avatar) {
+  flex: 1;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+}
+
+.electricity-page .room-tenant span {
+  color: #94a3b8;
+  font-size: 10px;
+}
+
+.electricity-page .room-tenant strong {
+  color: #334155;
+  font-size: 13px;
+}
+
+.electricity-page .contact-button {
+  padding: 9px 14px;
+
+  border-radius: 7px;
+
+  background: #00a63c;
+  color: white;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  text-decoration: none;
+}
+
+.electricity-page .contact-button:hover {
+  background: #008f35;
+}
+
+/* =====================================================
+   OLD DETAIL ANOMALY
+===================================================== */
+
+.electricity-page .detail-anomaly {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 15px;
+
+  padding: 18px;
+
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+
+  background: #fffafa;
+}
+
+.electricity-page .detail-anomaly-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 10px;
+
+  background: #fee2e2;
+
+  font-size: 20px;
+}
+
+.electricity-page .detail-anomaly-content {
+  flex: 1;
+}
+
+.electricity-page .detail-anomaly-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+}
+
+.electricity-page .detail-anomaly-title strong {
+  color: #334155;
+  font-size: 13px;
+}
+
+.electricity-page .detail-anomaly-content p {
+  margin: 7px 0 12px;
+
+  color: #64748b;
+  font-size: 11px;
+}
+
+.electricity-page .anomaly-detail-info {
+  display: flex;
+  gap: 25px;
+
+  color: #64748b;
+  font-size: 10px;
+}
+
+.electricity-page .anomaly-detail-info strong {
+  color: #334155;
+}
+
+.electricity-page .normal-count {
+  padding: 7px 12px;
+
+  border-radius: 20px;
+
+  background: #dcfce7;
+  color: #16a34a;
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* =====================================================
+   NO ANOMALY
+===================================================== */
+
+.electricity-page .no-anomaly {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 18px;
+
+  border-radius: 10px;
+
+  background: #f0fdf4;
+}
+
+.electricity-page .no-anomaly > div:first-child {
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #dcfce7;
+  color: #16a34a;
+
+  font-weight: 700;
+}
+
+.electricity-page .no-anomaly strong {
+  color: #166534;
+  font-size: 12px;
+}
+
+.electricity-page .no-anomaly p {
+  margin: 3px 0 0;
+
+  color: #64748b;
+  font-size: 10px;
+}
+
+/* =====================================================
+   HISTORY
+===================================================== */
+
+.electricity-page .history-list {
+  width: 100%;
+}
+
+.electricity-page .history-item {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr 1fr;
+
+  align-items: center;
+
+  min-height: 50px;
+
+  border-top: 1px solid #f1f5f9;
+
+  color: #64748b;
+  font-size: 11px;
+}
+
+.electricity-page .history-item:first-child {
+  border-top: none;
+}
+
+.electricity-page .history-item strong {
+  color: #334155;
+}
+
+/* =====================================================
+   RESPONSIVE - LOGIN
+   DASHBOARD TIDAK DIUBAH
+===================================================== */
+
+@media (max-width: 900px) {
+  .login-left {
+    display: none;
+  }
+
+  .login-right {
+    width: 100%;
+    min-height: 100vh;
+    padding: 25px;
+  }
+
+  .login-form-container {
+    max-width: 400px;
+  }
+}
+
+/* =====================================================
+   RESPONSIVE - DASHBOARD
+   BAGIAN INI DIPERTAHANKAN
+===================================================== */
 
 @media (max-width: 1100px) {
   .dashboard-stats {
@@ -1255,7 +2991,37 @@ body {
   .dashboard-bottom {
     grid-template-columns: 1fr;
   }
+
+  .electricity-page .electricity-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .electricity-page .device-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .electricity-page .room-electricity-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* tambahan untuk JSX Electricity sekarang */
+  .electricity-page .room-monitor-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .electricity-page .detail-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .electricity-page .recommendation-grid {
+    grid-template-columns: 1fr;
+  }
 }
+
+/* =====================================================
+   RESPONSIVE - TABLET
+   DASHBOARD TIDAK DIUBAH
+===================================================== */
 
 @media (max-width: 800px) {
   .sidebar {
@@ -1273,6 +3039,7 @@ body {
 
   .dashboard-main {
     width: calc(100% - 76px);
+
     margin-left: 76px;
 
     padding: 25px 20px;
@@ -1280,9 +3047,139 @@ body {
 
   .dashboard-header {
     flex-direction: column;
+
     gap: 12px;
   }
 }
+
+/* =====================================================
+   RESPONSIVE - MOBILE ELECTRICITY
+===================================================== */
+
+@media (max-width: 700px) {
+  .electricity-page .electricity-header {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 15px;
+  }
+
+  .electricity-page .electricity-filter {
+    flex-direction: column;
+  }
+
+  .electricity-page .electricity-filter > div {
+    width: 100%;
+  }
+
+  .electricity-page .electricity-filter select {
+    width: 100%;
+  }
+
+  .electricity-page .electricity-stats,
+  .electricity-page .device-grid,
+  .electricity-page .room-electricity-grid,
+  .electricity-page .room-monitor-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .electricity-page .electricity-card {
+    padding: 16px;
+    overflow-x: auto;
+  }
+
+  .electricity-page .electricity-table {
+    min-width: 700px;
+  }
+
+  .electricity-page .table-row {
+    min-width: 700px;
+  }
+
+  /* DETAIL MODAL */
+
+  .electricity-page .room-detail-overlay {
+    align-items: flex-start;
+
+    padding: 15px;
+  }
+
+  .electricity-page .room-detail-panel {
+    max-height: calc(100vh - 30px);
+
+    padding: 20px;
+
+    border-radius: 12px;
+  }
+
+  .electricity-page .detail-alert {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .electricity-page .detail-alert > .room-status {
+    margin-left: 52px;
+  }
+
+  .electricity-page .detail-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .electricity-page .detail-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .electricity-page .recommendation-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .electricity-page .detail-chart-header {
+    flex-direction: column;
+  }
+
+  .electricity-page .detail-chart-header select {
+    width: 100%;
+  }
+
+  .electricity-page .chart-legend {
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 8px;
+  }
+
+  .electricity-page .room-power {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .electricity-page .room-detail-button {
+    width: 100%;
+  }
+
+  .electricity-page .contact-whatsapp,
+  .electricity-page .contact-phone {
+    width: 100%;
+    box-sizing: border-box;
+
+    margin: 0 0 8px;
+  }
+
+  .electricity-page .info-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .electricity-page .info-row strong {
+    text-align: left;
+  }
+}
+
+/* =====================================================
+   RESPONSIVE - SMALL MOBILE
+   DASHBOARD TIDAK DIUBAH
+===================================================== */
 
 @media (max-width: 600px) {
   .dashboard-stats {
@@ -1292,606 +3189,24 @@ body {
   .dashboard-main {
     padding: 20px 15px;
   }
-}
-/* =====================================================
-   ELECTRICITY / IOT PAGE
-===================================================== */
 
-.electricity-page {
-  padding: 28px 36px 50px;
-  max-width: 1500px;
-  margin: 0 auto;
-}
-
-/* HEADER */
-
-.electricity-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 24px;
-}
-
-.electricity-header h1 {
-  margin: 0 0 5px;
-  font-size: 28px;
-  color: #0f172a;
-}
-
-.electricity-header p {
-  margin: 0;
-  font-size: 13px;
-  color: #64748b;
-}
-
-.iot-status {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
-  padding: 9px 14px;
-
-  border: 1px solid #bbf7d0;
-  border-radius: 9px;
-
-  background: #f0fdf4;
-  color: #16a34a;
-
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.status-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #16a34a;
-}
-
-/* FILTER */
-
-.electricity-filter {
-  display: flex;
-  gap: 14px;
-
-  padding: 16px 18px;
-  margin-bottom: 20px;
-
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-
-  background: white;
-}
-
-.electricity-filter div {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-}
-
-.electricity-filter label {
-  font-size: 12px;
-  color: #64748b;
-  font-weight: 500;
-}
-
-.electricity-filter select {
-  height: 34px;
-
-  padding: 0 30px 0 10px;
-
-  border: 1px solid #dbe2ea;
-  border-radius: 7px;
-
-  background: white;
-  color: #334155;
-
-  font-size: 12px;
-  outline: none;
-}
-
-/* STATISTICS */
-
-.electricity-stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-
-  margin-bottom: 22px;
-}
-
-.electricity-stat-card {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-
-  min-height: 110px;
-
-  padding: 20px;
-
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-
-  background: white;
-
-  box-shadow: 0 2px 5px rgba(15, 23, 42, 0.03);
-}
-
-.electricity-stat-icon {
-  width: 42px;
-  height: 42px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 10px;
-
-  font-size: 18px;
-}
-
-.electricity-stat-icon.green {
-  background: #dcfce7;
-}
-
-.electricity-stat-icon.blue {
-  background: #dbeafe;
-}
-
-.electricity-stat-icon.orange {
-  background: #fef3c7;
-}
-
-.electricity-stat-icon.purple {
-  background: #ede9fe;
-}
-
-.electricity-stat-card span {
-  display: block;
-
-  margin-bottom: 5px;
-
-  color: #64748b;
-  font-size: 11px;
-}
-
-.electricity-stat-card h2 {
-  margin: 0 0 5px;
-
-  color: #0f172a;
-
-  font-size: 21px;
-}
-
-.electricity-stat-card small {
-  color: #94a3b8;
-  font-size: 10px;
-}
-
-.danger-text {
-  color: #dc2626 !important;
-}
-
-/* CARD */
-
-.electricity-card {
-  padding: 22px;
-
-  margin-bottom: 20px;
-
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-
-  background: white;
-
-  box-shadow: 0 2px 5px rgba(15, 23, 42, 0.03);
-}
-
-.electricity-card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  margin-bottom: 20px;
-}
-
-.electricity-card-header h2 {
-  margin: 0 0 4px;
-
-  color: #0f172a;
-
-  font-size: 17px;
-}
-
-.electricity-card-header p {
-  margin: 0;
-
-  color: #94a3b8;
-
-  font-size: 11px;
-}
-
-.live-badge {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-
-  padding: 6px 10px;
-
-  border-radius: 20px;
-
-  background: #f0fdf4;
-
-  color: #16a34a;
-
-  font-size: 10px;
-  font-weight: 600;
-}
-
-.live-badge span {
-  width: 6px;
-  height: 6px;
-
-  border-radius: 50%;
-
-  background: #16a34a;
-}
-
-/* CHART */
-
-.electricity-chart {
-  display: flex;
-
-  height: 230px;
-}
-
-.chart-y {
-  width: 48px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  padding: 5px 0 28px;
-
-  color: #94a3b8;
-
-  font-size: 9px;
-}
-
-.chart-area {
-  position: relative;
-
-  flex: 1;
-}
-
-.grid-line {
-  position: absolute;
-  left: 0;
-  right: 0;
-
-  border-top: 1px dashed #e2e8f0;
-}
-
-.line-1 {
-  top: 5%;
-}
-
-.line-2 {
-  top: 35%;
-}
-
-.line-3 {
-  top: 65%;
-}
-
-.line-4 {
-  top: 95%;
-}
-
-/* FAKE CHART */
-
-.fake-chart {
-  position: absolute;
-
-  left: 2%;
-  right: 2%;
-
-  top: 15%;
-  bottom: 15%;
-}
-
-.point {
-  position: absolute;
-
-  width: 7px;
-  height: 7px;
-
-  border-radius: 50%;
-
-  background: #16a34a;
-
-  z-index: 2;
-}
-
-.point-1 {
-  left: 3%;
-  top: 45%;
-}
-
-.point-2 {
-  left: 19%;
-  top: 30%;
-}
-
-.point-3 {
-  left: 35%;
-  top: 55%;
-}
-
-.point-4 {
-  left: 51%;
-  top: 20%;
-}
-
-.point-5 {
-  left: 67%;
-  top: 38%;
-}
-
-.point-6 {
-  left: 83%;
-  top: 15%;
-}
-
-.point-7 {
-  left: 97%;
-  top: 30%;
-}
-
-.chart-x {
-  position: absolute;
-
-  left: 0;
-  right: 0;
-  bottom: 0;
-
-  display: flex;
-  justify-content: space-between;
-
-  color: #94a3b8;
-
-  font-size: 9px;
-}
-
-/* DEVICE GRID */
-
-.device-grid {
-  display: grid;
-
-  grid-template-columns: repeat(4, 1fr);
-
-  gap: 14px;
-}
-
-.device-card {
-  padding: 16px;
-
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-
-  background: #fff;
-}
-
-.device-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  margin-bottom: 13px;
-}
-
-.device-icon {
-  width: 36px;
-  height: 36px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 9px;
-
-  font-size: 16px;
-}
-
-.green-device {
-  background: #dcfce7;
-}
-
-.yellow-device {
-  background: #fef3c7;
-}
-
-.blue-device {
-  background: #dbeafe;
-}
-
-.orange-device {
-  background: #ffedd5;
-}
-
-.device-card h3 {
-  margin: 0 0 4px;
-
-  color: #0f172a;
-
-  font-size: 13px;
-}
-
-.device-card p {
-  margin: 0 0 16px;
-
-  color: #94a3b8;
-
-  font-size: 10px;
-}
-
-.device-power {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding-top: 12px;
-
-  border-top: 1px solid #f1f5f9;
-}
-
-.device-power strong {
-  color: #0f172a;
-  font-size: 13px;
-}
-
-.device-power span {
-  color: #94a3b8;
-  font-size: 9px;
-}
-
-/* BADGES */
-
-.normal-badge,
-.anomaly-badge,
-.warning-badge {
-  display: inline-flex;
-  align-items: center;
-
-  padding: 4px 8px;
-
-  border-radius: 20px;
-
-  font-size: 9px;
-  font-weight: 600;
-}
-
-.normal-badge {
-  background: #dcfce7;
-  color: #16a34a;
-}
-
-.anomaly-badge {
-  background: #fee2e2;
-  color: #dc2626;
-}
-
-.warning-badge {
-  background: #fef3c7;
-  color: #d97706;
-}
-
-.detail-button {
-  border: none;
-  background: transparent;
-
-  color: #2563eb;
-
-  font-size: 10px;
-
-  cursor: pointer;
-}
-
-/* TABLE */
-
-.electricity-table {
-  width: 100%;
-}
-
-.table-row {
-  display: grid;
-
-  grid-template-columns: 1fr 1.4fr 1fr 1fr 0.7fr;
-
-  align-items: center;
-
-  min-height: 50px;
-
-  border-bottom: 1px solid #f1f5f9;
-
-  color: #475569;
-
-  font-size: 11px;
-}
-
-.table-row:last-child {
-  border-bottom: none;
-}
-
-.table-head {
-  min-height: 36px;
-
-  color: #94a3b8;
-
-  font-size: 10px;
-  font-weight: 600;
-}
-
-.anomaly-count {
-  padding: 6px 10px;
-
-  border-radius: 20px;
-
-  background: #fee2e2;
-
-  color: #dc2626;
-
-  font-size: 9px;
-  font-weight: 600;
-}
-
-/* RESPONSIVE */
-
-@media (max-width: 1100px) {
-  .electricity-stats {
-    grid-template-columns: repeat(2, 1fr);
+  .electricity-page .electricity-header h1 {
+    font-size: 23px;
   }
 
-  .device-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 700px) {
-  .electricity-page {
-    padding: 20px;
+  .electricity-page .electricity-card {
+    padding: 14px;
   }
 
-  .electricity-header {
-    align-items: flex-start;
-    gap: 15px;
-    flex-direction: column;
+  .electricity-page .room-detail-panel {
+    padding: 16px;
   }
 
-  .electricity-filter {
-    flex-direction: column;
+  .electricity-page .detail-chart {
+    margin-left: 35px;
   }
 
-  .electricity-filter div {
-    justify-content: space-between;
-  }
-
-  .electricity-stats {
-    grid-template-columns: 1fr;
-  }
-
-  .device-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .table-row {
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    padding: 10px 0;
-  }
-
-  .table-head {
-    display: none;
+  .electricity-page .chart-values {
+    left: -32px;
   }
 }

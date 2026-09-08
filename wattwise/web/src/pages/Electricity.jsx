@@ -1,216 +1,123 @@
+import { useState } from "react";
+
 function Electricity() {
+  const [selectedRoom, setSelectedRoom] = useState(null);
+
+  const rooms = [
+    {
+      room: "Kamar 01",
+      consumption: "1.12 kWh",
+      power: "0.08 kW",
+      status: "Normal",
+      statusClass: "normal",
+      duration: "-",
+      resident: "Andi Pratama",
+      phone: "0812-3456-7890",
+      description: "Konsumsi listrik dalam batas normal.",
+    },
+    {
+      room: "Kamar 03",
+      consumption: "2.84 kWh",
+      power: "0.12 kW",
+      status: "Normal",
+      statusClass: "normal",
+      duration: "-",
+      resident: "Siti Rahma",
+      phone: "0813-4567-8901",
+      description: "Konsumsi listrik dalam batas normal.",
+    },
+    {
+      room: "Kamar 08",
+      consumption: "7.42 kWh",
+      power: "0.38 kW",
+      status: "Anomali",
+      statusClass: "danger",
+      duration: "3 jam",
+      resident: "Budi Santoso",
+      phone: "0812-9876-5432",
+      description: "Konsumsi listrik di atas pola normal.",
+    },
+    {
+      room: "Kamar 12",
+      consumption: "6.18 kWh",
+      power: "0.31 kW",
+      status: "Sedang",
+      statusClass: "warning",
+      duration: "5 jam",
+      resident: "Dina Permata",
+      phone: "0821-2345-6789",
+      description: "Konsumsi listrik di atas rata-rata.",
+    },
+  ];
+
   return (
     <div className="electricity-page">
       {/* HEADER */}
       <div className="electricity-header">
         <div>
-          <h1>Listrik</h1>
-          <p>Monitoring konsumsi listrik kamar secara real-time</p>
+          <h1>Monitoring Listrik</h1>
+          <p>Monitoring konsumsi listrik berdasarkan meteran kamar</p>
         </div>
 
         <div className="iot-status">
           <span className="status-dot"></span>
-          Alat Terhubung
+          Meteran Terhubung
         </div>
       </div>
 
-      {/* FILTER */}
-      <div className="electricity-filter">
-        <div>
-          <label>Kamar</label>
-          <select>
-            <option>Semua Kamar</option>
-            <option>Kamar 01</option>
-            <option>Kamar 02</option>
-            <option>Kamar 03</option>
-            <option>Kamar 08</option>
-            <option>Kamar 12</option>
-          </select>
-        </div>
-
-        <div>
-          <label>Periode</label>
-          <select>
-            <option>Hari ini</option>
-            <option>7 hari terakhir</option>
-            <option>30 hari terakhir</option>
-          </select>
-        </div>
-      </div>
-
-      {/* STAT CARDS */}
-      <div className="electricity-stats">
-        <div className="electricity-stat-card">
-          <div className="electricity-stat-icon green">⚡</div>
-          <div>
-            <span>Total Konsumsi</span>
-            <h2>24.8 kWh</h2>
-            <small>Hari ini</small>
-          </div>
-        </div>
-
-        <div className="electricity-stat-card">
-          <div className="electricity-stat-icon blue">◉</div>
-          <div>
-            <span>Daya Saat Ini</span>
-            <h2>1.24 kW</h2>
-            <small>Real-time</small>
-          </div>
-        </div>
-
-        <div className="electricity-stat-card">
-          <div className="electricity-stat-icon orange">⚠</div>
-          <div>
-            <span>Anomali</span>
-            <h2>3</h2>
-            <small className="danger-text">Perlu diperiksa</small>
-          </div>
-        </div>
-
-        <div className="electricity-stat-card">
-          <div className="electricity-stat-icon purple">⌁</div>
-          <div>
-            <span>Perangkat Aktif</span>
-            <h2>47</h2>
-            <small>4 titik / kamar</small>
-          </div>
-        </div>
-      </div>
-
-      {/* MONITORING CARD */}
+      {/* MONITORING KAMAR */}
       <section className="electricity-card">
         <div className="electricity-card-header">
           <div>
-            <h2>Konsumsi Listrik</h2>
-            <p>Pemakaian listrik seluruh kamar hari ini</p>
+            <h2>Monitoring Kamar</h2>
+            <p>Status konsumsi listrik berdasarkan meteran kamar</p>
           </div>
-
-          <span className="live-badge">
-            <span></span>
-            Live
-          </span>
         </div>
 
-        <div className="electricity-chart">
-          <div className="chart-y">
-            <span>3 kW</span>
-            <span>2 kW</span>
-            <span>1 kW</span>
-            <span>0 kW</span>
-          </div>
+        <div className="room-monitor-grid">
+          {rooms.map((room) => (
+            <div
+              key={room.room}
+              className={`room-monitor-card ${room.statusClass}`}
+            >
+              <div className="room-card-top">
+                <span className="room-name">{room.room}</span>
 
-          <div className="chart-area">
-            <div className="grid-line line-1"></div>
-            <div className="grid-line line-2"></div>
-            <div className="grid-line line-3"></div>
-            <div className="grid-line line-4"></div>
+                <span className={`room-status ${room.statusClass}`}>
+                  {room.status}
+                </span>
+              </div>
 
-            <div className="fake-chart">
-              <span className="point point-1"></span>
-              <span className="point point-2"></span>
-              <span className="point point-3"></span>
-              <span className="point point-4"></span>
-              <span className="point point-5"></span>
-              <span className="point point-6"></span>
-              <span className="point point-7"></span>
+              <span className="room-label">Konsumsi hari ini</span>
+
+              <h2>{room.consumption}</h2>
+
+              <div className="room-card-divider"></div>
+
+              <div className="room-power">
+                <div>
+                  <strong>{room.power}</strong>
+                  <span>Daya saat ini</span>
+                </div>
+
+                <button
+                  className="room-detail-button"
+                  onClick={() => setSelectedRoom(room)}
+                >
+                  Lihat Detail →
+                </button>
+              </div>
             </div>
-
-            <div className="chart-x">
-              <span>00:00</span>
-              <span>04:00</span>
-              <span>08:00</span>
-              <span>12:00</span>
-              <span>16:00</span>
-              <span>20:00</span>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* TITIK LISTRIK */}
-      <section className="electricity-card">
-        <div className="electricity-card-header">
-          <div>
-            <h2>Monitoring Titik Listrik</h2>
-            <p>Status penggunaan perangkat per kamar</p>
-          </div>
-
-          <button className="detail-button">Lihat semua →</button>
-        </div>
-
-        <div className="device-grid">
-          {/* LAMPU */}
-          <div className="device-card">
-            <div className="device-top">
-              <div className="device-icon green-device">💡</div>
-              <span className="normal-badge">Normal</span>
-            </div>
-
-            <h3>Lampu</h3>
-            <p>12 perangkat aktif</p>
-
-            <div className="device-power">
-              <strong>0.18 kW</strong>
-              <span>Saat ini</span>
-            </div>
-          </div>
-
-          {/* CHARGER */}
-          <div className="device-card">
-            <div className="device-top">
-              <div className="device-icon yellow-device">⚡</div>
-              <span className="anomaly-badge">Anomali</span>
-            </div>
-
-            <h3>Charger HP</h3>
-            <p>14 perangkat aktif</p>
-
-            <div className="device-power">
-              <strong>0.42 kW</strong>
-              <span>Saat ini</span>
-            </div>
-          </div>
-
-          {/* LAPTOP */}
-          <div className="device-card">
-            <div className="device-top">
-              <div className="device-icon blue-device">💻</div>
-              <span className="normal-badge">Normal</span>
-            </div>
-
-            <h3>Laptop</h3>
-            <p>9 perangkat aktif</p>
-
-            <div className="device-power">
-              <strong>0.51 kW</strong>
-              <span>Saat ini</span>
-            </div>
-          </div>
-
-          {/* KIPAS */}
-          <div className="device-card">
-            <div className="device-top">
-              <div className="device-icon orange-device">🌀</div>
-              <span className="normal-badge">Normal</span>
-            </div>
-
-            <h3>Kipas</h3>
-            <p>12 perangkat aktif</p>
-
-            <div className="device-power">
-              <strong>0.13 kW</strong>
-              <span>Saat ini</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ANOMALY TABLE */}
+      {/* DETAIL ANOMALI / RINGKASAN */}
       <section className="electricity-card">
         <div className="electricity-card-header">
           <div>
             <h2>Anomali Terdeteksi</h2>
-            <p>Perangkat dengan penggunaan listrik tidak normal</p>
+            <p>Kamar dengan penggunaan listrik tidak normal</p>
           </div>
 
           <span className="anomaly-count">3 Anomali</span>
@@ -219,37 +126,274 @@ function Electricity() {
         <div className="electricity-table">
           <div className="table-row table-head">
             <span>Kamar</span>
-            <span>Perangkat</span>
-            <span>Daya</span>
+            <span>Total Konsumsi</span>
+            <span>Daya Saat Ini</span>
             <span>Durasi</span>
             <span>Status</span>
+            <span>Aksi</span>
           </div>
 
-          <div className="table-row">
-            <span>Kamar 08</span>
-            <span>⚡ Charger</span>
-            <span>0.38 kW</span>
-            <span>3 jam</span>
-            <span className="anomaly-badge">Tinggi</span>
-          </div>
+          {rooms
+            .filter((room) => room.statusClass !== "normal")
+            .map((room) => (
+              <div className="table-row" key={room.room}>
+                <span>{room.room}</span>
+                <span>{room.consumption}</span>
+                <span>{room.power}</span>
+                <span>{room.duration}</span>
 
-          <div className="table-row">
-            <span>Kamar 12</span>
-            <span>💻 Laptop</span>
-            <span>0.31 kW</span>
-            <span>5 jam</span>
-            <span className="warning-badge">Sedang</span>
-          </div>
+                <span>
+                  <span className={`room-status ${room.statusClass}`}>
+                    {room.status}
+                  </span>
+                </span>
 
-          <div className="table-row">
-            <span>Kamar 03</span>
-            <span>💡 Lampu</span>
-            <span>0.12 kW</span>
-            <span>8 jam</span>
-            <span className="warning-badge">Sedang</span>
-          </div>
+                <button
+                  className="table-detail-button"
+                  onClick={() => setSelectedRoom(room)}
+                >
+                  Detail →
+                </button>
+              </div>
+            ))}
         </div>
       </section>
+
+      {/* DETAIL MODAL */}
+      {selectedRoom && (
+        <div
+          className="room-detail-overlay"
+          onClick={() => setSelectedRoom(null)}
+        >
+          <div
+            className="room-detail-panel"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* DETAIL HEADER */}
+            <div className="detail-panel-header">
+              <div>
+                <h2>Detail {selectedRoom.room}</h2>
+                <p>Monitoring konsumsi listrik kamar</p>
+              </div>
+
+              <button
+                className="detail-close"
+                onClick={() => setSelectedRoom(null)}
+              >
+                ×
+              </button>
+            </div>
+
+            {/* STATUS */}
+            <div className={`detail-alert ${selectedRoom.statusClass}`}>
+              <div className="detail-alert-icon">
+                {selectedRoom.statusClass === "danger" ? "⚠" : "✓"}
+              </div>
+
+              <div>
+                <strong>
+                  {selectedRoom.statusClass === "danger"
+                    ? "Anomali Terdeteksi"
+                    : selectedRoom.status === "warning"
+                      ? "Konsumsi Di Atas Rata-rata"
+                      : "Konsumsi Normal"}
+                </strong>
+
+                <span>{selectedRoom.description}</span>
+              </div>
+
+              <span className={`room-status ${selectedRoom.statusClass}`}>
+                {selectedRoom.status}
+              </span>
+            </div>
+
+            {/* STAT DETAIL */}
+            <div className="detail-stats">
+              <div className="detail-stat">
+                <span className="detail-stat-icon green-icon">⚡</span>
+
+                <div>
+                  <strong>{selectedRoom.consumption}</strong>
+                  <span>Total konsumsi</span>
+                </div>
+              </div>
+
+              <div className="detail-stat">
+                <span className="detail-stat-icon blue-icon">◉</span>
+
+                <div>
+                  <strong>{selectedRoom.power}</strong>
+                  <span>Daya saat ini</span>
+                </div>
+              </div>
+
+              <div className="detail-stat">
+                <span className="detail-stat-icon orange-icon">◷</span>
+
+                <div>
+                  <strong>
+                    {selectedRoom.duration === "-"
+                      ? "Tidak ada"
+                      : selectedRoom.duration}
+                  </strong>
+                  <span>Durasi anomali</span>
+                </div>
+              </div>
+
+              <div className="detail-stat">
+                <span className="detail-stat-icon purple-icon">⌁</span>
+
+                <div>
+                  <strong>2.84 kW</strong>
+                  <span>Rata-rata normal</span>
+                </div>
+              </div>
+            </div>
+
+            {/* GRAFIK */}
+            <div className="detail-chart-card">
+              <div className="detail-chart-header">
+                <div>
+                  <h3>Grafik Konsumsi Listrik</h3>
+                  <p>Pola penggunaan listrik hari ini</p>
+                </div>
+
+                <select defaultValue="today">
+                  <option value="today">Hari ini</option>
+                  <option value="week">7 hari terakhir</option>
+                  <option value="month">30 hari terakhir</option>
+                </select>
+              </div>
+
+              <div className="detail-chart">
+                <div className="chart-grid grid-a"></div>
+                <div className="chart-grid grid-b"></div>
+                <div className="chart-grid grid-c"></div>
+                <div className="chart-grid grid-d"></div>
+
+                <div className="normal-line"></div>
+                <div className="actual-line"></div>
+
+                <div className="chart-values">
+                  <span>3 kW</span>
+                  <span>2 kW</span>
+                  <span>1 kW</span>
+                  <span>0 kW</span>
+                </div>
+
+                <div className="detail-chart-labels">
+                  <span>00:00</span>
+                  <span>04:00</span>
+                  <span>08:00</span>
+                  <span>12:00</span>
+                  <span>16:00</span>
+                  <span>20:00</span>
+                  <span>24:00</span>
+                </div>
+              </div>
+
+              <div className="chart-legend">
+                <span>
+                  <i className="legend-normal"></i>
+                  Pola Normal
+                </span>
+
+                <span>
+                  <i className="legend-actual"></i>
+                  Penggunaan Aktual
+                </span>
+
+                <span>
+                  <i className="legend-limit"></i>
+                  Batas Anomali
+                </span>
+              </div>
+            </div>
+
+            {/* INFO KAMAR + PENGHUNI */}
+            <div className="detail-info-grid">
+              {/* INFO KAMAR */}
+              <div className="info-card">
+                <h3>Informasi Kamar</h3>
+
+                <div className="info-row">
+                  <span>Kamar</span>
+                  <strong>{selectedRoom.room}</strong>
+                </div>
+
+                <div className="info-row">
+                  <span>Penghuni</span>
+                  <strong>{selectedRoom.resident}</strong>
+                </div>
+
+                <div className="info-row">
+                  <span>No. Telepon</span>
+                  <strong>{selectedRoom.phone}</strong>
+                </div>
+
+                <div className="info-row">
+                  <span>Status Pemantauan</span>
+                  <span className="active-status">Aktif</span>
+                </div>
+
+                <div className="info-row">
+                  <span>Terakhir Update</span>
+                  <strong>1 Sep 2026 06:15</strong>
+                </div>
+              </div>
+
+              {/* HUBUNGI */}
+              <div className="info-card contact-card">
+                <h3>Hubungi Penghuni</h3>
+
+                <p>
+                  Hubungi penghuni untuk konfirmasi penggunaan listrik kamar.
+                </p>
+
+                <a
+                  href={`https://wa.me/62${selectedRoom.phone.substring(1)}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="contact-whatsapp"
+                >
+                  💬 Chat WhatsApp
+                </a>
+
+                <a href={`tel:${selectedRoom.phone}`} className="contact-phone">
+                  ☎ Telepon
+                </a>
+              </div>
+            </div>
+
+            {/* REKOMENDASI */}
+            <div className="recommendation-section">
+              <h3>Rekomendasi</h3>
+
+              <div className="recommendation-grid">
+                <div className="recommendation-card">
+                  <span>⚠</span>
+                  <p>
+                    Periksa perangkat listrik yang sedang digunakan di kamar.
+                  </p>
+                </div>
+
+                <div className="recommendation-card">
+                  <span>💡</span>
+                  <p>
+                    Hindari penggunaan perangkat listrik berdaya besar
+                    bersamaan.
+                  </p>
+                </div>
+
+                <div className="recommendation-card">
+                  <span>ⓘ</span>
+                  <p>Matikan perangkat listrik yang tidak digunakan.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
