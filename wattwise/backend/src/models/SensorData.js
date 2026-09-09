@@ -9,9 +9,10 @@ const sensorDataSchema = new mongoose.Schema(
 
         room_id: {
             type: String,
-            required: true
+            default: "room-01"
         },
 
+        // Data dari PZEM-004T
         voltage: {
             type: Number,
             required: true
@@ -32,9 +33,52 @@ const sensorDataSchema = new mongoose.Schema(
             required: true
         },
 
+        // Field baru dari PZEM
+        frequency: {
+            type: Number,
+            default: 50
+        },
+
+        powerfactor: {
+            type: Number,
+            default: 1.0
+        },
+
+        // Data tambahan dari ESP32
+        event: {
+            type: String,
+            default: "pzem_data"
+        },
+
+        status: {
+            type: String,
+            enum: ["NORMAL", "OVERLOAD", "WARNING"],
+            default: "NORMAL"
+        },
+
+        relay_status: {
+            type: String,
+            enum: ["ON", "OFF"],
+            default: "OFF"
+        },
+
+        time_delay_val: {
+            type: Number,
+            default: 0
+        },
+
+        curva_type: {
+            type: String,
+            default: "Normal Inverse"
+        },
+
         motion: {
             type: Boolean,
-            required: true
+            default: false
+        },
+
+        date: {
+            type: String
         },
 
         timestamp: {
@@ -43,7 +87,8 @@ const sensorDataSchema = new mongoose.Schema(
         }
     },
     {
-        collection: "sensor_data"
+        collection: "sensor_data",
+        timestamps: true // Tambahan createdAt & updatedAt
     }
 );
 
