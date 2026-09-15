@@ -52,7 +52,6 @@ function Electricity() {
 
   return (
     <div className="electricity-page">
-      {/* HEADER */}
       <div className="electricity-header">
         <div>
           <h1>Monitoring Listrik</h1>
@@ -65,7 +64,6 @@ function Electricity() {
         </div>
       </div>
 
-      {/* MONITORING KAMAR */}
       <section className="electricity-card">
         <div className="electricity-card-header">
           <div>
@@ -112,7 +110,6 @@ function Electricity() {
         </div>
       </section>
 
-      {/* DETAIL ANOMALI / RINGKASAN */}
       <section className="electricity-card">
         <div className="electricity-card-header">
           <div>
@@ -169,7 +166,6 @@ function Electricity() {
             className="room-detail-panel"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* DETAIL HEADER */}
             <div className="detail-panel-header">
               <div>
                 <h2>Detail {selectedRoom.room}</h2>
@@ -184,7 +180,6 @@ function Electricity() {
               </button>
             </div>
 
-            {/* STATUS */}
             <div className={`detail-alert ${selectedRoom.statusClass}`}>
               <div className="detail-alert-icon">
                 {selectedRoom.statusClass === "danger" ? "⚠" : "✓"}
@@ -207,7 +202,6 @@ function Electricity() {
               </span>
             </div>
 
-            {/* STAT DETAIL */}
             <div className="detail-stats">
               <div className="detail-stat">
                 <span className="detail-stat-icon green-icon">⚡</span>
@@ -250,7 +244,6 @@ function Electricity() {
               </div>
             </div>
 
-            {/* GRAFIK */}
             <div className="detail-chart-card">
               <div className="detail-chart-header">
                 <div>
@@ -310,9 +303,8 @@ function Electricity() {
               </div>
             </div>
 
-            {/* INFO KAMAR + PENGHUNI */}
             <div className="detail-info-grid">
-              {/* INFO KAMAR */}
+
               <div className="info-card">
                 <h3>Informasi Kamar</h3>
 
@@ -342,7 +334,6 @@ function Electricity() {
                 </div>
               </div>
 
-              {/* HUBUNGI */}
               <div className="info-card contact-card">
                 <h3>Hubungi Penghuni</h3>
 
@@ -365,7 +356,6 @@ function Electricity() {
               </div>
             </div>
 
-            {/* REKOMENDASI */}
             <div className="recommendation-section">
               <h3>Rekomendasi</h3>
 

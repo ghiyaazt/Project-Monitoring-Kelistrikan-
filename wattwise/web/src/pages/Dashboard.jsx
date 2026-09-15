@@ -1,14 +1,18 @@
 import { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Electricity from "./Electricity";
+import Tenants from "./Tenants";
+import Profile from "./Profile";
+import Settings from "./Settings";
 
 function Dashboard() {
   const [page, setPage] = useState("dashboard");
   const [collapsed, setCollapsed] = useState(false);
 
+  console.log("Halaman sekarang:", page);
+
   return (
     <div className="dashboard-layout">
-      {/* SIDEBAR */}
       <Sidebar
         current={page}
         onNavigate={setPage}
@@ -17,14 +21,9 @@ function Dashboard() {
         onToggle={() => setCollapsed(!collapsed)}
       />
 
-      {/* MAIN CONTENT */}
       <main className="dashboard-main">
-        {/* =========================
-            DASHBOARD PAGE
-        ========================= */}
         {page === "dashboard" && (
           <>
-            {/* Header */}
             <div className="dashboard-header">
               <div>
                 <h1>Dashboard</h1>
@@ -37,7 +36,6 @@ function Dashboard() {
               </div>
             </div>
 
-            {/* STATISTICS */}
             <div className="dashboard-stats">
               <div className="stat-card">
                 <div className="stat-icon green">🏠</div>
@@ -80,7 +78,6 @@ function Dashboard() {
               </div>
             </div>
 
-            {/* MONITORING */}
             <section className="dashboard-section">
               <div className="section-header">
                 <div>
@@ -107,7 +104,6 @@ function Dashboard() {
                   </div>
                 </div>
 
-                {/* Grafik sederhana */}
                 <div className="chart">
                   <div className="chart-line">
                     <div className="chart-point p1"></div>
@@ -131,9 +127,7 @@ function Dashboard() {
               </div>
             </section>
 
-            {/* BOTTOM SECTION */}
             <div className="dashboard-bottom">
-              {/* ANOMALY */}
               <section className="content-card">
                 <div className="card-header">
                   <div>
@@ -224,10 +218,13 @@ function Dashboard() {
           </>
         )}
 
-        {/* =========================
-            ELECTRICITY PAGE
-        ========================= */}
         {page === "electricity" && <Electricity />}
+
+        {page === "tenants" && <Tenants />}
+
+        {page === "profile" && <Profile/>}
+
+        {page === "settings" && <Settings/>}
       </main>
     </div>
   );

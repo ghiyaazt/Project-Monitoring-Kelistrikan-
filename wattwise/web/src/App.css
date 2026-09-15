@@ -368,10 +368,9 @@ body {
 
 .dashboard-layout {
   min-height: 100vh;
-
   display: flex;
-
-  background: #f8fafc;
+  width: 100%;
+  background: #f7f9fc;
 }
 
 /* =====================================================
@@ -379,30 +378,21 @@ body {
 ===================================================== */
 
 .sidebar {
-  position: fixed;
-
-  top: 0;
-  left: 0;
-
-  width: 250px;
+  width: 270px;
+  min-width: 270px;
   height: 100vh;
-
+  background: #ffffff;
+  border-right: 1px solid #e5eaf0;
   display: flex;
   flex-direction: column;
-
-  padding: 22px 16px;
-
-  background: #ffffff;
-
-  border-right: 1px solid #e2e8f0;
-
-  transition: width 0.25s ease;
-
-  z-index: 100;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
 }
 
 .sidebar-collapsed {
-  width: 76px;
+  width: 80px;
+  min-width: 80px;
 }
 
 /* =====================================================
@@ -598,17 +588,13 @@ body {
 ===================================================== */
 
 .dashboard-main {
-  width: calc(100% - 250px);
-
+  flex: 1;
+  width: auto;
+  min-width: 0;
   min-height: 100vh;
-
-  margin-left: 250px;
-
   padding: 32px 38px 50px;
-
-  transition:
-    margin-left 0.25s ease,
-    width 0.25s ease;
+  margin-left: 0;
+  transition: width 0.25s ease;
 }
 
 /* =====================================================
@@ -3038,11 +3024,11 @@ body {
   }
 
   .dashboard-main {
-    width: calc(100% - 76px);
-
-    margin-left: 76px;
-
-    padding: 25px 20px;
+    flex: 1;
+    min-width: 0;
+    width: 0;
+    padding: 48px 56px;
+    overflow-x: hidden;
   }
 
   .dashboard-header {
@@ -3210,3 +3196,1162 @@ body {
     left: -32px;
   }
 }
+/* =====================================================
+   TENANTS PAGE
+===================================================== */
+
+.tenants-page {
+  width: 100%;
+  min-height: 100%;
+  box-sizing: border-box;
+}
+
+/* =====================================================
+   TENANTS HEADER
+===================================================== */
+
+.tenants-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  margin-bottom: 20px;
+}
+
+.tenants-header h1 {
+  margin: 0 0 4px;
+
+  color: #0f172a;
+
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.tenants-header p {
+  margin: 0;
+
+  color: #7183a3;
+
+  font-size: 11px;
+}
+
+/* =====================================================
+   ADD TENANT BUTTON
+===================================================== */
+
+.add-tenant-button {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 9px 14px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #00a63c;
+
+  color: #ffffff;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.add-tenant-button:hover {
+  background: #008f35;
+}
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+.tenant-search {
+  width: 255px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-bottom: 16px;
+  padding: 0 11px;
+
+  border: 1px solid #dbe3ed;
+  border-radius: 8px;
+
+  background: #ffffff;
+
+  box-sizing: border-box;
+}
+
+.tenant-search span {
+  color: #8da0bf;
+
+  font-size: 16px;
+}
+
+.tenant-search input {
+  width: 100%;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: #334155;
+
+  font-size: 11px;
+}
+
+.tenant-search input::placeholder {
+  color: #9aa9bf;
+}
+
+/* =====================================================
+   TENANT GRID
+===================================================== */
+
+.tenant-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 12px 10px;
+
+  width: 100%;
+}
+
+/* =====================================================
+   TENANT CARD
+===================================================== */
+
+.tenant-card {
+  min-height: 95px;
+
+  padding: 13px;
+
+  border: 1px solid #dbe3ed;
+  border-radius: 11px;
+
+  background: #ffffff;
+
+  box-sizing: border-box;
+
+  transition: 0.2s ease;
+}
+
+.tenant-card:hover {
+  border-color: #cbd5e1;
+
+  box-shadow: 0 3px 10px rgba(15, 23, 42, 0.05);
+}
+
+/* =====================================================
+   CARD TOP
+===================================================== */
+
+.tenant-card-top {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+}
+
+/* =====================================================
+   AVATAR
+===================================================== */
+
+.tenant-avatar {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  font-size: 9px;
+  font-weight: 600;
+}
+
+.tenant-avatar.blue {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.tenant-avatar.purple {
+  background: #ede9fe;
+  color: #7c3aed;
+}
+
+.tenant-avatar.green {
+  background: #dcfce7;
+  color: #059669;
+}
+
+.tenant-avatar.yellow {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.tenant-avatar.pink {
+  background: #fce7f3;
+  color: #db2777;
+}
+
+/* =====================================================
+   TENANT INFO
+===================================================== */
+
+.tenant-main-info {
+  flex: 1;
+
+  min-width: 0;
+}
+
+.tenant-main-info h3 {
+  margin: 0 0 2px;
+
+  overflow: hidden;
+
+  color: #1e293b;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.tenant-main-info p {
+  margin: 0;
+
+  overflow: hidden;
+
+  color: #8da0bf;
+
+  font-size: 9px;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* =====================================================
+   ROOM NUMBER
+===================================================== */
+
+.tenant-room {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 30px;
+
+  padding: 4px 7px;
+
+  border-radius: 10px;
+
+  background: #eff6ff;
+
+  color: #2563eb;
+
+  font-size: 9px;
+  font-weight: 600;
+}
+
+/* =====================================================
+   TENANT DETAILS
+===================================================== */
+
+.tenant-details {
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  margin-top: 9px;
+}
+
+.tenant-detail-item {
+  display: flex;
+  align-items: center;
+
+  gap: 4px;
+
+  color: #8da0bf;
+
+  font-size: 8px;
+}
+
+.tenant-detail-item span:first-child {
+  color: #94a3b8;
+
+  font-size: 9px;
+}
+
+/* =====================================================
+   PACKAGE
+===================================================== */
+
+.tenant-package {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  margin-top: 8px;
+}
+
+.package-badge {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 3px 7px;
+
+  border-radius: 8px;
+
+  font-size: 7px;
+  font-weight: 600;
+}
+
+.package-badge.standard {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.package-badge.deluxe {
+  background: #dbeafe;
+  color: #2563eb;
+}
+
+.package-badge.vip {
+  background: #f3e8ff;
+  color: #9333ea;
+}
+
+.tenant-price {
+  color: #9aa9bf;
+
+  font-size: 8px;
+}
+
+/* =====================================================
+   EMPTY STATE
+===================================================== */
+
+.tenant-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+
+  min-height: 180px;
+
+  color: #94a3b8;
+}
+
+.tenant-empty span {
+  font-size: 25px;
+}
+
+.tenant-empty p {
+  font-size: 12px;
+}
+
+/* =====================================================
+   RESPONSIVE TENANTS
+===================================================== */
+
+@media (max-width: 1100px) {
+  .tenant-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .tenants-header {
+    flex-direction: column;
+
+    gap: 12px;
+  }
+
+  .add-tenant-button {
+    width: 100%;
+
+    justify-content: center;
+  }
+
+  .tenant-search {
+    width: 100%;
+  }
+
+  .tenant-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* =========================
+   TENANT CARD INTERACTION
+========================= */
+
+.tenant-card {
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tenant-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+  border-color: #b8d9ff;
+}
+
+.tenant-click-hint {
+  position: absolute;
+  right: 18px;
+  bottom: 14px;
+
+  font-size: 11px;
+  font-weight: 600;
+  color: #2563eb;
+
+  opacity: 0;
+  transform: translateX(5px);
+  transition: all 0.2s ease;
+}
+
+.tenant-card:hover .tenant-click-hint {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* =========================
+   TENANT MODAL
+========================= */
+
+.tenant-modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(15, 23, 42, 0.45);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 9999;
+
+  padding: 20px;
+}
+
+.tenant-modal {
+  width: 100%;
+  max-width: 520px;
+
+  background: white;
+  border-radius: 18px;
+
+  padding: 26px;
+
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18);
+
+  animation: tenantModalShow 0.2s ease;
+}
+
+@keyframes tenantModalShow {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* MODAL HEADER */
+
+.tenant-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 22px;
+}
+
+.tenant-modal-profile {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.tenant-modal-profile h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #172033;
+}
+
+.tenant-modal-profile p {
+  margin: 4px 0 0;
+  color: #7c8aa5;
+  font-size: 13px;
+}
+
+.tenant-avatar.large {
+  width: 58px;
+  height: 58px;
+
+  font-size: 16px;
+}
+
+/* CLOSE */
+
+.tenant-modal-close {
+  border: none;
+  background: #f4f6f8;
+
+  width: 34px;
+  height: 34px;
+
+  border-radius: 50%;
+
+  font-size: 23px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  color: #68758c;
+
+  transition: 0.2s;
+}
+
+.tenant-modal-close:hover {
+  background: #e9edf2;
+  color: #172033;
+}
+
+/* ROOM */
+
+.tenant-room-box {
+  background: #f0f7ff;
+
+  border-radius: 12px;
+
+  padding: 14px 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 20px;
+}
+
+.tenant-room-box span {
+  color: #71809a;
+  font-size: 13px;
+}
+
+.tenant-room-box strong {
+  color: #2563eb;
+  font-size: 18px;
+}
+
+/* DETAILS */
+
+.tenant-modal-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  gap: 14px;
+
+  margin-bottom: 24px;
+}
+
+.tenant-modal-details > div {
+  background: #f8fafc;
+
+  border: 1px solid #edf0f4;
+
+  border-radius: 10px;
+
+  padding: 14px;
+}
+
+.tenant-modal-details span {
+  display: block;
+
+  color: #8a96aa;
+
+  font-size: 11px;
+
+  margin-bottom: 6px;
+}
+
+.tenant-modal-details strong {
+  display: block;
+
+  color: #263247;
+
+  font-size: 13px;
+}
+
+/* ACTIONS */
+
+.tenant-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.tenant-close-button,
+.tenant-edit-button {
+  border: none;
+
+  padding: 10px 16px;
+
+  border-radius: 9px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.tenant-close-button {
+  background: #f1f3f6;
+  color: #596579;
+}
+
+.tenant-edit-button {
+  background: #0aa64f;
+  color: white;
+}
+
+.tenant-close-button:hover {
+  background: #e5e8ed;
+}
+
+.tenant-edit-button:hover {
+  background: #078f43;
+}
+
+/* =========================
+   RESPONSIVE MODAL
+========================= */
+
+@media (max-width: 600px) {
+  .tenant-modal {
+    padding: 20px;
+  }
+
+  .tenant-modal-details {
+    grid-template-columns: 1fr;
+  }
+
+  .tenant-modal-actions {
+    flex-direction: column-reverse;
+  }
+
+  .tenant-close-button,
+  .tenant-edit-button {
+    width: 100%;
+  }
+}
+/* =========================
+   EDIT TENANT FORM
+========================= */
+
+.tenant-edit-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.tenant-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.tenant-form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.tenant-form-group label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #68758c;
+}
+
+.tenant-form-group input,
+.tenant-form-group select {
+  width: 100%;
+  height: 42px;
+
+  border: 1px solid #dfe5ec;
+  border-radius: 9px;
+
+  padding: 0 12px;
+
+  font-family: inherit;
+  font-size: 13px;
+
+  color: #263247;
+  background: #ffffff;
+
+  outline: none;
+  transition: 0.2s;
+}
+
+.tenant-form-group input:focus,
+.tenant-form-group select:focus {
+  border-color: #0aa64f;
+  box-shadow: 0 0 0 3px rgba(10, 166, 79, 0.08);
+}
+
+@media (max-width: 600px) {
+  .tenant-edit-form {
+    grid-template-columns: 1fr;
+  }
+
+  .tenant-form-group.full-width {
+    grid-column: auto;
+  }
+}
+
+.profile-page,
+.settings-page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 36px 40px 60px;
+}
+
+.profile-header,
+.settings-header {
+  margin-bottom: 28px;
+}
+
+.profile-header h1,
+.settings-header h1 {
+  margin: 0;
+  font-size: 30px;
+  color: #111827;
+}
+
+.profile-header p,
+.settings-header p {
+  margin: 7px 0 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.profile-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.profile-cover {
+  height: flex;
+  background: linear-gradient(135deg, #dffbea, #e8f5ff);
+}
+
+.profile-content {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 0 28px 24px;
+  position: relative;
+}
+
+.profile-avatar {
+  width: 82px;
+  height: 82px;
+  margin-top: -38px;
+  border-radius: 50%;
+  background: #dcfce7;
+  border: 5px solid #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #16a34a;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.profile-info {
+  flex: 1;
+  padding-top: 16px;
+}
+
+.profile-info h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #111827;
+}
+
+.profile-info p {
+  margin: 5px 0 0;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.edit-profile-button {
+  margin-top: 16px;
+  padding: 9px 15px;
+
+  border: 1px solid #dbe4ee;
+  border-radius: 8px;
+  background: white;
+
+  color: #2563eb;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.edit-profile-button:hover {
+  background: #eff6ff;
+}
+
+/* PROFILE DETAILS */
+
+.profile-divider {
+  height: 1px;
+  background: #e2e8f0;
+  margin: 0 28px;
+}
+
+.profile-details {
+  padding: 24px 28px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.profile-detail {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-detail-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 9px;
+
+  background: #f1f5f9;
+  color: #64748b;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-detail small {
+  display: block;
+  color: #94a3b8;
+  font-size: 11px;
+  margin-bottom: 4px;
+}
+
+.profile-detail p {
+  margin: 0;
+  color: #334155;
+  font-size: 13px;
+}
+
+/* ACCOUNT INFO */
+
+.profile-card-header {
+  padding: 25px 26px 20px;
+}
+
+.profile-card-header h2 {
+  margin: 0;
+  font-size: 18px;
+  color: #111827;
+}
+
+.profile-card-header p {
+  margin: 5px 0 0;
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+.account-info {
+  padding: 0 26px 25px;
+}
+
+.account-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+
+  padding: 18px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.account-row:last-child {
+  border-bottom: none;
+}
+
+.account-row > span:first-child {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.account-row strong {
+  color: #334155;
+  font-size: 13px;
+}
+
+.role-badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  background: #eff6ff;
+  color: #2563eb;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.status-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  color: #16a34a !important;
+  font-size: 12px !important;
+}
+
+.status-badge i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+}
+
+/* =====================================================
+   SETTINGS PAGE
+===================================================== */
+
+.settings-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.settings-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 26px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.settings-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.settings-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 19px;
+}
+
+.green-settings {
+  background: #dcfce7;
+}
+
+.blue-settings {
+  background: #dbeafe;
+}
+
+.orange-settings {
+  background: #fef3c7;
+}
+
+.settings-card-header h2 {
+  margin: 0;
+  font-size: 17px;
+  color: #111827;
+}
+
+.settings-card-header p {
+  margin: 4px 0 0;
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+/* SETTINGS OPTION */
+
+.settings-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+
+  padding: 20px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.settings-option:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.settings-option strong {
+  display: block;
+  color: #334155;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.settings-option span {
+  display: block;
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+/* TOGGLE */
+
+.toggle {
+  width: 46px;
+  height: 25px;
+  padding: 3px;
+
+  border: none;
+  border-radius: 20px;
+
+  background: #cbd5e1;
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.toggle span {
+  display: block;
+
+  width: 19px;
+  height: 19px;
+
+  border-radius: 50%;
+  background: white;
+
+  transition: 0.2s;
+}
+
+.toggle.on {
+  background: #22c55e;
+}
+
+.toggle.on span {
+  transform: translateX(21px);
+}
+
+/* SYSTEM */
+
+.system-info {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding-top: 22px;
+}
+
+.system-info div {
+  padding: 18px;
+  background: #f8fafc;
+  border-radius: 10px;
+}
+
+.system-info span {
+  display: block;
+  color: #94a3b8;
+  font-size: 12px;
+  margin-bottom: 7px;
+}
+
+.system-info strong {
+  color: #334155;
+  font-size: 14px;
+}
+
+.system-info .system-active {
+  color: #16a34a;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 900px) {
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-details {
+    grid-template-columns: 1fr;
+  }
+
+  .system-info {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .profile-page,
+  .settings-page {
+    padding: 25px 20px 40px;
+  }
+
+  .profile-content {
+    flex-wrap: wrap;
+  }
+
+  .edit-profile-button {
+    width: 100%;
+  }
+
+  .profile-details {
+    padding: 20px;
+  }
+
+  .profile-divider {
+    margin: 0 20px;
+  }
+
+  .settings-card {
+    padding: 20px;
+  }
+}
+
