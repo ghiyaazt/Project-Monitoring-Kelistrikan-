@@ -11,18 +11,16 @@ function Login({ onLogin }) {
 
   return (
     <div className="login-page">
-
       <div className="login-left">
-
         <div className="login-brand">
           <div className="brand-icon">⌂</div>
-          <span>KosManager</span>
+          <span>WattWise</span>
         </div>
 
         <div className="login-features">
           <div className="feature">
             <span className="feature-icon">🏠</span>
-            <span>Pantau kamar kosong & terisi secara real-time</span>
+            <span>Pantau listrik secara real-time</span>
           </div>
 
           <div className="feature">
@@ -32,12 +30,12 @@ function Login({ onLogin }) {
 
           <div className="feature">
             <span className="feature-icon">💳</span>
-            <span>Kelola pembayaran kos dengan mudah</span>
+            <span>Kelola listrik kos dengan mudah</span>
           </div>
         </div>
 
         <div className="login-footer">
-          © 2026 KosManager. Sistem manajemen kos terpadu.
+          © 2026 WattWise. Sistem manajemen listrik terpadu.
         </div>
       </div>
 
@@ -45,10 +43,11 @@ function Login({ onLogin }) {
         <div className="login-form-container">
           <h1>Selamat datang</h1>
 
-          <p className="login-subtitle">Masuk ke sistem manajemen kos Anda</p>
+          <p className="login-subtitle">
+            Masuk ke sistem manajemen listrik Anda
+          </p>
 
           <form onSubmit={handleSubmit}>
-
             <div className="form-group">
               <label htmlFor="email">Email</label>
 
