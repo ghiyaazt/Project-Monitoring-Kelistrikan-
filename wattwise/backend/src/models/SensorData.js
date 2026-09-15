@@ -7,11 +7,7 @@ const sensorDataSchema = new mongoose.Schema(
             required: true
         },
 
-        room_id: {
-            type: String,
-            required: true
-        },
-
+        // Data dari PZEM-004T
         voltage: {
             type: Number,
             required: true
@@ -32,9 +28,19 @@ const sensorDataSchema = new mongoose.Schema(
             required: true
         },
 
-        motion: {
-            type: Boolean,
-            required: true
+        // Field baru dari PZEM
+        frequency: {
+            type: Number,
+            default: 50
+        },
+
+        powerfactor: {
+            type: Number,
+            default: 1.0
+        },
+
+        date: {
+            type: String
         },
 
         timestamp: {
@@ -43,7 +49,8 @@ const sensorDataSchema = new mongoose.Schema(
         }
     },
     {
-        collection: "sensor_data"
+        collection: "sensor_data",
+        timestamps: true // Tambahan createdAt & updatedAt
     }
 );
 
