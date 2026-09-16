@@ -1,0 +1,24 @@
+﻿/* WattWise - Main Styles Entry Point
+ * This file is directly processed by PostCSS/Tailwind
+ */
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Tailwind CSS Directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Custom Styles - These work fine with PostCSS */
+@import './common/index.css';
+@import './auth/index.css';
+@import './dashboard/index.css';
+@import './monitoring/index.css';
+@import './settings/index.css';
+@import './sidebar/index.css';
+@import './titiklistrik/index.css';

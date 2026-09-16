@@ -1,0 +1,8 @@
+﻿/* Common Styles - Shared UI Components */
+
+@import './buttons.css';
+@import './inputs.css';
+@import './badges.css';
+@import './cards.css';
+@import './modals.css';
+@import './utilities.css';

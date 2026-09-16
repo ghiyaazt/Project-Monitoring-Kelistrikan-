@@ -1,0 +1,24 @@
+﻿/* Monitoring Styles - Main Index
+ * All monitoring styles organized by feature
+ */
+
+/* Base styles - containers, grids, tooltips */
+@import './base.css';
+
+/* Device Detail View - header, stats, charts */
+@import './device-detail.css';
+
+/* Tab Navigation - anomali/riwayat tabs */
+@import './tabs.css';
+
+/* Anomali Tab Content - stats, list, detail, filters */
+@import './anomali-tab.css';
+
+/* Riwayat Tab Content - stats, chart, table */
+@import './riwayat-tab.css';
+
+/* Device List View - main list page, device cards */
+@import './device-list.css';
+
+/* Add Device Modal - form modal */
+@import './modal.css';

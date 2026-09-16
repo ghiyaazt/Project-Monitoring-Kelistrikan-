@@ -1,0 +1,107 @@
+﻿/* Monitoring Base - Container & Grid Layouts */
+
+.monitoring-container {
+  padding: 1.5rem;
+  max-width: 80rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.monitoring-space-y-4 {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Grid Layouts */
+.monitoring-grid-1-sm-3 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .monitoring-grid-1-sm-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.monitoring-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .monitoring-stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.monitoring-device-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .monitoring-device-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .monitoring-device-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Tooltip */
+.monitoring-tooltip {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  font-size: 0.75rem;
+}
+
+.monitoring-tooltip-label {
+  color: #64748b;
+  margin-bottom: 0.125rem;
+}
+
+.monitoring-tooltip-value {
+  font-weight: 700;
+  color: #1e293b;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.monitoring-tooltip-custom {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  font-size: 0.75rem;
+}
+
+.monitoring-tooltip-custom-label {
+  color: #64748b;
+  margin-bottom: 0.125rem;
+}
+
+.monitoring-tooltip-custom-value {
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.monitoring-tooltip-custom-value-red {
+  color: #dc2626;
+}
+
+.monitoring-tooltip-custom-value-slate {
+  color: #1e293b;
+}

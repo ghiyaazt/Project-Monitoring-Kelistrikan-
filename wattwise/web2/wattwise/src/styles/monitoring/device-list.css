@@ -1,0 +1,295 @@
+﻿/* Device List View - Main List Page */
+
+.monitoring-list-view-container {
+  padding: 1.5rem;
+  max-width: 80rem;
+  margin: 0 auto;
+}
+
+.monitoring-list-view-space-y {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Device List Header */
+.monitoring-list-view-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.monitoring-list-view-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.monitoring-list-view-subtitle {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-top: 0.125rem;
+}
+
+.monitoring-add-device-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  background-color: #16a34a;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 0.75rem;
+  transition: background-color 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.monitoring-add-device-btn:hover {
+  background-color: #15803d;
+}
+
+.monitoring-add-device-icon {
+  width: 1rem;
+  height: 1rem;
+  stroke-width: 2;
+}
+
+/* Device List Stats Grid */
+.monitoring-list-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .monitoring-list-stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.monitoring-list-stat-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.25rem;
+}
+
+.monitoring-list-stat-card-connected {
+  background-color: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.monitoring-list-stat-label {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-bottom: 0.375rem;
+}
+
+.monitoring-list-stat-label-connected {
+  font-size: 0.75rem;
+  color: #16a34a;
+  font-weight: 600;
+  margin-bottom: 0.375rem;
+}
+
+.monitoring-list-stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.monitoring-list-stat-value-slate { color: #0f172a; }
+.monitoring-list-stat-value-green { color: #16a34a; }
+.monitoring-list-stat-value-amber { color: #d97706; }
+.monitoring-list-stat-value-red { color: #dc2626; }
+
+.monitoring-list-stat-sub {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 0.125rem;
+}
+
+/* Device Cards Grid in List View */
+.monitoring-list-devices-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .monitoring-list-devices-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .monitoring-list-devices-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.monitoring-list-device-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.25rem;
+  text-align: left;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.monitoring-list-device-card:hover {
+  border-color: #86efac;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.monitoring-list-device-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.monitoring-list-device-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.monitoring-list-device-icon-box {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.monitoring-list-device-icon-box-connected {
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
+}
+
+.monitoring-list-device-icon-box-disconnected {
+  background-color: #f1f5f9;
+  border: 1px solid #e2e8f0;
+}
+
+.monitoring-list-device-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  stroke-width: 1.75;
+}
+
+.monitoring-list-device-icon-connected { color: #16a34a; }
+.monitoring-list-device-icon-disconnected { color: #94a3b8; }
+
+.monitoring-list-device-name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #0f172a;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  transition: color 0.2s;
+}
+
+.monitoring-list-device-card:hover .monitoring-list-device-name {
+  color: #16a34a;
+}
+
+.monitoring-list-device-id {
+  font-size: 0.625rem;
+  color: #94a3b8;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.monitoring-list-device-status {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.625rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+}
+
+.monitoring-list-device-status-connected {
+  background-color: #dcfce7;
+  color: #16a34a;
+}
+
+.monitoring-list-device-status-error {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.monitoring-list-device-status-disconnected {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+.monitoring-list-device-status-dot {
+  width: 0.375rem;
+  height: 0.375rem;
+  border-radius: 9999px;
+}
+
+.monitoring-list-device-status-dot-connected {
+  background-color: #22c55e;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.monitoring-list-device-status-dot-error {
+  background-color: #ef4444;
+}
+
+.monitoring-list-device-status-dot-disconnected {
+  background-color: #f59e0b;
+}
+
+.monitoring-list-device-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.monitoring-list-device-stat-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.75rem;
+}
+
+.monitoring-list-device-stat-label {
+  color: #94a3b8;
+}
+
+.monitoring-list-device-stat-value {
+  font-weight: 700;
+  color: #334155;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.monitoring-list-device-footer {
+  padding-top: 0.75rem;
+  border-top: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.monitoring-list-device-location {
+  font-size: 0.625rem;
+  color: #94a3b8;
+}
+
+.monitoring-list-device-time {
+  font-size: 0.625rem;
+  color: #64748b;
+  font-family: 'JetBrains Mono', monospace;
+}

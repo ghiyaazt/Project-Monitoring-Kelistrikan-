@@ -1,0 +1,161 @@
+﻿/* Riwayat Tab Content */
+
+/* Riwayat Stats */
+.monitoring-riwayat-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .monitoring-riwayat-stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.monitoring-riwayat-stat-card {
+  background-color: #ffffff;
+  border: 1px solid;
+  border-radius: 1rem;
+  padding: 1.25rem;
+}
+
+.monitoring-riwayat-stat-card-blue {
+  color: #2563eb;
+  background-color: #dbeafe;
+  border-color: #93c5fd;
+}
+
+.monitoring-riwayat-stat-card-green {
+  color: #10b981;
+  background-color: #d1fae5;
+  border-color: #6ee7b7;
+}
+
+.monitoring-riwayat-stat-card-purple {
+  color: #7c3aed;
+  background-color: #ede9fe;
+  border-color: #c4b5fd;
+}
+
+.monitoring-riwayat-stat-card-red {
+  color: #dc2626;
+  background-color: #fee2e2;
+  border-color: #fca5a5;
+}
+
+.monitoring-riwayat-stat-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.375rem;
+}
+
+.monitoring-riwayat-stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.monitoring-riwayat-stat-sub {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 0.125rem;
+}
+
+/* Riwayat Chart Card */
+.monitoring-riwayat-chart-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.monitoring-riwayat-chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.monitoring-riwayat-chart-title {
+  font-weight: 600;
+  color: #0f172a;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.monitoring-riwayat-chart-subtitle {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 0.125rem;
+}
+
+.monitoring-riwayat-chart-height {
+  height: 18rem;
+}
+
+/* Riwayat Detail Table */
+.monitoring-riwayat-table-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.monitoring-riwayat-table-title {
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 1rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.monitoring-riwayat-table-wrapper {
+  overflow-x: auto;
+}
+
+.monitoring-riwayat-table {
+  width: 100%;
+}
+
+.monitoring-riwayat-table thead tr {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.monitoring-riwayat-table th {
+  text-align: left;
+  padding: 0.75rem 1rem 0.75rem 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.monitoring-riwayat-table tbody tr {
+  border-bottom: 1px solid #f1f5f9;
+  transition: background-color 0.2s;
+}
+
+.monitoring-riwayat-table tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+.monitoring-riwayat-table td {
+  padding: 0.75rem 1rem 0.75rem 0;
+}
+
+.monitoring-riwayat-table-cell-day {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.monitoring-riwayat-table-cell-date {
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.monitoring-riwayat-table-cell-kwh {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #10b981;
+  font-family: 'JetBrains Mono', monospace;
+}

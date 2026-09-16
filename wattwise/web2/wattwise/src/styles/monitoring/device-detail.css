@@ -1,0 +1,178 @@
+﻿/* Device Detail View - Header, Stats, Charts */
+
+/* Detail Header */
+.monitoring-detail-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.monitoring-detail-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.monitoring-back-button {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.75rem;
+  border: 1px solid #e2e8f0;
+  color: #475569;
+  transition: background-color 0.2s;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.monitoring-back-button:hover {
+  background-color: #f8fafc;
+}
+
+.monitoring-back-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.monitoring-device-title-text {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-top: 0.125rem;
+}
+
+.monitoring-detail-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.monitoring-live-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #16a34a;
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  padding: 0.375rem 0.75rem;
+  border-radius: 9999px;
+}
+
+.monitoring-live-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background-color: #22c55e;
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Real-time Stats Cards */
+.monitoring-stats-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.monitoring-stats-card-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.monitoring-stat-value {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.monitoring-stat-unit {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #94a3b8;
+  margin-left: 0.25rem;
+}
+
+.monitoring-stat-sub {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 0.5rem;
+}
+
+/* Chart Card */
+.monitoring-chart-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.monitoring-chart-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.monitoring-chart-title {
+  font-weight: 600;
+  color: #0f172a;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.monitoring-chart-subtitle {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 0.125rem;
+}
+
+.monitoring-chart-legend {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.monitoring-chart-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.monitoring-legend-line {
+  width: 0.75rem;
+  height: 0.125rem;
+  border-radius: 9999px;
+  display: inline-block;
+}
+
+.monitoring-legend-line-blue {
+  background-color: #3b82f6;
+}
+
+.monitoring-legend-line-amber {
+  background-color: #fbbf24;
+  border-top: 1px dashed;
+}
+
+.monitoring-chart-height {
+  height: 16rem;
+}
+
+/* Color utility classes for stats */
+.text-blue-600 { color: #2563eb; }
+.text-green-600 { color: #16a34a; }
+.text-purple-600 { color: #9333ea; }
+.bg-blue-50 { background-color: #eff6ff; }
+.border-blue-200 { border-color: #bfdbfe; }
+.bg-green-50 { background-color: #f0fdf4; }
+.border-green-200 { border-color: #bbf7d0; }
+.bg-purple-50 { background-color: #faf5ff; }
+.border-purple-200 { border-color: #e9d5ff; }
