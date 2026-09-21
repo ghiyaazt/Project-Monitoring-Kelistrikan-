@@ -35,7 +35,7 @@
 .sidebar-logo-icon {
   width: 2.5rem;
   height: 2.5rem;
-  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
+  /* Background dihapus - logo tampil tanpa frame */
   border-radius: 0.75rem;
   display: flex;
   align-items: center;
@@ -44,9 +44,9 @@
 }
 
 .sidebar-logo-icon-svg {
-  width: 1rem;
-  height: 1rem;
-  color: #ffffff;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: inherit;
 }
 
 .sidebar-logo-text {

@@ -4,7 +4,6 @@ import { IoTDevice } from '../data/mockData';
 
 interface User {
   name: string;
-  kamar: string;
   email: string;
   deviceId: string;
 }

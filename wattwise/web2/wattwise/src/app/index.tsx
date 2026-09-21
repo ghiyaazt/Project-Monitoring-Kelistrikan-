@@ -1,14 +1,15 @@
 import { useState } from "react";
-import Login from "../components/Login";
-import Register from "../components/Register";
-import Sidebar from "../components/Sidebar";
-import Dashboard from "../components/Dashboard";
-import Monitoring from "../components/Monitoring";
-import TitikListrik from "../components/TitikListrik";
-import Pengaturan from "../components/Pengaturan";
+import Login from "../app/page/Login/Login";
+import Register from "../app/page/Register/Register";
+import Sidebar from "../app/components/Sidebar";
+import Dashboard from "../app/page/Dashboard/Dashboard";
+import Monitoring from "../app/page/Monitoring/Monitoring";
+import SmartWattwise from "../app/page/SmartWattwise/SmartWattwise";
+import Pengaturan from "../app/page/Pengaturan/Pengaturan";
+import Profil from "../app/page/Profil/Profil";
 import { notifications, anomaliList } from "../data/mockData";
 
-type Page = "dashboard" | "monitoring" | "smartwattwise" | "pengaturan";
+type Page = "dashboard" | "monitoring" | "smartwattwise" | "pengaturan" | "profil";
 type AuthView = "login" | "register";
 
 const pageTitles: Record<Page, string> = {
@@ -16,6 +17,7 @@ const pageTitles: Record<Page, string> = {
   monitoring: "Monitoring Real-time",
   smartwattwise: "Smart Wattwise",
   pengaturan: "Pengaturan",
+  profil: "Profil Pengguna",
 };
 
 function DesktopApp() {
@@ -25,6 +27,7 @@ function DesktopApp() {
   const [collapsed, setCollapsed] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [showNotifPopup, setShowNotifPopup] = useState(false);
+  const [showProfilePopup, setShowProfilePopup] = useState(false);
 
   const unreadCount = notifications.filter(n => !n.read).length;
   const anomalyCount = anomaliList.filter(a => a.status === "baru").length;
@@ -43,8 +46,9 @@ function DesktopApp() {
     switch (page) {
       case "dashboard": return <Dashboard />;
       case "monitoring": return <Monitoring />;
-      case "smartwattwise": return <TitikListrik />;
+      case "smartwattwise": return <SmartWattwise />;
       case "pengaturan": return <Pengaturan />;
+      case "profil": return <Profil />;
     }
   }
 
@@ -53,7 +57,8 @@ function DesktopApp() {
       {/* Desktop sidebar */}
       <div className="hidden lg:flex h-full shrink-0">
         <Sidebar
-          current={page} onNavigate={setPage}
+          current={page === "pengaturan" || page === "profil" ? "dashboard" : page} 
+          onNavigate={setPage}
           onLogout={() => setLoggedIn(false)}
           collapsed={collapsed} onToggle={() => setCollapsed(c => !c)}
           unreadCount={unreadCount} anomalyCount={anomalyCount}
@@ -65,7 +70,7 @@ function DesktopApp() {
         <div className="fixed inset-0 z-40 lg:hidden">
           <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setMobileMenuOpen(false)} />
           <div className="absolute inset-y-0 left-0 z-50">
-            <Sidebar current={page}
+            <Sidebar current={page === "pengaturan" || page === "profil" ? "dashboard" : page}
               onNavigate={p => { setPage(p); setMobileMenuOpen(false); }}
               onLogout={() => { setLoggedIn(false); setMobileMenuOpen(false); }}
               collapsed={false} onToggle={() => setMobileMenuOpen(false)}
@@ -86,7 +91,7 @@ function DesktopApp() {
 
           <div>
             <h2 className="text-sm font-semibold text-slate-900" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>{pageTitles[page]}</h2>
-            <p className="text-[11px] text-slate-400 hidden sm:block">WattWise — Kos Monitoring IoT · Admin</p>
+            <p className="text-[11px] text-slate-400 hidden sm:block">WattWise — Smart Energy Monitoring · Admin</p>
           </div>
 
           <div className="ml-auto flex items-center gap-2">
@@ -179,15 +184,102 @@ function DesktopApp() {
               )}
             </div>
 
-            {/* Avatar */}
-            <button onClick={() => setPage("pengaturan")}
-              className="flex items-center gap-2.5 hover:bg-slate-100 rounded-xl px-2.5 py-1.5 transition">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-green-400 to-blue-600 flex items-center justify-center text-xs font-bold text-white">AD</div>
-              <div className="hidden sm:block text-left">
-                <p className="text-xs font-semibold text-slate-700 leading-tight">Admin</p>
-                <p className="text-[10px] text-slate-400">WattWise Monitor</p>
-              </div>
-            </button>
+            {/* Avatar & Profile Popup */}
+            <div className="relative">
+              <button onClick={() => setShowProfilePopup(!showProfilePopup)}
+                className="flex items-center gap-2.5 hover:bg-slate-100 rounded-xl px-2.5 py-1.5 transition">
+                <div className="w-8 h-8 rounded-full bg-gradient-to-br from-green-400 to-blue-600 flex items-center justify-center text-xs font-bold text-white">AD</div>
+                <div className="hidden sm:block text-left">
+                  <p className="text-xs font-semibold text-slate-700 leading-tight">Admin</p>
+                  <p className="text-[10px] text-slate-400">WattWise Monitor</p>
+                </div>
+                <svg className={`hidden sm:block w-4 h-4 text-slate-400 transition-transform ${showProfilePopup ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {/* Profile Popup */}
+              {showProfilePopup && (
+                <>
+                  <div className="fixed inset-0 z-40" onClick={() => setShowProfilePopup(false)} />
+                  <div className="absolute right-0 top-12 w-64 bg-white border border-slate-200 rounded-2xl shadow-2xl z-50 overflow-hidden">
+                    {/* Profile Header */}
+                    <div className="p-4 bg-gradient-to-br from-green-400 to-blue-600">
+                      <div className="flex items-center gap-3">
+                        <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center text-base font-bold text-white border-2 border-white/30">
+                          AD
+                        </div>
+                        <div>
+                          <p className="text-sm font-bold text-white leading-tight">Admin</p>
+                          <p className="text-xs text-white/80">admin@wattwise.id</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Menu Items */}
+                    <div className="p-2">
+                      <button 
+                        onClick={() => {
+                          setPage("pengaturan");
+                          setShowProfilePopup(false);
+                        }}
+                        className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-slate-900 transition text-left group">
+                        <div className="w-9 h-9 rounded-lg bg-slate-100 group-hover:bg-slate-200 flex items-center justify-center text-slate-600 transition">
+                          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                          </svg>
+                        </div>
+                        <div className="flex-1">
+                          <p className="text-sm font-semibold">Pengaturan</p>
+                          <p className="text-xs text-slate-500">Kelola akun & preferensi</p>
+                        </div>
+                      </button>
+
+                      <button 
+                        onClick={() => {
+                          setPage("profil");
+                          setShowProfilePopup(false);
+                        }}
+                        className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-50 text-slate-700 hover:text-slate-900 transition text-left group">
+                        <div className="w-9 h-9 rounded-lg bg-slate-100 group-hover:bg-slate-200 flex items-center justify-center text-slate-600 transition">
+                          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                          </svg>
+                        </div>
+                        <div className="flex-1">
+                          <p className="text-sm font-semibold">Profil</p>
+                          <p className="text-xs text-slate-500">Lihat & edit profil</p>
+                        </div>
+                      </button>
+                    </div>
+
+                    {/* Divider */}
+                    <div className="border-t border-slate-200 my-1"></div>
+
+                    {/* Logout */}
+                    <div className="p-2">
+                      <button 
+                        onClick={() => {
+                          setLoggedIn(false);
+                          setShowProfilePopup(false);
+                        }}
+                        className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-red-50 text-slate-700 hover:text-red-600 transition text-left group">
+                        <div className="w-9 h-9 rounded-lg bg-slate-100 group-hover:bg-red-100 flex items-center justify-center text-slate-600 group-hover:text-red-600 transition">
+                          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.75}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                          </svg>
+                        </div>
+                        <div className="flex-1">
+                          <p className="text-sm font-semibold">Keluar</p>
+                          <p className="text-xs text-slate-500">Logout dari akun</p>
+                        </div>
+                      </button>
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
           </div>
         </header>
 

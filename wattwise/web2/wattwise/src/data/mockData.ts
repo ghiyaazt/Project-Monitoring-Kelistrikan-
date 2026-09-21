@@ -1,4 +1,4 @@
-// WattWise — IoT electricity monitoring for Kos
+// WattWise — IoT electricity monitoring system
 
 export interface Device {
   id: string;
@@ -186,7 +186,7 @@ export const detailAnomali = {
 // Notifikasi
 export const notifications: Notification[] = [
   { id: "n1", type: "anomali", title: "Anomali terdeteksi", message: "Charger HP menggunakan 612 W", time: "10:42", read: false },
-  { id: "n2", type: "peringatan", title: "Penggunaan meningkat", message: "Konsumsi kamar meningkat dibanding pola normal", time: "09:30", read: false },
+  { id: "n2", type: "peringatan", title: "Penggunaan meningkat", message: "Konsumsi listrik meningkat dibanding pola normal", time: "09:30", read: false },
   { id: "n3", type: "info", title: "Sensor terhubung", message: "ESP32 kembali terhubung ke backend", time: "09:00", read: true },
   { id: "n4", type: "anomali", title: "Anomali terdeteksi", message: "Kipas menggunakan 518 W", time: "08:15", read: true },
   { id: "n5", type: "peringatan", title: "Daya tinggi terdeteksi", message: "Total daya melebihi 500 W selama 10 menit", time: "07:55", read: true },
@@ -195,15 +195,13 @@ export const notifications: Notification[] = [
 
 // Pengaturan pengguna
 export const pengaturanData = {
-  namaAplikasi: "WattWise Kos",
-  deskripsi: "Monitoring konsumsi listrik berbasis IoT & Machine Learning",
+  namaAplikasi: "WattWise",
+  deskripsi: "Monitoring konsumsi listrik berbasis IoT",
   notifikasi: "Aktif",
   perangkatIoT: "Terhubung",
   deviceId: "ESP32 + FC24-1441",
   profil: {
     nama: "Admin",
-    kamar: "Monitoring Center",
-    lantai: "Pusat kontrol",
     email: "admin@wattwise.id",
     phone: "081234567890",
   },
@@ -217,85 +215,8 @@ export const dashboardDevices = [
   { name: "Charger HP", watt: 26, color: "#f59e0b" },
 ];
 
-// Room/kamar data
-export interface Tenant {
-  name: string;
-  email?: string;
-  phone?: string;
-  occupation?: string;
-  checkIn?: string;
-  nik?: string;
-}
-
-export interface Room {
-  id: string;
-  number: string;
-  tenant: Tenant | null;
-  floor: number;
-  type: string;
-  price: number;
-  status: "occupied" | "vacant" | "maintenance";
-  usage: number;
-  electricUsage: number;
-  budget: number;
-  electricBudget: number;
-  anomaly: boolean;
-  anomalyNote?: string;
-}
-
-export const rooms: Room[] = [
-  { id: "r1", number: "01", tenant: { name: "Ahmad", email: "ahmad@example.com", phone: "081234567890", occupation: "Mahasiswa", checkIn: "1 Jan 2026", nik: "3201012001010001" }, floor: 1, type: "Standard", price: 800000, status: "occupied", usage: 32.5, electricUsage: 32.5, budget: 40, electricBudget: 40, anomaly: false },
-  { id: "r2", number: "02", tenant: { name: "Budi", email: "budi@example.com", phone: "081234567891", occupation: "Karyawan", checkIn: "15 Feb 2026", nik: "3201012002020002" }, floor: 1, type: "Standard", price: 800000, status: "occupied", usage: 28.3, electricUsage: 28.3, budget: 40, electricBudget: 40, anomaly: false },
-  { id: "r3", number: "03", tenant: { name: "Salsabila", email: "salsabila@wattwise.id", phone: "081298765432", occupation: "Mahasiswi", checkIn: "1 Mar 2026", nik: "3201012003030003" }, floor: 2, type: "Standard", price: 800000, status: "occupied", usage: 45.2, electricUsage: 45.2, budget: 40, electricBudget: 40, anomaly: true, anomalyNote: "Konsumsi listrik melebihi batas normal" },
-  { id: "r4", number: "04", tenant: null, floor: 2, type: "Standard", price: 800000, status: "vacant", usage: 0, electricUsage: 0, budget: 40, electricBudget: 40, anomaly: false },
-  { id: "r5", number: "05", tenant: { name: "Dewi", email: "dewi@example.com", phone: "081234567893", occupation: "Mahasiswi", checkIn: "10 Apr 2026", nik: "3201012004040004" }, floor: 2, type: "Deluxe", price: 1000000, status: "occupied", usage: 38.9, electricUsage: 38.9, budget: 40, electricBudget: 40, anomaly: false },
-  { id: "r6", number: "06", tenant: { name: "Eko", email: "eko@example.com", phone: "081234567894", occupation: "Freelancer", checkIn: "5 Mei 2026", nik: "3201012005050005" }, floor: 3, type: "Standard", price: 800000, status: "occupied", usage: 35.1, electricUsage: 35.1, budget: 40, electricBudget: 40, anomaly: false },
-  { id: "r7", number: "07", tenant: { name: "Fitri", email: "fitri@example.com", phone: "081234567895", occupation: "Karyawan", checkIn: "20 Jun 2026", nik: "3201012006060006" }, floor: 3, type: "Deluxe", price: 1000000, status: "occupied", usage: 41.8, electricUsage: 41.8, budget: 40, electricBudget: 40, anomaly: true, anomalyNote: "Pola penggunaan tidak biasa terdeteksi" },
-  { id: "r8", number: "08", tenant: null, floor: 3, type: "Standard", price: 800000, status: "maintenance", usage: 0, electricUsage: 0, budget: 40, electricBudget: 40, anomaly: false },
-];
-
 // Week labels for charts
 export const weekLabels = ["Sen", "Sel", "Rab", "Kam", "Jum", "Sab", "Min"];
-
-// Electric history per room (7 days)
-export const electricHistory: Record<string, number[]> = {
-  r1: [4.2, 4.5, 4.8, 4.3, 4.6, 5.1, 4.9],
-  r2: [3.8, 3.9, 4.1, 3.7, 4.2, 4.0, 4.3],
-  r3: [5.8, 6.2, 6.5, 6.3, 6.8, 7.2, 6.4],
-  r4: [0, 0, 0, 0, 0, 0, 0],
-  r5: [5.2, 5.5, 5.7, 5.4, 5.8, 5.9, 5.4],
-  r6: [4.8, 5.0, 5.2, 4.9, 5.3, 5.1, 4.9],
-  r7: [5.9, 6.1, 6.3, 6.0, 6.4, 6.2, 5.9],
-  r8: [0, 0, 0, 0, 0, 0, 0],
-};
-
-// Payment data
-export interface Payment {
-  id: string;
-  room: string;
-  roomNumber: string;
-  tenant: string;
-  tenantName: string;
-  amount: number;
-  month: string;
-  status: "paid" | "pending" | "overdue";
-  paidDate?: string;
-  paidAt?: string;
-  method?: string;
-  note?: string;
-}
-
-export const payments: Payment[] = [
-  { id: "p1", room: "01", roomNumber: "01", tenant: "Ahmad", tenantName: "Ahmad", amount: 800000, month: "September 2026", status: "paid", paidDate: "1 Sep", paidAt: "1 Sep", method: "Transfer Bank" },
-  { id: "p2", room: "02", roomNumber: "02", tenant: "Budi", tenantName: "Budi", amount: 800000, month: "September 2026", status: "paid", paidDate: "2 Sep", paidAt: "2 Sep", method: "QRIS" },
-  { id: "p3", room: "03", roomNumber: "03", tenant: "Salsabila", tenantName: "Salsabila", amount: 800000, month: "September 2026", status: "pending" },
-  { id: "p4", room: "05", roomNumber: "05", tenant: "Dewi", tenantName: "Dewi", amount: 800000, month: "September 2026", status: "paid", paidDate: "3 Sep", paidAt: "3 Sep", method: "Transfer Bank" },
-  { id: "p5", room: "06", roomNumber: "06", tenant: "Eko", tenantName: "Eko", amount: 800000, month: "September 2026", status: "overdue" },
-  { id: "p6", room: "07", roomNumber: "07", tenant: "Fitri", tenantName: "Fitri", amount: 800000, month: "September 2026", status: "pending" },
-  { id: "p7", room: "01", roomNumber: "01", tenant: "Ahmad", tenantName: "Ahmad", amount: 800000, month: "Agustus 2026", status: "paid", paidDate: "1 Agu", paidAt: "1 Agu", method: "Transfer Bank" },
-  { id: "p8", room: "02", roomNumber: "02", tenant: "Budi", tenantName: "Budi", amount: 800000, month: "Agustus 2026", status: "paid", paidDate: "2 Agu", paidAt: "2 Agu", method: "Cash" },
-  { id: "p9", room: "03", roomNumber: "03", tenant: "Salsabila", tenantName: "Salsabila", amount: 800000, month: "Agustus 2026", status: "paid", paidDate: "5 Agu", paidAt: "5 Agu", method: "QRIS" },
-];
 
 // IoT Devices List
 export interface IoTDevice {
