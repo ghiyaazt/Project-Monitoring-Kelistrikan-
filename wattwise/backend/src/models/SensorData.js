@@ -50,7 +50,8 @@ const sensorDataSchema = new mongoose.Schema(
     },
     {
         collection: "sensor_data",
-        timestamps: true // Tambahan createdAt & updatedAt
+        timestamps: true, // Tambahan createdAt & updatedAt
+        versionKey: false // Disable __v field
     }
 );
 

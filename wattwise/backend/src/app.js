@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 
 const sensorRoutes = require("./routes/sensorRoutes");
+const authRoutes = require("./routes/authRoutes");
 
 const app = express();
 
@@ -15,5 +16,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/sensor", sensorRoutes);
+app.use("/api/auth", authRoutes);
 
 module.exports = app;

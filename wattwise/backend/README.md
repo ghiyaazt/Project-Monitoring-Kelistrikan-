@@ -324,3 +324,160 @@ Data dari ESP32 sudah:
 - ✅ Ready untuk Mobile App
 
 **Backend siap production! 🚀**
+
+
+---
+
+## 🔐 Authentication System
+
+### Overview
+Backend sudah dilengkapi dengan sistem authentication lengkap menggunakan JWT (JSON Web Token).
+
+### Features
+- ✅ **Register** - Daftar user baru
+- ✅ **Login** - Login dengan email & password
+- ✅ **Protected Routes** - Middleware untuk protect endpoint
+- ✅ **Password Hashing** - Bcrypt untuk keamanan password
+- ✅ **JWT Token** - Token berlaku 7 hari
+
+### Database: users Collection
+
+```javascript
+{
+  namaLengkap: String,        // "John Doe"
+  email: String (unique),     // "john@example.com"
+  nomorTelepon: String,       // "08123456789"
+  password: String (hashed),  // Bcrypt hash
+  role: String,               // "user" | "admin"
+  isActive: Boolean,          // true/false
+  createdAt: Date,           // Auto-generated
+  updatedAt: Date            // Auto-generated
+}
+```
+
+### Authentication Endpoints
+
+#### 1. Register User
+```http
+POST http://localhost:5000/api/auth/register
+Content-Type: application/json
+
+{
+  "namaLengkap": "John Doe",
+  "email": "john@example.com",
+  "nomorTelepon": "08123456789",
+  "password": "password123",
+  "konfirmasiPassword": "password123"
+}
+```
+
+Response:
+```json
+{
+  "success": true,
+  "message": "Registrasi berhasil",
+  "data": {
+    "user": {
+      "id": "673a1b2c3d4e5f6a7b8c9d0e",
+      "namaLengkap": "John Doe",
+      "email": "john@example.com",
+      "nomorTelepon": "08123456789",
+      "role": "user"
+    },
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+  }
+}
+```
+
+#### 2. Login User
+```http
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "john@example.com",
+  "password": "password123"
+}
+```
+
+Response:
+```json
+{
+  "success": true,
+  "message": "Login berhasil",
+  "data": {
+    "user": {
+      "id": "673a1b2c3d4e5f6a7b8c9d0e",
+      "namaLengkap": "John Doe",
+      "email": "john@example.com",
+      "nomorTelepon": "08123456789",
+      "role": "user"
+    },
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+  }
+}
+```
+
+#### 3. Get User Profile (Protected)
+```http
+GET http://localhost:5000/api/auth/me
+Authorization: Bearer YOUR_TOKEN_HERE
+```
+
+Response:
+```json
+{
+  "success": true,
+  "data": {
+    "id": "673a1b2c3d4e5f6a7b8c9d0e",
+    "namaLengkap": "John Doe",
+    "email": "john@example.com",
+    "nomorTelepon": "08123456789",
+    "role": "user",
+    "isActive": true,
+    "createdAt": "2025-01-15T10:30:00.000Z",
+    "updatedAt": "2025-01-15T10:30:00.000Z"
+  }
+}
+```
+
+### Testing Authentication
+
+```bash
+# Jalankan test authentication (pastikan server running)
+node testAuth.js
+```
+
+Output akan menampilkan:
+- ✅ Register test
+- ✅ Login test
+- ✅ Get profile test
+- ✅ Invalid login test
+
+### Protected Routes Usage
+
+Untuk protect endpoint agar hanya user yang login bisa akses:
+
+```javascript
+const { protect } = require('./middlewares/authMiddleware');
+
+// Example: Protect sensor endpoint
+router.get('/api/sensor/latest', protect, getSensorData);
+```
+
+### Security Notes
+
+⚠️ **Production Checklist:**
+1. ✅ Password di-hash dengan bcrypt (salt rounds: 10)
+2. ✅ JWT token dengan expiration (7 hari)
+3. ⚠️ Ganti `JWT_SECRET` di .env dengan random string yang lebih secure
+4. ⚠️ Gunakan HTTPS untuk production
+5. ⚠️ Implementasi rate limiting untuk prevent brute force
+6. ⚠️ Tambahkan email verification (optional)
+
+### API Documentation
+
+Dokumentasi lengkap authentication API ada di file:
+📖 **[API_AUTH_DOCS.md](./API_AUTH_DOCS.md)**
+
+---
