@@ -299,3 +299,124 @@
 .auth-margin-top-6 {
   margin-top: 1.5rem;
 }
+
+/* Theme Switcher in Auth Pages */
+.auth-theme-switcher {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 100;
+}
+
+.auth-theme-toggle-container {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  min-width: 240px;
+}
+
+.auth-theme-toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.auth-theme-toggle-icon {
+  width: 1rem;
+  height: 1rem;
+  color: #64748b;
+}
+
+.auth-theme-toggle-text {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.auth-theme-toggle-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background-color: #f1f5f9;
+  border-radius: 0.5rem;
+  padding: 0.25rem;
+}
+
+.auth-theme-toggle-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 0.5rem 0.25rem;
+  border-radius: 0.375rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #64748b;
+}
+
+.auth-theme-toggle-btn:hover {
+  color: #334155;
+}
+
+.auth-theme-toggle-btn-active {
+  background-color: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.auth-theme-toggle-btn-icon {
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+.auth-theme-toggle-btn-label {
+  font-size: 0.65rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .auth-theme-switcher {
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .auth-theme-toggle-container {
+    min-width: 200px;
+    padding: 0.75rem;
+  }
+
+  .auth-theme-toggle-btn-label {
+    font-size: 0.6rem;
+  }
+}
+
+/* Success message */
+.auth-success {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 0.75rem;
+  color: #15803d;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.dark .auth-success {
+  background-color: #064e3b;
+  border-color: #065f46;
+  color: #86efac;
+}

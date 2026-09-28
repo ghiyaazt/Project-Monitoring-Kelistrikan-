@@ -1,0 +1,1043 @@
+/* Monitoring Dark Mode - Comprehensive Overrides */
+
+/* Base Container */
+.dark .monitoring-container {
+  background-color: transparent;
+}
+
+.dark .monitoring-header-text {
+  color: #94a3b8;
+}
+
+/* Device List View */
+.dark .monitoring-list-view-title {
+  color: #f1f5f9;
+}
+
+.dark .monitoring-list-view-subtitle {
+  color: #94a3b8;
+}
+
+/* Device List Cards */
+.dark .monitoring-list-device-card {
+  background-color: #0f172a;
+  border: 1px solid #1e293b;
+}
+
+.dark .monitoring-list-device-card:hover {
+  border-color: #16a34a;
+  background-color: #1e293b;
+}
+
+.dark .monitoring-list-device-name {
+  color: #f1f5f9;
+}
+
+.dark .monitoring-list-device-card:hover .monitoring-list-device-name {
+  color: #22c55e;
+}
+
+.dark .monitoring-list-device-id {
+  color: #94a3b8;
+}
+
+.dark .monitoring-list-device-icon-box-connected {
+  background-color: #064e3b;
+  border-color: #065f46;
+}
+
+.dark .monitoring-list-device-icon-box-disconnected {
+  background-color: #334155;
+  border-color: #475569;
+}
+
+.dark .monitoring-list-device-icon-connected {
+  color: #4ade80;
+}
+
+.dark .monitoring-list-device-icon-disconnected {
+  color: #94a3b8;
+}
+
+.dark .monitoring-list-device-status-connected {
+  background-color: #064e3b;
+  color: #86efac;
+}
+
+.dark .monitoring-list-device-status-error {
+  background-color: #7f1d1d;
+  color: #fca5a5;
+}
+
+.dark .monitoring-list-device-status-disconnected {
+  background-color: #78350f;
+  color: #fcd34d;
+}
+
+.dark .monitoring-list-device-stat-label {
+  color: #94a3b8;
+}
+
+.dark .monitoring-list-device-stat-value {
+  color: #e2e8f0;
+}
+
+.dark .monitoring-list-device-footer {
+  border-top-color: #334155;
+}
+
+.dark .monitoring-list-device-location {
+  color: #94a3b8;
+}
+
+.dark .monitoring-list-device-time {
+  color: #64748b;
+}
+
+/* Old Device List Classes (keeping for compatibility) */
+.dark .device-card {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+}
+
+.dark .device-card:hover {
+  border-color: #475569;
+  background-color: #0f172a;
+}
+
+.dark .device-card-header {
+  border-bottom: 1px solid #334155;
+}
+
+.dark .device-card-name {
+  color: #f1f5f9;
+}
+
+.dark .device-card-id {
+  color: #94a3b8;
+}
+
+.dark .device-card-status-online {
+  color: #86efac;
+  background-color: #064e3b;
+}
+
+.dark .device-card-status-offline {
+  color: #94a3b8;
+  background-color: #334155;
+}
+
+.dark .device-card-label {
+  color: #94a3b8;
+}
+
+.dark .device-card-value {
+  color: #e2e8f0;
+}
+
+/* Device Detail Header */
+.dark .monitoring-detail-header {
+  border-bottom: 1px solid #334155;
+}
+
+.dark .monitoring-back-button {
+  color: #94a3b8;
+  background-color: transparent;
+  border-color: #334155;
+}
+
+.dark .monitoring-back-button:hover {
+  background-color: #334155;
+  color: #e2e8f0;
+}
+
+.dark .monitoring-settings-button {
+  background-color: #1e293b;
+  border-color: #334155;
+  color: #94a3b8;
+}
+
+.dark .monitoring-settings-button:hover {
+  background-color: #334155;
+  border-color: #475569;
+  color: #e2e8f0;
+}
+
+.dark .monitoring-device-title-text {
+  color: #94a3b8;
+}
+
+.dark .monitoring-live-badge {
+  background-color: #064e3b;
+  color: #86efac;
+}
+
+.dark .monitoring-live-dot {
+  background-color: #22c55e;
+}
+
+/* Tabs */
+.dark .monitoring-tabs {
+  background-color: transparent;
+  border-bottom: 1px solid #334155;
+}
+
+.dark .monitoring-tab-inactive {
+  color: #94a3b8;
+  background-color: transparent;
+  border-bottom: 2px solid transparent;
+}
+
+.dark .monitoring-tab-inactive:hover {
+  color: #e2e8f0;
+  background-color: #334155;
+}
+
+.dark .monitoring-tab-active {
+  color: #3b82f6;
+  background-color: #0f172a;
+  border-bottom: 2px solid #3b82f6;
+}
+
+.dark .monitoring-tab-active-green {
+  color: #22c55e;
+  background-color: #0f172a;
+  border-bottom: 2px solid #22c55e;
+}
+
+.dark .monitoring-tab-badge-inactive {
+  background-color: #334155;
+  color: #e2e8f0;
+}
+
+.dark .monitoring-tab-badge-active {
+  background-color: #1e40af;
+  color: #93c5fd;
+}
+
+/* Device Detail */
+.dark .device-detail-container {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+}
+
+.dark .device-detail-header {
+  border-bottom: 1px solid #334155;
+}
+
+.dark .device-detail-title {
+  color: #f1f5f9;
+}
+
+.dark .device-detail-subtitle {
+  color: #94a3b8;
+}
+
+/* Stats Cards in Detail View */
+.dark .monitoring-stats-card {
+  background-color: transparent;
+  border: 1px solid #1e293b;
+}
+
+.dark .monitoring-stats-card.bg-blue-50 {
+  background-color: transparent !important;
+  border-color: #1e40af !important;
+}
+
+.dark .monitoring-stats-card.bg-green-50 {
+  background-color: transparent !important;
+  border-color: #047857 !important;
+}
+
+.dark .monitoring-stats-card.bg-purple-50 {
+  background-color: transparent !important;
+  border-color: #7e22ce !important;
+}
+
+.dark .monitoring-stats-card-label {
+  color: #e2e8f0;
+}
+
+.dark .monitoring-stats-card-label.text-blue-600 {
+  color: #93c5fd !important;
+}
+
+.dark .monitoring-stats-card-label.text-green-600 {
+  color: #86efac !important;
+}
+
+.dark .monitoring-stats-card-label.text-purple-600 {
+  color: #e9d5ff !important;
+}
+
+.dark .monitoring-stat-value {
+  color: #f1f5f9;
+}
+
+.dark .monitoring-stat-unit {
+  color: #cbd5e1;
+}
+
+.dark .monitoring-stat-sub {
+  color: #94a3b8;
+}
+
+/* Chart Cards */
+.dark .monitoring-chart-card {
+  background-color: #0f172a;
+  border: 1px solid #1e293b;
+}
+
+.dark .monitoring-chart-title {
+  color: #f1f5f9;
+}
+
+.dark .monitoring-chart-subtitle {
+  color: #94a3b8;
+}
+
+.dark .monitoring-chart-legend-item {
+  color: #cbd5e1;
+}
+
+.dark .stat-card-mini {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+}
+
+.dark .stat-card-mini:hover {
+  background-color: #0f172a;
+  border-color: #475569;
+}
+
+.dark .stat-label-mini {
+  color: #94a3b8;
+}
+
+.dark .stat-value-mini {
+  color: #e2e8f0;
+}
+
+/* Monitoring List Stat Cards */
+.dark .monitoring-list-stat-card {
+  background-color: #0f172a;
+  border: 1px solid #1e293b;
+}
+
+.dark .monitoring-list-stat-card-connected {
+  background-color: #064e3b;
+  border-color: #065f46;
+}
+
+.dark .monitoring-list-stat-label {
+  color: #94a3b8;
+}
+
+.dark .monitoring-list-stat-label-connected {
+  color: #4ade80;
+}
+
+.dark .monitoring-list-stat-value-slate {
+  color: #e2e8f0;
+}
+
+.dark .monitoring-list-stat-value-green {
+  color: #4ade80;
+}
+
+.dark .monitoring-list-stat-value-amber {
+  color: #fbbf24;
+}
+
+.dark .monitoring-list-stat-value-red {
+  color: #f87171;
+}
+
+.dark .monitoring-list-stat-sub {
+  color: #64748b;
+}
+
+/* Monitoring Anomali Stat Card */
+.dark .monitoring-anomali-stat-card {
+  background-color: transparent;
+  border: 1px solid #1e293b;
+}
+
+.dark .monitoring-anomali-stat-label {
+  color: #94a3b8;
+}
+
+.dark .monitoring-anomali-stat-value {
+  color: #e2e8f0;
+}
+
+.dark .monitoring-anomali-stat-value-slate {
+  color: #cbd5e1;
+}
+
+.dark .monitoring-anomali-stat-value-blue {
+  color: #93c5fd;
+}
+
+.dark .monitoring-anomali-stat-value-amber {
+  color: #fcd34d;
+}
+
+.dark .monitoring-anomali-stat-value-red {
+  color: #fca5a5;
+}
+
+.dark .monitoring-anomali-stat-sub {
+  color: #64748b;
+}
+
+/* Anomali Layout Columns */
+.dark .monitoring-anomali-list-col {
+  background-color: #0f172a;
+  border: 1px solid #1e293b;
+}
+
+.dark .monitoring-anomali-detail-col {
+  background-color: #0f172a;
+  border: 1px solid #1e293b;
+}
+
+.dark .monitoring-anomali-list-header,
+.dark .monitoring-anomali-list-title {
+  color: #f1f5f9;
+}
+
+.dark .monitoring-anomali-filter-btn-inactive {
+  background-color: #334155;
+  color: #94a3b8;
+  border: 1px solid #475569;
+}
+
+.dark .monitoring-anomali-filter-btn-active {
+  background-color: #2563eb;
+  color: #ffffff;
+  border: 1px solid #1e40af;
+}
+
+.dark .monitoring-anomali-list-item {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+}
+
+.dark .monitoring-anomali-list-item-default {
+  background-color: #0f172a;
+  border: 1px solid #334155;
+}
+
+.dark .monitoring-anomali-list-item-default:hover {
+  background-color: #1e293b;
+  border-color: #475569;
+}
+
+.dark .monitoring-anomali-list-item-baru {
+  background-color: #7f1d1d;
+  border: 1px solid #991b1b;
+}
+
+.dark .monitoring-anomali-list-item-baru:hover {
+  border-color: #b91c1c;
+}
+
+.dark .monitoring-anomali-list-item-selected {
+  background-color: #1e293b;
+  border: 1px solid #3b82f6;
+}
+
+.dark .monitoring-anomali-item-type,
+.dark .monitoring-anomali-item-before,
+.dark .monitoring-anomali-item-separator {
+  color: #cbd5e1;
+}
+
+.dark .monitoring-anomali-item-time,
+.dark .monitoring-anomali-item-date {
+  color: #64748b;
+}
+
+.dark .monitoring-anomali-item-after-spike {
+  color: #fca5a5;
+}
+
+.dark .monitoring-anomali-item-after-drop {
+  color: #93c5fd;
+}
+
+.dark .monitoring-anomali-item-change-positive {
+  color: #fca5a5;
+}
+
+.dark .monitoring-anomali-item-change-negative {
+  color: #93c5fd;
+}
+
+.dark .monitoring-anomali-item-status-baru {
+  background-color: #7f1d1d;
+  color: #fca5a5;
+}
+
+.dark .monitoring-anomali-item-status-ditangani {
+  background-color: #334155;
+  color: #94a3b8;
+}
+
+.dark .monitoring-anomali-detail-title {
+  color: #f1f5f9;
+}
+
+.dark .monitoring-anomali-detail-field-label {
+  color: #94a3b8;
+}
+
+.dark .monitoring-anomali-detail-field-value {
+  color: #e2e8f0;
+}
+
+.dark .monitoring-anomali-recommendation {
+  background-color: #78350f;
+  border: 1px solid #92400e;
+}
+
+.dark .monitoring-anomali-recommendation-label {
+  color: #fcd34d;
+}
+
+.dark .monitoring-anomali-recommendation-text {
+  color: #cbd5e1;
+}
+
+.dark .monitoring-anomali-empty-icon {
+  color: #475569;
+}
+
+.dark .monitoring-anomali-empty-text {
+  color: #94a3b8;
+}
+
+/* Monitoring Riwayat Stat Cards */
+.dark .monitoring-riwayat-stat-card {
+  background-color: transparent;
+  border: 1px solid #1e293b;
+}
+
+.dark .monitoring-riwayat-stat-card-blue {
+  background-color: transparent !important;
+  border-color: #1e40af !important;
+  color: #93c5fd;
+}
+
+.dark .monitoring-riwayat-stat-card-green {
+  background-color: transparent !important;
+  border-color: #065f46 !important;
+  color: #86efac;
+}
+
+.dark .monitoring-riwayat-stat-card-purple {
+  background-color: transparent !important;
+  border-color: #6b21a8 !important;
+  color: #e9d5ff;
+}
+
+.dark .monitoring-riwayat-stat-card-red {
+  background-color: transparent !important;
+  border-color: #991b1b !important;
+  color: #fca5a5;
+}
+
+.dark .monitoring-riwayat-stat-label {
+  color: inherit;
+}
+
+.dark .monitoring-riwayat-stat-value {
+  color: #f1f5f9;
+}
+
+.dark .monitoring-riwayat-stat-sub {
+  color: #94a3b8;
+}
+
+/* Tabs */
+.dark .monitoring-tabs {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  border-bottom: none;
+}
+
+.dark .tab-button {
+  color: #94a3b8;
+  border-bottom: 2px solid transparent;
+}
+
+.dark .tab-button:hover {
+  color: #e2e8f0;
+  background-color: #334155;
+}
+
+.dark .tab-button-active {
+  color: #3b82f6;
+  background-color: #0f172a;
+  border-bottom: 2px solid #3b82f6;
+}
+
+.dark .tab-button-count {
+  background-color: #334155;
+  color: #e2e8f0;
+}
+
+.dark .tab-button-active .tab-button-count {
+  background-color: #1e40af;
+  color: #93c5fd;
+}
+
+/* Tab Content */
+.dark .tab-content {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+}
+
+/* Anomali List */
+.dark .anomali-item {
+  background-color: #0f172a;
+  border: 1px solid #334155;
+}
+
+.dark .anomali-item:hover {
+  border-color: #475569;
+  background-color: #1e293b;
+}
+
+.dark .anomali-item-new {
+  background-color: #7f1d1d;
+  border-color: #991b1b;
+}
+
+.dark .anomali-item-handled {
+  background-color: #0f172a;
+  border-color: #334155;
+}
+
+.dark .anomali-icon {
+  background-color: #1e293b;
+}
+
+.dark .anomali-icon-spike {
+  background-color: #fecaca;
+  color: #991b1b;
+}
+
+.dark .anomali-icon-drop {
+  background-color: #fed7aa;
+  color: #9a3412;
+}
+
+.dark .anomali-title {
+  color: #f1f5f9;
+}
+
+.dark .anomali-time {
+  color: #94a3b8;
+}
+
+.dark .anomali-value {
+  color: #cbd5e1;
+}
+
+.dark .anomali-change {
+  color: #e2e8f0;
+}
+
+.dark .anomali-badge-new {
+  background-color: #7f1d1d;
+  color: #fca5a5;
+}
+
+.dark .anomali-badge-handled {
+  background-color: #334155;
+  color: #94a3b8;
+}
+
+/* Riwayat Tab Content */
+.dark .monitoring-riwayat-chart-card {
+  background-color: #0f172a;
+  border: 1px solid #1e293b;
+}
+
+.dark .monitoring-riwayat-chart-title {
+  color: #f1f5f9;
+}
+
+.dark .monitoring-riwayat-chart-subtitle {
+  color: #94a3b8;
+}
+
+.dark .monitoring-riwayat-table-card {
+  background-color: #0f172a;
+  border: 1px solid #1e293b;
+}
+
+.dark .monitoring-riwayat-table-title {
+  color: #f1f5f9;
+}
+
+.dark .monitoring-riwayat-table {
+  background-color: transparent;
+}
+
+.dark .monitoring-riwayat-table thead {
+  background-color: #1e293b;
+}
+
+.dark .monitoring-riwayat-table th {
+  color: #cbd5e1;
+  border-bottom: 1px solid #334155;
+}
+
+.dark .monitoring-riwayat-table-cell-day,
+.dark .monitoring-riwayat-table-cell-date,
+.dark .monitoring-riwayat-table-cell-kwh {
+  color: #e2e8f0;
+  border-bottom: 1px solid #334155;
+}
+
+.dark .monitoring-riwayat-table tbody tr:hover {
+  background-color: #1e293b;
+}
+
+.dark .riwayat-table {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+}
+
+.dark .riwayat-table thead {
+  background-color: #0f172a;
+  border-bottom: 1px solid #334155;
+}
+
+.dark .riwayat-table th {
+  color: #94a3b8;
+  border-bottom: 1px solid #334155;
+}
+
+.dark .riwayat-table td {
+  color: #e2e8f0;
+  border-bottom: 1px solid #334155;
+}
+
+.dark .riwayat-table tbody tr:hover {
+  background-color: #334155;
+}
+
+/* Chart Container */
+.dark .chart-container {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+}
+
+.dark .chart-header {
+  border-bottom: 1px solid #334155;
+}
+
+.dark .chart-title {
+  color: #f1f5f9;
+}
+
+.dark .chart-subtitle {
+  color: #94a3b8;
+}
+
+/* Modal */
+.dark .monitoring-modal-overlay {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.dark .monitoring-modal-card {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+}
+
+.dark .monitoring-modal-header {
+  border-bottom: 1px solid #334155;
+}
+
+.dark .monitoring-modal-title {
+  color: #f1f5f9;
+}
+
+.dark .monitoring-modal-close-btn {
+  color: #94a3b8;
+  background-color: transparent;
+}
+
+.dark .monitoring-modal-close-btn:hover {
+  background-color: #334155;
+  color: #e2e8f0;
+}
+
+.dark .monitoring-modal-field-label {
+  color: #cbd5e1;
+}
+
+.dark .monitoring-modal-input {
+  background-color: #0f172a;
+  border: 1px solid #334155;
+  color: #e2e8f0;
+}
+
+.dark .monitoring-modal-input:focus {
+  border-color: #3b82f6;
+  background-color: #1e293b;
+}
+
+.dark .monitoring-modal-input::placeholder {
+  color: #64748b;
+}
+
+.dark .monitoring-modal-btn-cancel {
+  background-color: #334155;
+  color: #e2e8f0;
+  border: 1px solid #475569;
+}
+
+.dark .monitoring-modal-btn-cancel:hover {
+  background-color: #475569;
+}
+
+.dark .monitoring-modal-btn-submit {
+  background-color: #16a34a;
+  color: #ffffff;
+}
+
+.dark .monitoring-modal-btn-submit:hover {
+  background-color: #15803d;
+}
+
+.dark .monitoring-modal-btn-delete {
+  background-color: #7f1d1d;
+  border-color: #991b1b;
+  color: #fca5a5;
+}
+
+.dark .monitoring-modal-btn-delete:hover {
+  background-color: #991b1b;
+  border-color: #b91c1c;
+  color: #fecaca;
+}
+
+.dark .modal-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.dark .modal-content {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+}
+
+.dark .modal-header {
+  border-bottom: 1px solid #334155;
+}
+
+.dark .modal-title {
+  color: #f1f5f9;
+}
+
+.dark .modal-close-btn {
+  color: #94a3b8;
+}
+
+.dark .modal-close-btn:hover {
+  background-color: #334155;
+  color: #e2e8f0;
+}
+
+.dark .modal-body {
+  /* Body usually has inputs which are covered by input dark styles */
+}
+
+.dark .modal-footer {
+  border-top: 1px solid #334155;
+}
+
+/* Filters */
+.dark .filter-container {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+}
+
+.dark .filter-label {
+  color: #94a3b8;
+}
+
+.dark .filter-select {
+  background-color: #0f172a;
+  border: 1px solid #334155;
+  color: #e2e8f0;
+}
+
+.dark .filter-select:focus {
+  border-color: #3b82f6;
+  background-color: #1e293b;
+}
+
+/* Empty State */
+.dark .empty-state {
+  background-color: transparent;
+}
+
+.dark .empty-state-icon {
+  color: #475569;
+}
+
+.dark .empty-state-text {
+  color: #94a3b8;
+}
+
+.dark .empty-state-subtext {
+  color: #64748b;
+}
+
+/* Tooltip */
+.dark .monitoring-tooltip {
+  background-color: #0f172a;
+  border: 1px solid #334155;
+  color: #e2e8f0;
+}
+
+/* Stats Summary */
+.dark .stats-summary {
+  background-color: #0f172a;
+  border-top: 1px solid #334155;
+}
+
+.dark .stats-summary-label {
+  color: #94a3b8;
+}
+
+.dark .stats-summary-value {
+  color: #e2e8f0;
+}
+
+.dark .stats-summary-value-mono {
+  color: #e2e8f0;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Back Button */
+.dark .back-btn {
+  color: #94a3b8;
+}
+
+.dark .back-btn:hover {
+  color: #e2e8f0;
+  background-color: #334155;
+}
+
+/* Action Buttons */
+.dark .action-btn {
+  background-color: #334155;
+  color: #e2e8f0;
+  border: 1px solid #475569;
+}
+
+.dark .action-btn:hover {
+  background-color: #475569;
+  border-color: #64748b;
+}
+
+.dark .action-btn-primary {
+  background-color: #2563eb;
+  color: #ffffff;
+  border: 1px solid #1e40af;
+}
+
+.dark .action-btn-primary:hover {
+  background-color: #1d4ed8;
+}
+
+.dark .action-btn-danger {
+  background-color: #7f1d1d;
+  color: #fca5a5;
+  border: 1px solid #991b1b;
+}
+
+.dark .action-btn-danger:hover {
+  background-color: #991b1b;
+  color: #fecaca;
+}
+
+/* Badge */
+.dark .badge {
+  /* Badges usually have specific colors, handled individually */
+}
+
+.dark .badge-online {
+  background-color: #064e3b;
+  color: #86efac;
+}
+
+.dark .badge-offline {
+  background-color: #334155;
+  color: #94a3b8;
+}
+
+.dark .badge-danger {
+  background-color: #7f1d1d;
+  color: #fca5a5;
+}
+
+.dark .badge-warning {
+  background-color: #78350f;
+  color: #fcd34d;
+}
+
+.dark .badge-info {
+  background-color: #1e3a8a;
+  color: #93c5fd;
+}
+
+/* Pagination */
+.dark .pagination-container {
+  background-color: #1e293b;
+  border-top: 1px solid #334155;
+}
+
+.dark .pagination-btn {
+  background-color: #334155;
+  color: #e2e8f0;
+  border: 1px solid #475569;
+}
+
+.dark .pagination-btn:hover:not(:disabled) {
+  background-color: #475569;
+  border-color: #64748b;
+}
+
+.dark .pagination-btn:disabled {
+  background-color: #1e293b;
+  color: #64748b;
+  border-color: #334155;
+}
+
+.dark .pagination-btn-active {
+  background-color: #2563eb;
+  color: #ffffff;
+  border-color: #1e40af;
+}
+
+/* Device Icon */
+.dark .device-icon {
+  background-color: #1e293b;
+}
+
+.dark .device-icon-online {
+  background-color: #064e3b;
+  color: #4ade80;
+}
+
+.dark .device-icon-offline {
+  background-color: #334155;
+  color: #94a3b8;
+}

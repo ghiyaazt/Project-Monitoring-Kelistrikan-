@@ -1,0 +1,189 @@
+/* Auth Pages Dark Mode Overrides */
+
+/* Main Container */
+.dark .auth-container {
+  background-color: #0f172a;
+}
+
+/* Brand Panel (Left Side) */
+.dark .auth-brand-panel {
+  background: linear-gradient(to bottom right, #065f46, #047857, #1e40af);
+}
+
+.dark .auth-brand-logo {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark .auth-brand-subtitle {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.dark .auth-brand-heading {
+  color: #ffffff;
+}
+
+.dark .auth-brand-text {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.dark .auth-feature-icon {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.dark .auth-feature-label {
+  color: #ffffff;
+}
+
+.dark .auth-feature-desc {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.dark .auth-brand-copyright {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Form Panel (Right Side) */
+.dark .auth-form-panel {
+  background-color: #0f172a !important;
+}
+
+.dark .auth-mobile-logo-subtitle {
+  color: #94a3b8;
+}
+
+.dark .auth-title {
+  color: #f1f5f9;
+}
+
+.dark .auth-subtitle {
+  color: #94a3b8;
+}
+
+/* Input Fields - High Specificity for Override */
+.dark .input-label,
+.dark .auth-form-panel .input-label {
+  color: #cbd5e1 !important;
+}
+
+.dark .input,
+.dark .auth-form-panel .input,
+.dark input.input {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+  color: #f1f5f9 !important;
+}
+
+.dark .input:focus,
+.dark .auth-form-panel .input:focus,
+.dark input.input:focus {
+  border-color: #16a34a !important;
+  background-color: #1e293b !important;
+  box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.2) !important;
+}
+
+.dark .input::placeholder,
+.dark .auth-form-panel .input::placeholder,
+.dark input.input::placeholder {
+  color: #64748b !important;
+}
+
+/* Password Toggle - High Specificity */
+.dark .auth-password-toggle,
+.dark .auth-form-panel .auth-password-toggle {
+  color: #94a3b8 !important;
+}
+
+.dark .auth-password-toggle:hover,
+.dark .auth-form-panel .auth-password-toggle:hover {
+  color: #cbd5e1 !important;
+}
+
+/* Links */
+.dark .auth-forgot-btn {
+  color: #60a5fa;
+}
+
+.dark .auth-forgot-btn:hover {
+  color: #93c5fd;
+}
+
+.dark .auth-link-text {
+  color: #94a3b8;
+}
+
+.dark .auth-link-button {
+  color: #60a5fa;
+}
+
+.dark .auth-link-button:hover {
+  color: #93c5fd;
+}
+
+.dark .auth-back-link {
+  color: #94a3b8;
+}
+
+.dark .auth-back-link:hover {
+  color: #cbd5e1;
+}
+
+/* Submit Button */
+.dark .auth-submit-btn {
+  background-color: #16a34a;
+  color: #ffffff;
+}
+
+.dark .auth-submit-btn:hover:not(:disabled) {
+  background-color: #15803d;
+}
+
+.dark .auth-submit-btn:disabled {
+  background-color: #334155;
+  color: #64748b;
+}
+
+/* Error Message */
+.dark .auth-error {
+  background-color: #7f1d1d;
+  border: 1px solid #991b1b;
+  color: #fca5a5;
+}
+
+/* Success Message */
+.dark .auth-success {
+  background-color: #064e3b;
+  border: 1px solid #065f46;
+  color: #86efac;
+}
+
+/* Theme Switcher Dark Mode */
+.dark .auth-theme-toggle-container {
+  background-color: #1e293b;
+  border-color: #334155;
+}
+
+.dark .auth-theme-toggle-icon {
+  color: #cbd5e1;
+}
+
+.dark .auth-theme-toggle-text {
+  color: #e2e8f0;
+}
+
+.dark .auth-theme-toggle-buttons {
+  background-color: #0f172a;
+}
+
+.dark .auth-theme-toggle-btn {
+  color: #94a3b8;
+}
+
+.dark .auth-theme-toggle-btn:hover {
+  color: #cbd5e1;
+}
+
+.dark .auth-theme-toggle-btn-active {
+  background-color: #334155;
+  color: #f1f5f9;
+}
+

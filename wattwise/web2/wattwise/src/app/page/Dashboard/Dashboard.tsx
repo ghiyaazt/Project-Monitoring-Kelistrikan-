@@ -46,10 +46,14 @@ const statCards = [
 ];
 
 export default function Dashboard() {
-  const { iotDevices } = useApp();
+  const { iotDevices, groups } = useApp();
   const newAnomalies = anomaliList.filter(a => a.status === "baru");
   const connectedDevices = iotDevices.filter(d => d.status === "connected");
   const totalDeviceDaya = iotDevices.reduce((sum, d) => sum + (d.daya || 0), 0);
+  
+  // Calculate total devices in groups and total power from groups
+  const totalDevicesInGroups = groups.reduce((sum, g) => sum + g.devices.length, 0);
+  const totalGroupsPower = groups.reduce((sum, g) => sum + g.totalDaya, 0);
 
   return (
     <div className="dashboard-container">
@@ -143,29 +147,26 @@ export default function Dashboard() {
 
           <div className="dashboard-anomaly-list">
             {anomaliList.slice(0, 4).map((a: AnomalyEvent) => (
-              <div key={a.id} className={`dashboard-anomaly-item ${a.status === "baru" ? "dashboard-anomaly-item-new" : "dashboard-anomaly-item-handled"}`}>
-                <div className={`dashboard-anomaly-icon ${a.status === "baru" ? "dashboard-anomaly-icon-new" : "dashboard-anomaly-icon-handled"}`}>
-                  <svg className="dashboard-anomaly-icon-svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                    {a.changeType === "spike" ? (
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                    ) : (
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" />
-                    )}
-                  </svg>
+              <div key={a.id} className={`monitoring-anomali-list-item ${a.status === "baru" ? "monitoring-anomali-list-item-baru" : "monitoring-anomali-list-item-default"}`}>
+                <div className="monitoring-anomali-item-header">
+                  <span className="monitoring-anomali-item-type">
+                    {a.changeType === "spike" ? "Lonjakan" : "Penurunan"} Daya
+                  </span>
+                  <span className="monitoring-anomali-item-time">{a.time}</span>
                 </div>
-                <div className="dashboard-anomaly-content">
-                  <div className="dashboard-anomaly-title-row">
-                    <p className="dashboard-anomaly-title">
-                      {a.changeType === "spike" ? "Lonjakan" : "Penurunan"} Daya
-                    </p>
-                    <span className="dashboard-anomaly-time">{a.time}</span>
-                  </div>
-                  <p className="dashboard-anomaly-value">
-                    {a.watBefore}W Ã¢â€ â€™ <span className={`dashboard-anomaly-value-bold ${a.changeType === "spike" ? "dashboard-anomaly-value-red" : "dashboard-anomaly-value-orange"}`}>{a.watt}W</span>
-                  </p>
-                  <p className={`dashboard-anomaly-change ${a.change > 0 ? "dashboard-anomaly-change-red" : "dashboard-anomaly-change-orange"}`}>
+                <div className="monitoring-anomali-item-values">
+                  <span className="monitoring-anomali-item-before">{a.watBefore}W →</span>
+                  <span className={`monitoring-anomali-item-after ${a.changeType === "spike" ? "monitoring-anomali-item-after-spike" : "monitoring-anomali-item-after-drop"}`}>{a.watt}W</span>
+                  <span className="monitoring-anomali-item-separator">•</span>
+                  <span className={`monitoring-anomali-item-change ${a.change > 0 ? "monitoring-anomali-item-change-positive" : "monitoring-anomali-item-change-negative"}`}>
                     {a.change > 0 ? "+" : ""}{a.change}%
-                  </p>
+                  </span>
+                </div>
+                <div className="monitoring-anomali-item-footer">
+                  <span className={`monitoring-anomali-item-status-badge ${a.status === "baru" ? "monitoring-anomali-item-status-baru" : "monitoring-anomali-item-status-ditangani"}`}>
+                    {a.status === "baru" ? "Baru" : "Ditangani"}
+                  </span>
+                  <span className="monitoring-anomali-item-date">{a.date}</span>
                 </div>
               </div>
             ))}
@@ -258,35 +259,66 @@ export default function Dashboard() {
               <p className="dashboard-iot-subtitle">Grup perangkat terhubung</p>
             </div>
             <span className="dashboard-iot-badge-blue">
-              0 Grup
+              {groups.length} Grup
             </span>
           </div>
 
-          <div className="dashboard-empty-state">
-            <svg className="dashboard-empty-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-            </svg>
-            <p className="dashboard-empty-text">Belum ada grup device</p>
-            <p className="dashboard-empty-subtext">Buat grup di Smart Wattwise</p>
-          </div>
-
-          <div className="dashboard-anomaly-footer">
-            <p className="dashboard-empty-desc">Grup device untuk monitoring gabungan</p>
-            <div className="dashboard-summary-grid-3">
-              <div>
-                <p className="dashboard-summary-item-label">Total Grup</p>
-                <p className="dashboard-summary-item-value">0</p>
-              </div>
-              <div>
-                <p className="dashboard-summary-item-label">Device</p>
-                <p className="dashboard-summary-item-value-slate">0</p>
-              </div>
-              <div>
-                <p className="dashboard-summary-item-label">Daya</p>
-                <p className="dashboard-summary-item-value-mono">0W</p>
-              </div>
+          {groups.length === 0 ? (
+            <div className="dashboard-empty-state">
+              <svg className="dashboard-empty-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+              </svg>
+              <p className="dashboard-empty-text">Belum ada grup device</p>
+              <p className="dashboard-empty-subtext">Buat grup di Smart Wattwise</p>
             </div>
-          </div>
+          ) : (
+            <>
+              <div className="dashboard-device-list">
+                {groups.slice(0, 3).map((group: any) => (
+                  <div key={group.id} className="dashboard-device-item-card">
+                    <div className="dashboard-device-left">
+                      <div className="dashboard-device-icon-box dashboard-device-icon-box-online">
+                        <svg className="dashboard-device-icon-online" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                        </svg>
+                      </div>
+                      <div>
+                        <p className="dashboard-device-name">{group.name}</p>
+                        <p className="dashboard-device-id">{group.devices.length} perangkat</p>
+                      </div>
+                    </div>
+                    <div className="dashboard-device-right">
+                      <p className="dashboard-device-power">{group.totalDaya}W</p>
+                      <span className="dashboard-device-status-online">
+                        Aktif
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="dashboard-summary-footer">
+                <div>
+                  <p className="dashboard-summary-item-label">Total Grup</p>
+                  <p className="dashboard-summary-item-value">{groups.length}</p>
+                </div>
+                <div>
+                  <p className="dashboard-summary-item-label">Device</p>
+                  <p className="dashboard-summary-item-value-slate">{totalDevicesInGroups}</p>
+                </div>
+                <div>
+                  <p className="dashboard-summary-item-label">Daya</p>
+                  <p className="dashboard-summary-item-value-mono">{totalGroupsPower}W</p>
+                </div>
+              </div>
+            </>
+          )}
+
+          {groups.length === 0 && (
+            <div className="dashboard-anomaly-footer">
+              <p className="dashboard-empty-desc">Grup device untuk monitoring gabungan</p>
+            </div>
+          )}
         </div>
       </div>
     </div>

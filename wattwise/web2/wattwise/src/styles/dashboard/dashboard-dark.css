@@ -1,0 +1,326 @@
+/* Dashboard Dark Mode Overrides */
+
+.dark .dashboard-header-text {
+  color: #94a3b8;
+}
+
+.dark .dashboard-status-badge {
+  color: #86efac;
+  background-color: #064e3b;
+  border: 1px solid #065f46;
+}
+
+.dark .dashboard-timestamp {
+  color: #94a3b8;
+  background-color: #1e293b;
+  border: 1px solid #334155;
+}
+
+/* Chart Container */
+.dark .dashboard-chart-container {
+  background-color: #0f172a;
+  border: 1px solid #1e293b;
+}
+
+.dark .dashboard-chart-title-text {
+  color: #94a3b8;
+}
+
+.dark .dashboard-chart-badge {
+  color: #93c5fd;
+  background-color: #1e3a8a;
+}
+
+.dark .dashboard-device-row {
+  border-top: 1px solid #334155;
+}
+
+.dark .dashboard-device-label {
+  color: #94a3b8;
+}
+
+.dark .dashboard-device-value {
+  color: #e2e8f0;
+}
+
+/* Anomaly Card */
+.dark .dashboard-anomaly-card {
+  background-color: #0f172a;
+  border: 1px solid #1e293b;
+}
+
+.dark .dashboard-anomaly-item {
+  border-bottom: 1px solid #334155;
+}
+
+.dark .dashboard-anomaly-item:hover {
+  background-color: #334155;
+}
+
+.dark .dashboard-anomaly-item-new {
+  background-color: #7f1d1d;
+}
+
+.dark .dashboard-anomaly-item-new:hover {
+  background-color: #991b1b;
+}
+
+.dark .dashboard-anomaly-item-handled {
+  background-color: transparent;
+}
+
+.dark .dashboard-anomaly-item-handled:hover {
+  background-color: #334155;
+}
+
+.dark .dashboard-anomaly-icon-new {
+  background-color: #991b1b;
+  color: #fca5a5;
+}
+
+.dark .dashboard-anomaly-icon-handled {
+  background-color: #334155;
+  color: #94a3b8;
+}
+
+/* Anomaly Type Specific Colors - Spike (Red) vs Drop (Blue) */
+.dark .dashboard-anomaly-item-spike {
+  background-color: #991b1b;
+}
+
+.dark .dashboard-anomaly-item-spike:hover {
+  background-color: #b91c1c;
+}
+
+.dark .dashboard-anomaly-item-drop {
+  background-color: #1e3a8a;
+}
+
+.dark .dashboard-anomaly-item-drop:hover {
+  background-color: #1e40af;
+}
+
+.dark .dashboard-anomaly-icon-spike {
+  background-color: #7f1d1d;
+  color: #fca5a5;
+}
+
+.dark .dashboard-anomaly-icon-drop {
+  background-color: #1e40af;
+  color: #93c5fd;
+}
+
+/* Handled anomaly - keep same color, no opacity */
+.dark .dashboard-anomaly-item-spike.dashboard-anomaly-item-handled {
+  background-color: #991b1b;
+}
+
+.dark .dashboard-anomaly-item-drop.dashboard-anomaly-item-handled {
+  background-color: #1e3a8a;
+}
+
+.dark .dashboard-anomaly-icon-spike.dashboard-anomaly-icon-handled {
+  background-color: #7f1d1d;
+  color: #fca5a5;
+}
+
+.dark .dashboard-anomaly-icon-drop.dashboard-anomaly-icon-handled {
+  background-color: #1e40af;
+  color: #93c5fd;
+}
+
+.dark .dashboard-anomaly-title {
+  color: #e2e8f0;
+}
+
+.dark .dashboard-anomaly-time {
+  color: #94a3b8;
+}
+
+.dark .dashboard-anomaly-value {
+  color: #cbd5e1;
+}
+
+.dark .dashboard-anomaly-footer {
+  border-top: 1px solid #334155;
+  background-color: transparent;
+}
+
+.dark .dashboard-anomaly-footer-label {
+  color: #94a3b8;
+}
+
+.dark .dashboard-anomaly-footer-value-red {
+  color: #fca5a5;
+}
+
+.dark .dashboard-anomaly-footer-value-mono {
+  color: #e2e8f0;
+}
+
+/* IoT Card */
+.dark .dashboard-iot-card {
+  background-color: #0f172a;
+  border: 1px solid #1e293b;
+}
+
+.dark .dashboard-iot-subtitle {
+  color: #94a3b8;
+}
+
+.dark .dashboard-iot-badge {
+  color: #86efac;
+  background-color: #064e3b;
+  border: 1px solid #065f46;
+}
+
+.dark .dashboard-iot-badge-blue {
+  color: #93c5fd;
+  background-color: #1e3a8a;
+  border: 1px solid #1e40af;
+}
+
+.dark .dashboard-iot-title {
+  color: #f1f5f9;
+}
+
+.dark .dashboard-empty-state {
+  background-color: transparent;
+}
+
+.dark .dashboard-empty-icon {
+  color: #475569;
+}
+
+.dark .dashboard-empty-text {
+  color: #94a3b8;
+}
+
+.dark .dashboard-empty-subtext {
+  color: #64748b;
+}
+
+.dark .dashboard-empty-desc {
+  color: #94a3b8;
+}
+
+/* Device Items */
+.dark .dashboard-device-item-card {
+  background-color: #0f172a;
+  border: 1px solid #334155;
+}
+
+.dark .dashboard-device-item-card:hover {
+  border-color: #475569;
+  background-color: #1e293b;
+}
+
+.dark .dashboard-device-icon-box-online {
+  background-color: #064e3b;
+}
+
+.dark .dashboard-device-icon-box-offline {
+  background-color: #334155;
+}
+
+.dark .dashboard-device-icon-online {
+  color: #4ade80;
+}
+
+.dark .dashboard-device-icon-offline {
+  color: #94a3b8;
+}
+
+.dark .dashboard-device-name {
+  color: #f1f5f9;
+}
+
+.dark .dashboard-device-id {
+  color: #94a3b8;
+}
+
+.dark .dashboard-device-power {
+  color: #e2e8f0;
+}
+
+.dark .dashboard-device-status-online {
+  color: #86efac;
+  background-color: #064e3b;
+}
+
+.dark .dashboard-device-status-offline {
+  color: #94a3b8;
+  background-color: #334155;
+}
+
+/* Summary Footer */
+.dark .dashboard-summary-footer {
+  border-top: 1px solid #334155;
+  background-color: transparent;
+}
+
+.dark .dashboard-summary-item-label {
+  color: #94a3b8;
+}
+
+.dark .dashboard-summary-item-value {
+  color: #e2e8f0;
+}
+
+.dark .dashboard-summary-item-value-green {
+  color: #86efac;
+}
+
+.dark .dashboard-summary-item-value-blue {
+  color: #93c5fd;
+}
+
+.dark .dashboard-summary-item-value-slate {
+  color: #94a3b8;
+}
+
+.dark .dashboard-summary-item-value-mono {
+  color: #e2e8f0;
+}
+
+/* Grid utilities */
+.dark .dashboard-grid-1-lg-2,
+.dark .dashboard-grid-1-lg-3 {
+  /* Grid containers don't need color changes */
+}
+
+/* Tooltip */
+.dark .monitoring-tooltip {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  color: #e2e8f0;
+}
+
+.dark .dashboard-anomaly-change {
+  color: #cbd5e1;
+}
+
+.dark .dashboard-anomaly-change-red {
+  color: #fca5a5;
+}
+
+.dark .dashboard-anomaly-change-orange {
+  color: #fcd34d;
+}
+
+.dark .dashboard-anomaly-value-red {
+  color: #fca5a5;
+}
+
+.dark .dashboard-anomaly-value-orange {
+  color: #fcd34d;
+}
+
+.dark .dashboard-anomaly-value-bold {
+  color: #e2e8f0;
+}
+
+/* Timestamps */
+.dark .dashboard-timestamp-mono {
+  color: #94a3b8;
+}

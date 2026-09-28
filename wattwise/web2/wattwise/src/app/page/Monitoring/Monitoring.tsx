@@ -19,11 +19,13 @@ const CustomTooltip = ({ active, payload, label }: any) => {
 };
 
 export default function Monitoring() {
-  const { iotDevices: devices, addDevice } = useApp();
+  const { iotDevices: devices, addDevice, updateDevice, removeDevice } = useApp();
   const [view, setView] = useState<View>("deviceList");
   const [selectedDevice, setSelectedDevice] = useState<IoTDevice | null>(null);
   const [showAddModal, setShowAddModal] = useState(false);
+  const [showSettingsModal, setShowSettingsModal] = useState(false);
   const [newDevice, setNewDevice] = useState({ name: "", deviceId: "" });
+  const [editDevice, setEditDevice] = useState({ name: "", deviceId: "" });
   const [detailTab, setDetailTab] = useState<DetailTab>("anomali");
   const [tick, setTick] = useState(0);
   const [selectedAnomali, setSelectedAnomali] = useState<string | null>(null);
@@ -46,7 +48,7 @@ export default function Monitoring() {
       
       const device: IoTDevice = {
         id: `dev${Date.now()}`,
-        name: `ESP32 + ${newDevice.deviceId}`,
+        name: newDevice.name,
         deviceId: newDevice.deviceId,
         status: "connected",
         lastUpdate: new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
@@ -72,8 +74,42 @@ export default function Monitoring() {
     setSelectedDevice(null);
   };
 
+  const handleOpenSettings = () => {
+    if (selectedDevice) {
+      setEditDevice({
+        name: selectedDevice.name,
+        deviceId: selectedDevice.deviceId,
+      });
+      setShowSettingsModal(true);
+    }
+  };
+
+  const handleUpdateDevice = () => {
+    if (selectedDevice && editDevice.name && editDevice.deviceId) {
+      updateDevice(selectedDevice.id, {
+        name: editDevice.name,
+        deviceId: editDevice.deviceId,
+      });
+      setSelectedDevice({
+        ...selectedDevice,
+        name: editDevice.name,
+        deviceId: editDevice.deviceId,
+      });
+      setShowSettingsModal(false);
+    }
+  };
+
+  const handleDeleteDevice = () => {
+    if (selectedDevice && window.confirm(`Hapus perangkat "${selectedDevice.name}"? Tindakan ini tidak dapat dibatalkan.`)) {
+      removeDevice(selectedDevice.id);
+      setShowSettingsModal(false);
+      handleBackToList();
+    }
+  };
+
   if (view === "deviceDetail" && selectedDevice) {
     return (
+      <>
       <div className="monitoring-container">
         {/* Header with back button */}
         <div className="monitoring-detail-header">
@@ -90,6 +126,14 @@ export default function Monitoring() {
             </div>
           </div>
           <div className="monitoring-detail-actions">
+            <button onClick={handleOpenSettings}
+              className="monitoring-settings-button">
+              <svg className="monitoring-settings-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              <span className="monitoring-settings-text">Pengaturan</span>
+            </button>
             <span className="monitoring-live-badge">
               <span className="monitoring-live-dot" />
               Live
@@ -407,6 +451,56 @@ export default function Monitoring() {
           </>
         )}
       </div>
+
+      {/* Settings Device Modal */}
+      {showSettingsModal && selectedDevice && (
+        <div className="monitoring-modal-overlay">
+          <div className="monitoring-modal-card">
+            <div className="monitoring-modal-header">
+              <h2 className="monitoring-modal-title">Pengaturan Perangkat</h2>
+              <button onClick={() => setShowSettingsModal(false)} className="monitoring-modal-close-btn">
+                <svg className="monitoring-modal-close-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <div className="monitoring-modal-form">
+              <div>
+                <label className="monitoring-modal-field-label">Nama Perangkat</label>
+                <input type="text" value={editDevice.name} onChange={(e) => setEditDevice({ ...editDevice, name: e.target.value })}
+                  placeholder="Contoh: ESP32 Ruang Tamu"
+                  className="monitoring-modal-input" />
+              </div>
+              <div>
+                <label className="monitoring-modal-field-label">ID Perangkat</label>
+                <input type="text" value={editDevice.deviceId} onChange={(e) => setEditDevice({ ...editDevice, deviceId: e.target.value })}
+                  placeholder="Contoh: ESP32_Wattwise_01"
+                  className="monitoring-modal-input" />
+              </div>
+            </div>
+            <div className="monitoring-modal-actions">
+              <button onClick={handleDeleteDevice}
+                className="monitoring-modal-btn-delete">
+                <svg className="monitoring-modal-delete-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                </svg>
+                Hapus
+              </button>
+              <div className="monitoring-modal-actions-right">
+                <button onClick={() => setShowSettingsModal(false)}
+                  className="monitoring-modal-btn-cancel">
+                  Batal
+                </button>
+                <button onClick={handleUpdateDevice}
+                  className="monitoring-modal-btn-submit">
+                  Simpan
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      </>
     );
   }
 
@@ -534,6 +628,55 @@ export default function Monitoring() {
                 className="monitoring-modal-btn-submit">
                 Tambah
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Settings Device Modal */}
+      {showSettingsModal && selectedDevice && (
+        <div className="monitoring-modal-overlay">
+          <div className="monitoring-modal-card">
+            <div className="monitoring-modal-header">
+              <h2 className="monitoring-modal-title">Pengaturan Perangkat</h2>
+              <button onClick={() => setShowSettingsModal(false)} className="monitoring-modal-close-btn">
+                <svg className="monitoring-modal-close-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <div className="monitoring-modal-form">
+              <div>
+                <label className="monitoring-modal-field-label">Nama Perangkat</label>
+                <input type="text" value={editDevice.name} onChange={(e) => setEditDevice({ ...editDevice, name: e.target.value })}
+                  placeholder="Contoh: ESP32 Ruang Tamu"
+                  className="monitoring-modal-input" />
+              </div>
+              <div>
+                <label className="monitoring-modal-field-label">ID Perangkat</label>
+                <input type="text" value={editDevice.deviceId} onChange={(e) => setEditDevice({ ...editDevice, deviceId: e.target.value })}
+                  placeholder="Contoh: ESP32_Wattwise_01"
+                  className="monitoring-modal-input" />
+              </div>
+            </div>
+            <div className="monitoring-modal-actions">
+              <button onClick={handleDeleteDevice}
+                className="monitoring-modal-btn-delete">
+                <svg className="monitoring-modal-delete-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                </svg>
+                Hapus
+              </button>
+              <div className="monitoring-modal-actions-right">
+                <button onClick={() => setShowSettingsModal(false)}
+                  className="monitoring-modal-btn-cancel">
+                  Batal
+                </button>
+                <button onClick={handleUpdateDevice}
+                  className="monitoring-modal-btn-submit">
+                  Simpan
+                </button>
+              </div>
             </div>
           </div>
         </div>

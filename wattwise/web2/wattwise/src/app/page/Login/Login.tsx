@@ -4,10 +4,11 @@ import { useApp } from "../../../context/AppContext";
 interface LoginProps {
   onLogin: () => void;
   onGoToRegister: () => void;
+  onForgotPassword: () => void;
 }
 
-export default function Login({ onLogin, onGoToRegister }: LoginProps) {
-  const { setUser } = useApp();
+export default function Login({ onLogin, onGoToRegister, onForgotPassword }: LoginProps) {
+  const { setUser, themeMode, setThemeMode } = useApp();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -36,6 +37,59 @@ export default function Login({ onLogin, onGoToRegister }: LoginProps) {
 
   return (
     <div className="auth-container">
+      {/* Theme Switcher - Top Right */}
+      <div className="auth-theme-switcher">
+        <div className="auth-theme-toggle-container">
+          <div className="auth-theme-toggle-label">
+            <svg className="auth-theme-toggle-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+            <span className="auth-theme-toggle-text">Tema Tampilan</span>
+          </div>
+          <div className="auth-theme-toggle-buttons">
+            <button
+              onClick={() => setThemeMode('light')}
+              className={`auth-theme-toggle-btn ${
+                themeMode === 'light'
+                  ? 'auth-theme-toggle-btn-active'
+                  : 'auth-theme-toggle-btn-inactive'
+              }`}
+              title="Mode Terang">
+              <svg className="auth-theme-toggle-btn-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+              <span className="auth-theme-toggle-btn-label">Terang</span>
+            </button>
+            <button
+              onClick={() => setThemeMode('dark')}
+              className={`auth-theme-toggle-btn ${
+                themeMode === 'dark'
+                  ? 'auth-theme-toggle-btn-active'
+                  : 'auth-theme-toggle-btn-inactive'
+              }`}
+              title="Mode Gelap">
+              <svg className="auth-theme-toggle-btn-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+              </svg>
+              <span className="auth-theme-toggle-btn-label">Gelap</span>
+            </button>
+            <button
+              onClick={() => setThemeMode('system')}
+              className={`auth-theme-toggle-btn ${
+                themeMode === 'system'
+                  ? 'auth-theme-toggle-btn-active'
+                  : 'auth-theme-toggle-btn-inactive'
+              }`}
+              title="Ikuti Sistem">
+              <svg className="auth-theme-toggle-btn-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <span className="auth-theme-toggle-btn-label">Sistem</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
       {/* Left brand panel */}
       <div className="auth-brand-panel">
         <div className="auth-brand-logo-row">
@@ -142,7 +196,7 @@ export default function Login({ onLogin, onGoToRegister }: LoginProps) {
                 </button>
               </div>
               <div className="auth-forgot-link">
-                <button type="button" className="auth-forgot-btn">Lupa password?</button>
+                <button type="button" onClick={onForgotPassword} className="auth-forgot-btn">Lupa password?</button>
               </div>
             </div>
             <button type="submit" disabled={loading}

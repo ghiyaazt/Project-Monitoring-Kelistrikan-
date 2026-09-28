@@ -31,7 +31,12 @@ const nav: { id: Page; label: string; icon: React.ReactNode }[] = [
 ];
 
 export default function Sidebar({ current, onNavigate, onLogout, collapsed, onToggle, unreadCount = 2, anomalyCount = 3 }: SidebarProps) {
-  const { currentUser } = useApp();
+  const { iotDevices } = useApp();
+  
+  // Calculate summary
+  const totalDevices = iotDevices.length;
+  const connectedDevices = iotDevices.filter(d => d.status === "connected").length;
+  const hasDevices = totalDevices > 0;
   
   const badges: Partial<Record<Page, number>> = {};
 
@@ -77,14 +82,26 @@ export default function Sidebar({ current, onNavigate, onLogout, collapsed, onTo
         </button>
       </div>
 
-      {/* IoT status pill */}
-      {!collapsed && currentUser && (
+      {/* IoT status pill - Summary */}
+      {!collapsed && hasDevices && (
         <div className="sidebar-iot-status">
           <div className="sidebar-iot-pill">
             <span className="sidebar-iot-dot" />
             <div className="sidebar-iot-text">
-              <p className="sidebar-iot-label">{currentUser.deviceId} · Terhubung</p>
+              <p className="sidebar-iot-label">{connectedDevices} dari {totalDevices} perangkat · {connectedDevices > 0 ? "Terhubung" : "Terputus"}</p>
               <p className="sidebar-iot-update">Update: {new Date().toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}</p>
+            </div>
+          </div>
+        </div>
+      )}
+      
+      {!collapsed && !hasDevices && (
+        <div className="sidebar-iot-status">
+          <div className="sidebar-iot-pill" style={{ backgroundColor: '#fef2f2', borderColor: '#fecaca' }}>
+            <span className="sidebar-iot-dot" style={{ backgroundColor: '#ef4444' }} />
+            <div className="sidebar-iot-text">
+              <p className="sidebar-iot-label" style={{ color: '#991b1b' }}>Belum ada perangkat</p>
+              <p className="sidebar-iot-update" style={{ color: '#dc2626' }}>Tambahkan di Monitoring</p>
             </div>
           </div>
         </div>

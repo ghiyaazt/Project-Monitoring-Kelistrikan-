@@ -1,11 +1,13 @@
 import { useState } from "react";
+import { useApp } from "../../../context/AppContext";
 
 interface RegisterProps {
-  onRegister: () => void;
+  onRegister: (data: { nama: string; email: string; nomorTelepon: string; password: string }) => void;
   onBackToLogin: () => void;
 }
 
 export default function Register({ onRegister, onBackToLogin }: RegisterProps) {
+  const { themeMode, setThemeMode } = useApp();
   const [formData, setFormData] = useState({
     nama: "",
     email: "",
@@ -17,6 +19,44 @@ export default function Register({ onRegister, onBackToLogin }: RegisterProps) {
   const [error, setError] = useState("");
   const [showPass, setShowPass] = useState(false);
   const [showConfirmPass, setShowConfirmPass] = useState(false);
+
+  // Password validation function
+  function validatePassword(password: string): { isValid: boolean; errors: string[] } {
+    const errors: string[] = [];
+    
+    if (password.length < 6 || password.length > 10) {
+      errors.push("Password harus 6-10 karakter");
+    }
+    
+    if (!/[A-Z]/.test(password)) {
+      errors.push("Minimal 1 huruf besar");
+    }
+    
+    if (!/[a-z]/.test(password)) {
+      errors.push("Minimal 1 huruf kecil");
+    }
+    
+    if (!/[0-9]/.test(password)) {
+      errors.push("Minimal 1 angka");
+    }
+    
+    if (!/[!@#$%^&*(),.?":{}|<>_\-+=[\]\\/'`~]/.test(password)) {
+      errors.push("Minimal 1 tanda baca");
+    }
+    
+    return { isValid: errors.length === 0, errors };
+  }
+
+  // Check password requirements
+  const passwordCheck = {
+    length: formData.password.length >= 6 && formData.password.length <= 10,
+    uppercase: /[A-Z]/.test(formData.password),
+    lowercase: /[a-z]/.test(formData.password),
+    number: /[0-9]/.test(formData.password),
+    special: /[!@#$%^&*(),.?":{}|<>_\-+=[\]\\/'`~]/.test(formData.password),
+  };
+
+  const passwordStrength = Object.values(passwordCheck).filter(Boolean).length;
 
   function handleChange(field: string, value: string) {
     setFormData({ ...formData, [field]: value });
@@ -32,25 +72,86 @@ export default function Register({ onRegister, onBackToLogin }: RegisterProps) {
       return;
     }
 
-    if (formData.password !== formData.confirmPassword) {
-      setError("Password dan konfirmasi password tidak cocok.");
+    // Validate password strength
+    const validation = validatePassword(formData.password);
+    if (!validation.isValid) {
+      setError(validation.errors.join(", "));
       return;
     }
 
-    if (formData.password.length < 6) {
-      setError("Password minimal 6 karakter.");
+    if (formData.password !== formData.confirmPassword) {
+      setError("Password dan konfirmasi password tidak cocok.");
       return;
     }
 
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      onRegister(); 
+      // Pass registration data to parent (will trigger OTP verification)
+      onRegister({
+        nama: formData.nama,
+        email: formData.email,
+        nomorTelepon: formData.nomorTelepon,
+        password: formData.password
+      });
     }, 1200);
   }
 
   return (
     <div className="auth-container">
+      {/* Theme Switcher - Top Right */}
+      <div className="auth-theme-switcher">
+        <div className="auth-theme-toggle-container">
+          <div className="auth-theme-toggle-label">
+            <svg className="auth-theme-toggle-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+            <span className="auth-theme-toggle-text">Tema Tampilan</span>
+          </div>
+          <div className="auth-theme-toggle-buttons">
+            <button
+              onClick={() => setThemeMode('light')}
+              className={`auth-theme-toggle-btn ${
+                themeMode === 'light'
+                  ? 'auth-theme-toggle-btn-active'
+                  : 'auth-theme-toggle-btn-inactive'
+              }`}
+              title="Mode Terang">
+              <svg className="auth-theme-toggle-btn-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+              <span className="auth-theme-toggle-btn-label">Terang</span>
+            </button>
+            <button
+              onClick={() => setThemeMode('dark')}
+              className={`auth-theme-toggle-btn ${
+                themeMode === 'dark'
+                  ? 'auth-theme-toggle-btn-active'
+                  : 'auth-theme-toggle-btn-inactive'
+              }`}
+              title="Mode Gelap">
+              <svg className="auth-theme-toggle-btn-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+              </svg>
+              <span className="auth-theme-toggle-btn-label">Gelap</span>
+            </button>
+            <button
+              onClick={() => setThemeMode('system')}
+              className={`auth-theme-toggle-btn ${
+                themeMode === 'system'
+                  ? 'auth-theme-toggle-btn-active'
+                  : 'auth-theme-toggle-btn-inactive'
+              }`}
+              title="Ikuti Sistem">
+              <svg className="auth-theme-toggle-btn-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              <span className="auth-theme-toggle-btn-label">Sistem</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
       {/* Left brand panel */}
       <div className="auth-brand-panel">
         <div className="auth-brand-logo-row">
@@ -170,7 +271,7 @@ export default function Register({ onRegister, onBackToLogin }: RegisterProps) {
               <label className="input-label">Password</label>
               <div className="relative">
                 <input type={showPass ? "text" : "password"} value={formData.password} onChange={e => handleChange("password", e.target.value)}
-                  placeholder="Minimal 6 karakter"
+                  placeholder="Buat password kuat"
                   className="input auth-input-pr-11" />
                 <button type="button" onClick={() => setShowPass(!showPass)} className="auth-password-toggle">
                   {showPass
@@ -179,6 +280,62 @@ export default function Register({ onRegister, onBackToLogin }: RegisterProps) {
                   }
                 </button>
               </div>
+              
+              {/* Password Strength Indicator */}
+              {formData.password && (
+                <div className="mt-3">
+                  <div className="flex gap-1 mb-2">
+                    {[1, 2, 3, 4, 5].map(level => (
+                      <div key={level} className={`h-1 flex-1 rounded-full transition-colors ${
+                        passwordStrength >= level 
+                          ? passwordStrength === 5 ? 'bg-green-500' : passwordStrength >= 3 ? 'bg-yellow-500' : 'bg-red-500'
+                          : 'bg-slate-200 dark:bg-slate-700'
+                      }`} />
+                    ))}
+                  </div>
+                  <p className={`text-xs font-medium mb-2 ${
+                    passwordStrength === 5 ? 'text-green-600 dark:text-green-400' : 
+                    passwordStrength >= 3 ? 'text-yellow-600 dark:text-yellow-400' : 
+                    'text-red-600 dark:text-red-400'
+                  }`}>
+                    {passwordStrength === 5 ? 'Password Sangat Kuat' : 
+                     passwordStrength >= 3 ? 'Password Cukup Kuat' : 
+                     'Password Lemah'}
+                  </p>
+                  <div className="space-y-1">
+                    <div className={`flex items-center gap-2 text-xs ${passwordCheck.length ? 'text-green-600 dark:text-green-400' : 'text-slate-500 dark:text-slate-400'}`}>
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        {passwordCheck.length ? <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /> : <circle cx="12" cy="12" r="10" />}
+                      </svg>
+                      <span>6-10 karakter</span>
+                    </div>
+                    <div className={`flex items-center gap-2 text-xs ${passwordCheck.uppercase ? 'text-green-600 dark:text-green-400' : 'text-slate-500 dark:text-slate-400'}`}>
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        {passwordCheck.uppercase ? <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /> : <circle cx="12" cy="12" r="10" />}
+                      </svg>
+                      <span>Minimal 1 huruf besar (A-Z)</span>
+                    </div>
+                    <div className={`flex items-center gap-2 text-xs ${passwordCheck.lowercase ? 'text-green-600 dark:text-green-400' : 'text-slate-500 dark:text-slate-400'}`}>
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        {passwordCheck.lowercase ? <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /> : <circle cx="12" cy="12" r="10" />}
+                      </svg>
+                      <span>Minimal 1 huruf kecil (a-z)</span>
+                    </div>
+                    <div className={`flex items-center gap-2 text-xs ${passwordCheck.number ? 'text-green-600 dark:text-green-400' : 'text-slate-500 dark:text-slate-400'}`}>
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        {passwordCheck.number ? <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /> : <circle cx="12" cy="12" r="10" />}
+                      </svg>
+                      <span>Minimal 1 angka (0-9)</span>
+                    </div>
+                    <div className={`flex items-center gap-2 text-xs ${passwordCheck.special ? 'text-green-600 dark:text-green-400' : 'text-slate-500 dark:text-slate-400'}`}>
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        {passwordCheck.special ? <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /> : <circle cx="12" cy="12" r="10" />}
+                      </svg>
+                      <span>Minimal 1 tanda baca (!@#$%^&*)</span>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
 
             <div>

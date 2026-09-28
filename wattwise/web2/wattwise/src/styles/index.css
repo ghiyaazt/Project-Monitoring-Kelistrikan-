@@ -9,6 +9,15 @@
   box-sizing: border-box;
 }
 
+/* Ensure full height for html, body, and root */
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
 /* ============================================
    GLOBAL COLOR VARIABLES
    ============================================ */

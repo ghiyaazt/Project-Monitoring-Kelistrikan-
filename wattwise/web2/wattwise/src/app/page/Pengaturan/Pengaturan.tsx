@@ -22,7 +22,7 @@ export default function Pengaturan() {
     <div className="settings-container">
       <div>
         <h1 className="heading-xl">Pengaturan</h1>
-        <p className="settings-header-text">Pengaturan akun, notifikasi, dan perangkat IoT</p>
+        <p className="settings-header-text">Pengaturan notifikasi, dan Informasi Sistem</p>
       </div>
 
       {/* Info Sistem */}

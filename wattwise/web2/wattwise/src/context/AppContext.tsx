@@ -15,6 +15,8 @@ interface SmartWattWiseGroup {
   totalDaya: number;
 }
 
+type ThemeMode = 'light' | 'dark' | 'system';
+
 interface AppContextType {
   currentUser: User | null;
   setUser: (user: User) => void;
@@ -30,6 +32,10 @@ interface AppContextType {
   removeGroup: (groupId: string) => void;
   updateGroup: (groupId: string, updates: Partial<SmartWattWiseGroup>) => void;
   
+  themeMode: ThemeMode;
+  setThemeMode: (mode: ThemeMode) => void;
+  effectiveTheme: 'light' | 'dark';
+  
   clearAllData: () => void;
 }
 
@@ -39,6 +45,7 @@ const STORAGE_KEYS = {
   USER: 'wattwise_user',
   DEVICES: 'wattwise_devices',
   GROUPS: 'wattwise_groups',
+  THEME: 'wattwise_theme',
 };
 
 const loadFromStorage = <T,>(key: string, defaultValue: T): T => {
@@ -59,6 +66,13 @@ const saveToStorage = <T,>(key: string, value: T): void => {
   }
 };
 
+const getSystemTheme = (): 'light' | 'dark' => {
+  if (typeof window !== 'undefined' && window.matchMedia) {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  return 'light';
+};
+
 export function AppProvider({ children }: { children: ReactNode }) {
   // Initialize state from localStorage or use default
   const [currentUser, setCurrentUser] = useState<User | null>(() =>
@@ -73,6 +87,15 @@ export function AppProvider({ children }: { children: ReactNode }) {
     loadFromStorage(STORAGE_KEYS.GROUPS, [])
   );
 
+  const [themeMode, setThemeModeState] = useState<ThemeMode>(() =>
+    loadFromStorage(STORAGE_KEYS.THEME, 'system' as ThemeMode)
+  );
+
+  const [effectiveTheme, setEffectiveTheme] = useState<'light' | 'dark'>(() => {
+    const savedMode = loadFromStorage(STORAGE_KEYS.THEME, 'system' as ThemeMode);
+    return savedMode === 'system' ? getSystemTheme() : savedMode;
+  });
+
   useEffect(() => {
     saveToStorage(STORAGE_KEYS.USER, currentUser);
   }, [currentUser]);
@@ -84,6 +107,40 @@ export function AppProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     saveToStorage(STORAGE_KEYS.GROUPS, groups);
   }, [groups]);
+
+  // Listen to system theme changes
+  useEffect(() => {
+    if (themeMode === 'system') {
+      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      const handleChange = (e: MediaQueryListEvent) => {
+        setEffectiveTheme(e.matches ? 'dark' : 'light');
+      };
+      
+      mediaQuery.addEventListener('change', handleChange);
+      return () => mediaQuery.removeEventListener('change', handleChange);
+    }
+  }, [themeMode]);
+
+  // Apply theme to document
+  useEffect(() => {
+    const root = document.documentElement;
+    if (effectiveTheme === 'dark') {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+  }, [effectiveTheme]);
+
+  const setThemeMode = (mode: ThemeMode) => {
+    setThemeModeState(mode);
+    saveToStorage(STORAGE_KEYS.THEME, mode);
+    
+    if (mode === 'system') {
+      setEffectiveTheme(getSystemTheme());
+    } else {
+      setEffectiveTheme(mode);
+    }
+  };
 
   const setUser = (user: User) => {
     setCurrentUser(user);
@@ -132,6 +189,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
     setGroups(prev => prev.map(g => {
       if (g.id === groupId) {
         const updatedGroup = { ...g, ...updates };
+        // Recalculate total daya if devices array is updated
         if (updates.devices) {
           updatedGroup.totalDaya = updates.devices.reduce((sum, deviceId) => {
             const device = iotDevices.find(d => d.id === deviceId);
@@ -148,9 +206,12 @@ export function AppProvider({ children }: { children: ReactNode }) {
     localStorage.removeItem(STORAGE_KEYS.USER);
     localStorage.removeItem(STORAGE_KEYS.DEVICES);
     localStorage.removeItem(STORAGE_KEYS.GROUPS);
+    localStorage.removeItem(STORAGE_KEYS.THEME);
     setCurrentUser(null);
     setIotDevices(initialIotDevices);
     setGroups([]);
+    setThemeModeState('system');
+    setEffectiveTheme(getSystemTheme());
   };
 
   const value: AppContextType = {
@@ -165,6 +226,9 @@ export function AppProvider({ children }: { children: ReactNode }) {
     addGroup,
     removeGroup,
     updateGroup,
+    themeMode,
+    setThemeMode,
+    effectiveTheme,
     clearAllData,
   };
 

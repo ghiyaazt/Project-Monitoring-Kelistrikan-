@@ -221,6 +221,17 @@
   border-color: #e2e8f0;
 }
 
+/* Anomaly Type Specific - Spike (Red) vs Drop (Blue) */
+.dashboard-anomaly-item-spike {
+  background-color: #fef2f2;
+  border-color: #fecaca;
+}
+
+.dashboard-anomaly-item-drop {
+  background-color: #eff6ff;
+  border-color: #bfdbfe;
+}
+
 .dashboard-anomaly-icon {
   width: 2rem;
   height: 2rem;
@@ -237,6 +248,15 @@
 
 .dashboard-anomaly-icon-handled {
   background-color: #94a3b8;
+}
+
+/* Anomaly Icon Type Specific */
+.dashboard-anomaly-icon-spike {
+  background-color: #ef4444;
+}
+
+.dashboard-anomaly-icon-drop {
+  background-color: #2563eb;
 }
 
 .dashboard-anomaly-icon-svg {
