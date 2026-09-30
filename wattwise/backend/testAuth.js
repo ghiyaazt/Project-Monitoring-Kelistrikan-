@@ -10,9 +10,9 @@ const BASE_URL = 'http://localhost:5000/api/auth';
 
 // Data test user
 const testUser = {
-    namaLengkap: 'Test User WattWise',
+    nama: 'Test User WattWise',
     email: 'testuser@wattwise.com',
-    nomorTelepon: '08123456789',
+    no_telp: '08123456789',
     password: 'test123456',
     konfirmasiPassword: 'test123456'
 };

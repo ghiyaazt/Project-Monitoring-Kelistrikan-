@@ -13,10 +13,10 @@ const generateToken = (userId) => {
 // @access  Public
 exports.register = async (req, res) => {
     try {
-        const { namaLengkap, email, nomorTelepon, password, konfirmasiPassword } = req.body;
+        const { nama, email, no_telp, password, konfirmasiPassword } = req.body;
 
         // Validasi input
-        if (!namaLengkap || !email || !nomorTelepon || !password || !konfirmasiPassword) {
+        if (!nama || !email || !no_telp || !password || !konfirmasiPassword) {
             return res.status(400).json({
                 success: false,
                 message: "Semua field wajib diisi"
@@ -42,9 +42,9 @@ exports.register = async (req, res) => {
 
         // Create user
         const user = await User.create({
-            namaLengkap,
+            nama,
             email,
-            nomorTelepon,
+            no_telp,
             password
         });
 
@@ -56,10 +56,10 @@ exports.register = async (req, res) => {
             message: "Registrasi berhasil",
             data: {
                 user: {
-                    id: user.userId || user._id,
-                    namaLengkap: user.namaLengkap,
+                    id: user.id_user || user._id,
+                    nama: user.nama,
                     email: user.email,
-                    nomorTelepon: user.nomorTelepon,
+                    no_telp: user.no_telp,
                     role: user.role
                 },
                 token
@@ -133,10 +133,10 @@ exports.login = async (req, res) => {
             message: "Login berhasil",
             data: {
                 user: {
-                    id: user.userId || user._id,
-                    namaLengkap: user.namaLengkap,
+                    id: user.id_user || user._id,
+                    nama: user.nama,
                     email: user.email,
-                    nomorTelepon: user.nomorTelepon,
+                    no_telp: user.no_telp,
                     role: user.role
                 },
                 token

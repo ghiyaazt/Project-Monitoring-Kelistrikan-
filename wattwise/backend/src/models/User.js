@@ -4,15 +4,16 @@ const bcrypt = require("bcryptjs");
 const userSchema = new mongoose.Schema(
     {
         _id: {
-            type: String
+            type: mongoose.Schema.Types.ObjectId,
+            auto: true
         },
 
-        userId: {
+        id_user: {
             type: String,
             unique: true
         },
 
-        namaLengkap: {
+        nama: {
             type: String,
             required: [true, "Nama lengkap wajib diisi"],
             trim: true
@@ -27,7 +28,7 @@ const userSchema = new mongoose.Schema(
             match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, "Format email tidak valid"]
         },
 
-        nomorTelepon: {
+        no_telp: {
             type: String,
             required: [true, "Nomor telepon wajib diisi"],
             trim: true
@@ -58,35 +59,34 @@ const userSchema = new mongoose.Schema(
     }
 );
 
-// Auto-generate userId sebelum validate
+// Auto-generate id_user sebelum validate
 userSchema.pre("validate", async function () {
-    // Generate userId hanya untuk document baru
-    if (this.isNew && !this.userId) {
+    // Generate id_user hanya untuk document baru
+    if (this.isNew && !this.id_user) {
         try {
-            // Cari user terakhir berdasarkan userId
+            // Cari user terakhir berdasarkan id_user
             const User = mongoose.model("User");
-            const lastUser = await User.findOne({}, { userId: 1 })
-                .sort({ userId: -1 })
+            const lastUser = await User.findOne({}, { id_user: 1 })
+                .sort({ id_user: -1 })
                 .limit(1)
                 .lean();
 
             let nextId = 1;
-            if (lastUser && lastUser.userId) {
-                // Parse userId terakhir dan tambah 1
-                const lastIdNum = parseInt(lastUser.userId);
+            if (lastUser && lastUser.id_user) {
+                // Parse id_user terakhir dan tambah 1
+                const lastIdNum = parseInt(lastUser.id_user);
                 if (!isNaN(lastIdNum)) {
                     nextId = lastIdNum + 1;
                 }
             }
 
             // Format jadi 4 digit dengan leading zeros
-            this.userId = nextId.toString().padStart(4, "0");
-            this._id = this.userId; // Set _id sama dengan userId
+            this.id_user = nextId.toString().padStart(4, "0");
+            // JANGAN set _id, biar MongoDB yang auto-generate pakai ObjectId
         } catch (error) {
-            console.error("Error generating userId:", error);
+            console.error("Error generating id_user:", error);
             // Fallback: generate random 4 digit
-            this.userId = Math.floor(1000 + Math.random() * 9000).toString();
-            this._id = this.userId;
+            this.id_user = Math.floor(1000 + Math.random() * 9000).toString();
         }
     }
 });
