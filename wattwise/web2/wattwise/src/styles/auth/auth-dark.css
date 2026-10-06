@@ -1,4 +1,4 @@
-/* Auth Pages Dark Mode Overrides */
+﻿/* Auth Pages Dark Mode Overrides */
 
 /* Main Container */
 .dark .auth-container {
@@ -76,7 +76,7 @@
 .dark .input:focus,
 .dark .auth-form-panel .input:focus,
 .dark input.input:focus {
-  border-color: #16a34a !important;
+  border-color: #2f5cd1 !important;
   background-color: #1e293b !important;
   box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.2) !important;
 }
@@ -129,7 +129,7 @@
 
 /* Submit Button */
 .dark .auth-submit-btn {
-  background-color: #16a34a;
+  background-color: #2f5cd1;
   color: #ffffff;
 }
 

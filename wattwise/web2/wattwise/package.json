@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^13.5.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
+    "react-router-dom": "^7.18.4",
     "react-scripts": "5.0.1",
     "recharts": "^3.10.1",
     "web-vitals": "^2.1.4"
@@ -17,7 +18,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "clear-cache": "powershell -ExecutionPolicy Bypass -File scripts/clear-cache.ps1",
+    "clean-start": "powershell -ExecutionPolicy Bypass -File scripts/clean-start.ps1",
+    "fix": "powershell -ExecutionPolicy Bypass -File scripts/fix-dev.ps1"
   },
   "eslintConfig": {
     "extends": [
@@ -40,6 +44,7 @@
   "devDependencies": {
     "@types/node": "^26.5.1",
     "@types/react": "^19.3.0",
-    "@types/react-dom": "^19.3.0"
+    "@types/react-dom": "^19.3.0",
+    "@types/react-router-dom": "^5.3.3"
   }
 }

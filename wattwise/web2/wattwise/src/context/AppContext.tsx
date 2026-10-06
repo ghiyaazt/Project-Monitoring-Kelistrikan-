@@ -1,235 +1,104 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { iotDevices as initialIotDevices } from '../data/mockData';
-import { IoTDevice } from '../data/mockData';
-
-interface User {
-  name: string;
-  email: string;
-  deviceId: string;
-}
-
-interface SmartWattWiseGroup {
-  id: string;
-  name: string;
-  devices: string[];
-  totalDaya: number;
-}
-
-type ThemeMode = 'light' | 'dark' | 'system';
-
-interface AppContextType {
-  currentUser: User | null;
-  setUser: (user: User) => void;
-  logout: () => void;
-  
-  iotDevices: IoTDevice[];
-  addDevice: (device: IoTDevice) => void;
-  removeDevice: (deviceId: string) => void;
-  updateDevice: (deviceId: string, updates: Partial<IoTDevice>) => void;
-  
-  groups: SmartWattWiseGroup[];
-  addGroup: (group: Omit<SmartWattWiseGroup, 'id' | 'totalDaya'>) => void;
-  removeGroup: (groupId: string) => void;
-  updateGroup: (groupId: string, updates: Partial<SmartWattWiseGroup>) => void;
-  
-  themeMode: ThemeMode;
-  setThemeMode: (mode: ThemeMode) => void;
-  effectiveTheme: 'light' | 'dark';
-  
-  clearAllData: () => void;
-}
+import { createContext, useContext, ReactNode } from 'react';
+import { AppContextType } from './types';
+import { STORAGE_KEYS } from './storage';
+import {
+  useUserManagement,
+  useDeviceManagement,
+  useKosManagement,
+  usePerangkatManagement,
+  useThemeManagement
+} from '../hooks/context';
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
-const STORAGE_KEYS = {
-  USER: 'wattwise_user',
-  DEVICES: 'wattwise_devices',
-  GROUPS: 'wattwise_groups',
-  THEME: 'wattwise_theme',
-};
-
-const loadFromStorage = <T,>(key: string, defaultValue: T): T => {
-  try {
-    const item = localStorage.getItem(key);
-    return item ? JSON.parse(item) : defaultValue;
-  } catch (error) {
-    console.error(`Error loading ${key} from localStorage:`, error);
-    return defaultValue;
-  }
-};
-
-const saveToStorage = <T,>(key: string, value: T): void => {
-  try {
-    localStorage.setItem(key, JSON.stringify(value));
-  } catch (error) {
-    console.error(`Error saving ${key} to localStorage:`, error);
-  }
-};
-
-const getSystemTheme = (): 'light' | 'dark' => {
-  if (typeof window !== 'undefined' && window.matchMedia) {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  }
-  return 'light';
-};
-
 export function AppProvider({ children }: { children: ReactNode }) {
-  // Initialize state from localStorage or use default
-  const [currentUser, setCurrentUser] = useState<User | null>(() =>
-    loadFromStorage(STORAGE_KEYS.USER, null)
-  );
+  // User management
+  const { currentUser, setUser, logout } = useUserManagement();
   
-  const [iotDevices, setIotDevices] = useState<IoTDevice[]>(() =>
-    loadFromStorage(STORAGE_KEYS.DEVICES, initialIotDevices)
-  );
+  // Device management
+  const {
+    iotDevices,
+    groups,
+    addDevice,
+    removeDevice,
+    updateDevice,
+    addGroup,
+    removeGroup,
+    updateGroup
+  } = useDeviceManagement();
   
-  const [groups, setGroups] = useState<SmartWattWiseGroup[]>(() =>
-    loadFromStorage(STORAGE_KEYS.GROUPS, [])
-  );
+  // Kos management
+  const {
+    kosList,
+    addKos,
+    removeKos,
+    updateKos,
+    addKamarToKos,
+    updateKamarInKos,
+    deleteKamarFromKos
+  } = useKosManagement();
+  
+  // Perangkat management
+  const {
+    perangkatList,
+    addPerangkat,
+    removePerangkat
+  } = usePerangkatManagement();
+  
+  // Theme management
+  const {
+    themeMode,
+    setThemeMode,
+    effectiveTheme
+  } = useThemeManagement();
 
-  const [themeMode, setThemeModeState] = useState<ThemeMode>(() =>
-    loadFromStorage(STORAGE_KEYS.THEME, 'system' as ThemeMode)
-  );
-
-  const [effectiveTheme, setEffectiveTheme] = useState<'light' | 'dark'>(() => {
-    const savedMode = loadFromStorage(STORAGE_KEYS.THEME, 'system' as ThemeMode);
-    return savedMode === 'system' ? getSystemTheme() : savedMode;
-  });
-
-  useEffect(() => {
-    saveToStorage(STORAGE_KEYS.USER, currentUser);
-  }, [currentUser]);
-
-  useEffect(() => {
-    saveToStorage(STORAGE_KEYS.DEVICES, iotDevices);
-  }, [iotDevices]);
-
-  useEffect(() => {
-    saveToStorage(STORAGE_KEYS.GROUPS, groups);
-  }, [groups]);
-
-  // Listen to system theme changes
-  useEffect(() => {
-    if (themeMode === 'system') {
-      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-      const handleChange = (e: MediaQueryListEvent) => {
-        setEffectiveTheme(e.matches ? 'dark' : 'light');
-      };
-      
-      mediaQuery.addEventListener('change', handleChange);
-      return () => mediaQuery.removeEventListener('change', handleChange);
-    }
-  }, [themeMode]);
-
-  // Apply theme to document
-  useEffect(() => {
-    const root = document.documentElement;
-    if (effectiveTheme === 'dark') {
-      root.classList.add('dark');
-    } else {
-      root.classList.remove('dark');
-    }
-  }, [effectiveTheme]);
-
-  const setThemeMode = (mode: ThemeMode) => {
-    setThemeModeState(mode);
-    saveToStorage(STORAGE_KEYS.THEME, mode);
-    
-    if (mode === 'system') {
-      setEffectiveTheme(getSystemTheme());
-    } else {
-      setEffectiveTheme(mode);
-    }
-  };
-
-  const setUser = (user: User) => {
-    setCurrentUser(user);
-  };
-
-  const logout = () => {
-    setCurrentUser(null);
-    localStorage.removeItem(STORAGE_KEYS.USER);
-  };
-
-  const addDevice = (device: IoTDevice) => {
-    setIotDevices(prev => [...prev, device]);
-  };
-
-  const removeDevice = (deviceId: string) => {
-    setIotDevices(prev => prev.filter(d => d.id !== deviceId));
-    setGroups(prev => prev.map(g => ({
-      ...g,
-      devices: g.devices.filter(id => id !== deviceId)
-    })));
-  };
-
-  const updateDevice = (deviceId: string, updates: Partial<IoTDevice>) => {
-    setIotDevices(prev => prev.map(d => 
-      d.id === deviceId ? { ...d, ...updates } : d
-    ));
-  };
-
-  const addGroup = (group: Omit<SmartWattWiseGroup, 'id' | 'totalDaya'>) => {
-    const newGroup: SmartWattWiseGroup = {
-      ...group,
-      id: `grp${Date.now()}`,
-      totalDaya: group.devices.reduce((sum, deviceId) => {
-        const device = iotDevices.find(d => d.id === deviceId);
-        return sum + (device?.daya || 0);
-      }, 0),
-    };
-    setGroups(prev => [...prev, newGroup]);
-  };
-
-  const removeGroup = (groupId: string) => {
-    setGroups(prev => prev.filter(g => g.id !== groupId));
-  };
-
-  const updateGroup = (groupId: string, updates: Partial<SmartWattWiseGroup>) => {
-    setGroups(prev => prev.map(g => {
-      if (g.id === groupId) {
-        const updatedGroup = { ...g, ...updates };
-        // Recalculate total daya if devices array is updated
-        if (updates.devices) {
-          updatedGroup.totalDaya = updates.devices.reduce((sum, deviceId) => {
-            const device = iotDevices.find(d => d.id === deviceId);
-            return sum + (device?.daya || 0);
-          }, 0);
-        }
-        return updatedGroup;
-      }
-      return g;
-    }));
-  };
-
+  // Clear all data utility
   const clearAllData = () => {
-    localStorage.removeItem(STORAGE_KEYS.USER);
-    localStorage.removeItem(STORAGE_KEYS.DEVICES);
-    localStorage.removeItem(STORAGE_KEYS.GROUPS);
-    localStorage.removeItem(STORAGE_KEYS.THEME);
-    setCurrentUser(null);
-    setIotDevices(initialIotDevices);
-    setGroups([]);
-    setThemeModeState('system');
-    setEffectiveTheme(getSystemTheme());
+    Object.values(STORAGE_KEYS).forEach(key => {
+      localStorage.removeItem(key);
+    });
+    window.location.reload(); // Reload to reinitialize all hooks
   };
 
   const value: AppContextType = {
+    // User
     currentUser,
     setUser,
     logout,
+    
+    // IoT Devices
     iotDevices,
     addDevice,
     removeDevice,
     updateDevice,
+    
+    // Groups
     groups,
     addGroup,
     removeGroup,
     updateGroup,
+    
+    // Kos
+    kosList,
+    addKos,
+    removeKos,
+    updateKos,
+    addKamarToKos,
+    updateKamarInKos,
+    deleteKamarFromKos,
+    
+    // Perangkat
+    perangkatList,
+    addPerangkat,
+    removePerangkat,
+    
+    // Theme
     themeMode,
     setThemeMode,
     effectiveTheme,
-    clearAllData,
+    
+    // Utilities
+    clearAllData
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
@@ -242,3 +111,6 @@ export function useApp() {
   }
   return context;
 }
+
+// Re-export types for convenience
+export type { User, Penghuni, Payment, Kamar, Kos, Perangkat } from './types';

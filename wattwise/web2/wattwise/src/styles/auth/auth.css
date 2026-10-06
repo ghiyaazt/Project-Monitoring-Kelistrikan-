@@ -1,4 +1,4 @@
-/* Auth Styles - Login & Register */
+﻿/* Auth Styles - Login & Register */
 
 .auth-container {
   min-height: 100vh;
@@ -11,7 +11,7 @@
   justify-content: space-between;
   width: 460px;
   flex-shrink: 0;
-  background: linear-gradient(to bottom right, #16a34a, #15803d, #1d4ed8);
+  background: linear-gradient(to bottom right, #2f5cd1, #15803d, #1d4ed8);
   padding: 3rem;
   color: #ffffff;
 }
@@ -109,7 +109,7 @@
   width: 100%;
   padding: 0.75rem;
   border-radius: 0.75rem;
-  background-color: #16a34a;
+  background-color: #2f5cd1;
   color: #ffffff;
   font-size: 0.875rem;
   font-weight: 600;
@@ -135,7 +135,7 @@
 }
 
 .auth-link-button {
-  color: #16a34a;
+  color: #2f5cd1;
   font-weight: 500;
 }
 
@@ -245,7 +245,7 @@
 }
 
 .auth-back-link:hover {
-  color: #16a34a;
+  color: #2f5cd1;
 }
 
 .auth-back-icon {

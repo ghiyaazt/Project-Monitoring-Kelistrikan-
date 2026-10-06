@@ -1,0 +1,1 @@
+export { generatePayments } from './paymentUtils';

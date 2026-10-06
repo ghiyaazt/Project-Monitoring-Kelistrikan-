@@ -1,0 +1,193 @@
+/* DaftarKos Dark Mode Styles */
+
+.dark .daftarkos-container {
+  background-color: #0f172a;
+  color: #f1f5f9;
+}
+
+.dark .daftarkos-title {
+  color: #f1f5f9;
+}
+
+.dark .daftarkos-subtitle {
+  color: #94a3b8;
+}
+
+.dark .daftarkos-search-icon {
+  color: #64748b;
+}
+
+.dark .daftarkos-search-input {
+  background-color: #1e293b;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+
+.dark .daftarkos-search-input::placeholder {
+  color: #64748b;
+}
+
+.dark .daftarkos-search-input:focus {
+  border-color: #10b981;
+  ring-color: rgba(16, 185, 129, 0.5);
+}
+
+.dark .daftarkos-btn-primary {
+  background-color: #10b981;
+  color: white;
+}
+
+.dark .daftarkos-btn-primary:hover {
+  background-color: #059669;
+}
+
+.dark .daftarkos-card {
+  background-color: #1e293b;
+  border-color: #334155;
+}
+
+.dark .daftarkos-card:hover {
+  border-color: #10b981;
+  box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.2);
+}
+
+.dark .daftarkos-card-badge {
+  background-color: rgba(16, 185, 129, 0.9);
+  color: white;
+}
+
+.dark .daftarkos-card-title {
+  color: #f1f5f9;
+}
+
+.dark .daftarkos-card-address {
+  color: #94a3b8;
+}
+
+.dark .daftarkos-card-icon {
+  color: #10b981;
+}
+
+.dark .daftarkos-stat-label {
+  color: #94a3b8;
+}
+
+.dark .daftarkos-stat-value {
+  color: #f1f5f9;
+}
+
+.dark .daftarkos-occupancy-header {
+  color: #94a3b8;
+}
+
+.dark .daftarkos-occupancy-bar {
+  background-color: #334155;
+}
+
+.dark .daftarkos-price {
+  border-top-color: #334155;
+}
+
+.dark .daftarkos-price-label {
+  color: #94a3b8;
+}
+
+.dark .daftarkos-price-value {
+  color: #10b981;
+}
+
+.dark .daftarkos-price-range {
+  color: #64748b;
+}
+
+.dark .daftarkos-empty-icon {
+  color: #475569;
+}
+
+.dark .daftarkos-empty-title {
+  color: #f1f5f9;
+}
+
+.dark .daftarkos-empty-text {
+  color: #94a3b8;
+}
+
+.dark .daftarkos-modal {
+  background-color: #1e293b;
+}
+
+.dark .daftarkos-modal-header {
+  border-bottom-color: #334155;
+}
+
+.dark .daftarkos-modal-title {
+  color: #f1f5f9;
+}
+
+.dark .daftarkos-modal-close {
+  background-color: #334155;
+  color: #94a3b8;
+}
+
+.dark .daftarkos-modal-close:hover {
+  background-color: #475569;
+  color: #f1f5f9;
+}
+
+.dark .daftarkos-modal-footer {
+  border-top-color: #334155;
+}
+
+.dark .daftarkos-form-label {
+  color: #f1f5f9;
+}
+
+.dark .daftarkos-form-input,
+.dark .daftarkos-form-textarea {
+  background-color: #0f172a;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+
+.dark .daftarkos-form-input::placeholder,
+.dark .daftarkos-form-textarea::placeholder {
+  color: #64748b;
+}
+
+.dark .daftarkos-form-input:focus,
+.dark .daftarkos-form-textarea:focus {
+  border-color: #10b981;
+  ring-color: rgba(16, 185, 129, 0.5);
+}
+
+.dark .daftarkos-upload-area {
+  border-color: #334155;
+  background-color: #0f172a;
+}
+
+.dark .daftarkos-upload-area:hover {
+  border-color: #10b981;
+  background-color: #1e293b;
+}
+
+.dark .daftarkos-upload-icon {
+  color: #64748b;
+}
+
+.dark .daftarkos-upload-text {
+  color: #f1f5f9;
+}
+
+.dark .daftarkos-upload-subtext {
+  color: #94a3b8;
+}
+
+.dark .daftarkos-btn-secondary {
+  background-color: #334155;
+  border-color: #475569;
+  color: #f1f5f9;
+}
+
+.dark .daftarkos-btn-secondary:hover {
+  background-color: #475569;
+}
