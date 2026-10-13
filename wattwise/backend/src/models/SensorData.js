@@ -46,12 +46,15 @@ const sensorDataSchema = new mongoose.Schema(
         timestamp: {
             type: Date,
             default: Date.now
+        },
+
+        timestampWIB: {
+            type: Date
         }
     },
     {
         collection: "sensor_data",
-        timestamps: true, // Tambahan createdAt & updatedAt
-        versionKey: false // Disable __v field
+        timestamps: true // Tambahan createdAt & updatedAt
     }
 );
 

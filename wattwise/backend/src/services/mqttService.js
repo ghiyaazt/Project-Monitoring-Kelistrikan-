@@ -40,6 +40,17 @@ const subscribeToPZEMData = () => {
  */
 const saveSensorData = async (data) => {
     try {
+        // Konversi waktu ke WIB (UTC+7)
+        const getWIBTime = () => {
+            const now = new Date();
+            // Tambahkan 7 jam untuk WIB
+            const wibTime = new Date(now.getTime() + (7 * 60 * 60 * 1000));
+            return wibTime;
+        };
+
+        const currentTime = new Date();
+        const wibTime = getWIBTime();
+
         // Map data dari ESP32 ke schema MongoDB
         const sensorData = new SensorData({
             device_id: data.device_id || "esp32-pzem-01",
@@ -62,7 +73,11 @@ const saveSensorData = async (data) => {
             motion: data.motion || false,
             date: data.date || new Date().toISOString().split('T')[0],
             
-            timestamp: data.timestamp ? new Date(data.timestamp * 1000) : new Date()
+            // Waktu UTC (kolom lama tetap ada)
+            timestamp: data.timestamp ? new Date(data.timestamp * 1000) : currentTime,
+            
+            // Waktu WIB (kolom baru)
+            timestampWIB: wibTime
         });
 
         await sensorData.save();
@@ -73,7 +88,9 @@ const saveSensorData = async (data) => {
             power: sensorData.power,
             energy: sensorData.energy,
             frequency: sensorData.frequency,
-            powerfactor: sensorData.powerfactor
+            powerfactor: sensorData.powerfactor,
+            timestamp: sensorData.timestamp,
+            timestampWIB: sensorData.timestampWIB
         });
     } catch (error) {
         console.error("❌ Error saving sensor data to DB:", error.message);
