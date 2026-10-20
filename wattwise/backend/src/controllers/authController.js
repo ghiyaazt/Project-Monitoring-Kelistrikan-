@@ -13,7 +13,7 @@ const generateToken = (userId) => {
 // @access  Public
 exports.register = async (req, res) => {
     try {
-        const { nama, email, no_telp, password, konfirmasiPassword } = req.body;
+        const { nama, email, no_telp, password, konfirmasiPassword, role } = req.body;
 
         // Validasi input
         if (!nama || !email || !no_telp || !password || !konfirmasiPassword) {
@@ -31,6 +31,10 @@ exports.register = async (req, res) => {
             });
         }
 
+        // Validasi role (jika dikirim)
+        const allowedRoles = ["owner", "penghuni", "admin"];
+        const userRole = role && allowedRoles.includes(role) ? role : "penghuni";
+
         // Check if user exists
         const existingUser = await User.findOne({ email });
         if (existingUser) {
@@ -45,7 +49,8 @@ exports.register = async (req, res) => {
             nama,
             email,
             no_telp,
-            password
+            password,
+            role: userRole
         });
 
         // Generate token

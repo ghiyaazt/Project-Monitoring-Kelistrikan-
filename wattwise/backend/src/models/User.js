@@ -43,8 +43,11 @@ const userSchema = new mongoose.Schema(
 
         role: {
             type: String,
-            enum: ["user", "admin"],
-            default: "user"
+            enum: {
+                values: ["owner", "penghuni", "admin"],
+                message: "Role harus owner, penghuni, atau admin"
+            },
+            default: "penghuni"
         },
 
         isActive: {
