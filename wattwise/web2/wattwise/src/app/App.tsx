@@ -4,7 +4,7 @@ import "../styles/common/app.css";
 import { type Page } from "../constants/navigation";
 // Auth Pages
 import Login from "../features/auth/components/Login/Login";
-import Register from "../features/auth/components/Register/Register";
+// import Register from "../features/auth/components/Register/Register"; // Unused
 import ContactForRegistration from "../features/auth/components/ContactForRegistration/ContactForRegistration";
 import VerifyOTP from "../features/auth/components/VerifyOTP/VerifyOTP";
 import ForgotPassword from "../features/auth/components/ForgotPassword/ForgotPassword";
@@ -122,17 +122,10 @@ function DesktopApp() {
     }
     
     if (authView === "register") {
-      return <Register 
-        onRegister={(data) => {
-          // Registration successful via backend API
-          // User is already logged in from authService
-          setRegistrationData(data);
-          // Optionally navigate to OTP verification if needed
-          // For now, registration already logs user in
-        }}
+      return <ContactForRegistration 
         onBackToLogin={() => setAuthView("login")}
         onBackToLanding={() => {
-          setAuthView("login");
+          setAuthView("login"); // Reset to login
           setAppView("landing");
         }}
       />;

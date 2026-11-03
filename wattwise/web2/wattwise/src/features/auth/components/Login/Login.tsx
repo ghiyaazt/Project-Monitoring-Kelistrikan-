@@ -1,7 +1,6 @@
 import { wattwiseIcon, wattwiseText } from "../../../../assets/logos";
 import { useState } from "react";
 import { useApp } from "../../../../context/AppContext";
-import authService from "../../../../services/authService";
 
 interface LoginProps {
   onLogin: () => void;
@@ -18,41 +17,24 @@ export default function Login({ onLogin, onGoToRegister, onForgotPassword, onBac
   const [error, setError] = useState("");
   const [showPass, setShowPass] = useState(false);
 
-  async function handleSubmit(e: React.FormEvent) {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
-    
-    // Validasi input
-    if (!email || !password) { 
-      setError("Email dan password wajib diisi."); 
-      return; 
-    }
-
+    if (!email || !password) { setError("Email dan password wajib diisi."); return; }
     setLoading(true);
-    
-    try {
-      // Call backend API
-      const response = await authService.login({ email, password });
-      
-      if (response.success && response.data) {
-        // Set user data to context
-        setUser({
-          name: response.data.user.nama,
-          email: response.data.user.email,
-          deviceId: "FC24-0041" // Default device ID
-        });
-        
-        // Success callback
-        onLogin();
-      } else {
-        setError(response.message || "Login gagal. Silakan coba lagi.");
-      }
-    } catch (err: any) {
-      console.error("Login error:", err);
-      setError(err.message || "Terjadi kesalahan. Pastikan backend sudah running.");
-    } finally {
+    setTimeout(() => {
       setLoading(false);
-    }
+      
+      const name = email.split('@')[0];
+      
+      setUser({
+        name: name.charAt(0).toUpperCase() + name.slice(1),
+        email: email,
+        deviceId: "FC24-0041"
+      });
+      
+      onLogin();
+    }, 900);
   }
 
   return (

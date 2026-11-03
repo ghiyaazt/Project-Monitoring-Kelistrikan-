@@ -2,23 +2,20 @@ import { useState } from "react";
 import { wattwiseIcon, wattwiseText } from "../../../../assets/logos";
 import { useApp } from "../../../../context/AppContext";
 import PasswordStrengthIndicator, { validatePassword, getPasswordCheck } from "../shared/PasswordStrengthIndicator";
-import authService from "../../../../services/authService";
 
 interface RegisterProps {
   onRegister: (data: { nama: string; email: string; nomorTelepon: string; password: string }) => void;
   onBackToLogin: () => void;
-  onBackToLanding?: () => void;
 }
 
-export default function Register({ onRegister, onBackToLogin, onBackToLanding }: RegisterProps) {
-  const { themeMode, setThemeMode, setUser } = useApp();
+export default function Register({ onRegister, onBackToLogin }: RegisterProps) {
+  const { themeMode, setThemeMode } = useApp();
   const [formData, setFormData] = useState({
     nama: "",
     email: "",
     password: "",
     confirmPassword: "",
     nomorTelepon: "",
-    role: "penghuni" as "owner" | "penghuni" | "admin"
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -31,12 +28,12 @@ export default function Register({ onRegister, onBackToLogin, onBackToLanding }:
     setFormData({ ...formData, [field]: value });
   }
 
-  async function handleSubmit(e: React.FormEvent) {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
 
     // Validasi
-    if (!formData.nama || !formData.email || !formData.password || !formData.confirmPassword || !formData.nomorTelepon) {
+    if (!formData.nama || !formData.email || !formData.password || !formData.confirmPassword) {
       setError("Semua field wajib diisi.");
       return;
     }
@@ -54,42 +51,16 @@ export default function Register({ onRegister, onBackToLogin, onBackToLanding }:
     }
 
     setLoading(true);
-    
-    try {
-      // Call backend API
-      const response = await authService.register({
+    setTimeout(() => {
+      setLoading(false);
+      // Pass registration data to parent (will trigger OTP verification)
+      onRegister({
         nama: formData.nama,
         email: formData.email,
-        no_telp: formData.nomorTelepon,
-        password: formData.password,
-        konfirmasiPassword: formData.confirmPassword,
-        role: formData.role
+        nomorTelepon: formData.nomorTelepon,
+        password: formData.password
       });
-      
-      if (response.success && response.data) {
-        // Set user data to context
-        setUser({
-          name: response.data.user.nama,
-          email: response.data.user.email,
-          deviceId: "FC24-0041" // Default device ID
-        });
-        
-        // Pass registration data to parent (optional for OTP flow if needed)
-        onRegister({
-          nama: formData.nama,
-          email: formData.email,
-          nomorTelepon: formData.nomorTelepon,
-          password: formData.password
-        });
-      } else {
-        setError(response.message || "Registrasi gagal. Silakan coba lagi.");
-      }
-    } catch (err: any) {
-      console.error("Register error:", err);
-      setError(err.message || "Terjadi kesalahan. Pastikan backend sudah running.");
-    } finally {
-      setLoading(false);
-    }
+    }, 1200);
   }
 
   return (
@@ -201,18 +172,6 @@ export default function Register({ onRegister, onBackToLogin, onBackToLanding }:
       {/* Right form panel */}
       <div className="auth-form-panel">
         <div className="auth-form-container">
-          {/* Back to Landing Button */}
-          {onBackToLanding && (
-            <button
-              onClick={onBackToLanding}
-              className="mb-4 flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-watt-blue dark:hover:text-watt-blue-light transition-colors text-sm font-medium">
-              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-              </svg>
-              Kembali ke Beranda
-            </button>
-          )}
-          
           <div className="auth-mobile-logo">
             <div className="auth-mobile-icon">
               <img 
@@ -272,22 +231,6 @@ export default function Register({ onRegister, onBackToLogin, onBackToLanding }:
               <input type="tel" value={formData.nomorTelepon} onChange={e => handleChange("nomorTelepon", e.target.value)}
                 placeholder="08xxxxxxxxx"
                 className="input" />
-            </div>
-
-            <div>
-              <label className="input-label">Role/Peran</label>
-              <select 
-                value={formData.role} 
-                onChange={e => handleChange("role", e.target.value)}
-                className="input"
-              >
-                <option value="penghuni">Penghuni</option>
-                <option value="owner">Owner/Pemilik Kos</option>
-                <option value="admin">Admin</option>
-              </select>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
-                Pilih role sesuai dengan kebutuhan Anda
-              </p>
             </div>
 
             <div>
