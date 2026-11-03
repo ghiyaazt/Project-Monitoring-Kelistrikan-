@@ -1,0 +1,285 @@
+/* Kamar Pages - Dark Mode Styles */
+
+/* Container */
+.dark .kamar-container {
+  background-color: #0f172a;
+  color: #f1f5f9;
+}
+
+/* Header */
+.dark .kamar-title {
+  color: #f1f5f9;
+}
+
+.dark .kamar-subtitle {
+  color: #94a3b8;
+}
+
+.dark .kamar-back-btn {
+  background-color: #1e293b;
+  color: #94a3b8;
+}
+
+.dark .kamar-back-btn:hover {
+  background-color: #334155;
+  color: #f1f5f9;
+}
+
+/* Search & Filter */
+.dark .kamar-search-bar {
+  background-color: #1e293b;
+  border-color: #334155;
+}
+
+.dark .kamar-search-icon {
+  color: #64748b;
+}
+
+.dark .kamar-search-input {
+  color: #f1f5f9;
+}
+
+.dark .kamar-search-input::placeholder {
+  color: #64748b;
+}
+
+.dark .kamar-filter-select {
+  background-color: #0f172a;
+  border-color: #334155;
+  color: #f1f5f9;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2394a3b8' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+}
+
+.dark .kamar-clear-btn {
+  background-color: #334155;
+  color: #94a3b8;
+}
+
+.dark .kamar-clear-btn:hover {
+  background-color: #475569;
+  color: #f1f5f9;
+}
+
+/* Buttons */
+.dark .kamar-btn-primary {
+  background-color: #10b981;
+  color: white;
+}
+
+.dark .kamar-btn-primary:hover {
+  background-color: #059669;
+}
+
+.dark .kamar-btn-secondary {
+  background-color: #334155;
+  border-color: #475569;
+  color: #f1f5f9;
+}
+
+.dark .kamar-btn-secondary:hover {
+  background-color: #475569;
+}
+
+.dark .kamar-btn-icon-only {
+  background-color: #1e293b;
+  color: #94a3b8;
+}
+
+.dark .kamar-btn-icon-only:hover {
+  background-color: #334155;
+  color: #f1f5f9;
+}
+
+/* Cards */
+.dark .kamar-card {
+  background-color: #1e293b;
+  border-color: #334155;
+}
+
+.dark .kamar-card:hover {
+  border-color: #10b981;
+  box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.2);
+}
+
+.dark .kamar-card-header {
+  border-bottom-color: #334155;
+}
+
+.dark .kamar-card-footer {
+  border-top-color: #334155;
+}
+
+.dark .kamar-card-title {
+  color: #f1f5f9;
+}
+
+.dark .kamar-card-subtitle {
+  color: #94a3b8;
+}
+
+/* Badge/Status - Dark Mode */
+.dark .kamar-status-success {
+  background-color: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+}
+
+.dark .kamar-status-warning {
+  background-color: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+}
+
+.dark .kamar-status-error {
+  background-color: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+}
+
+.dark .kamar-status-info {
+  background-color: rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+}
+
+.dark .kamar-status-neutral {
+  background-color: rgba(71, 85, 105, 0.3);
+  color: #cbd5e1;
+}
+
+/* Stats */
+.dark .kamar-stat-label {
+  color: #94a3b8;
+}
+
+.dark .kamar-stat-value {
+  color: #f1f5f9;
+}
+
+/* Empty State */
+.dark .kamar-empty {
+  background-color: #1e293b;
+  border-color: #334155;
+}
+
+.dark .kamar-empty-title {
+  color: #f1f5f9;
+}
+
+.dark .kamar-empty-text {
+  color: #94a3b8;
+}
+
+/* Modal */
+.dark .kamar-modal {
+  background-color: #1e293b;
+}
+
+.dark .kamar-modal-header {
+  border-bottom-color: #334155;
+}
+
+.dark .kamar-modal-title {
+  color: #f1f5f9;
+}
+
+.dark .kamar-modal-close {
+  background-color: #334155;
+  color: #94a3b8;
+}
+
+.dark .kamar-modal-close:hover {
+  background-color: #475569;
+  color: #f1f5f9;
+}
+
+.dark .kamar-modal-footer {
+  border-top-color: #334155;
+}
+
+/* Form Elements */
+.dark .kamar-form-label {
+  color: #f1f5f9;
+}
+
+.dark .kamar-form-input,
+.dark .kamar-form-textarea,
+.dark .kamar-form-select {
+  background-color: #0f172a;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+
+.dark .kamar-form-input::placeholder,
+.dark .kamar-form-textarea::placeholder {
+  color: #64748b;
+}
+
+.dark .kamar-form-input:focus,
+.dark .kamar-form-textarea:focus,
+.dark .kamar-form-select:focus {
+  border-color: #10b981;
+  ring-color: rgba(16, 185, 129, 0.5);
+}
+
+/* Table */
+.dark .kamar-table-container {
+  background-color: #1e293b;
+  border-color: #334155;
+}
+
+.dark .kamar-table thead {
+  background-color: #0f172a;
+  border-bottom-color: #334155;
+}
+
+.dark .kamar-table th {
+  color: #94a3b8;
+}
+
+.dark .kamar-table td {
+  color: #f1f5f9;
+  border-bottom-color: #334155;
+}
+
+.dark .kamar-table tbody tr:hover {
+  background-color: rgba(51, 65, 85, 0.3);
+}
+
+/* Tabs */
+.dark .kamar-tabs {
+  border-bottom-color: #334155;
+}
+
+.dark .kamar-tab {
+  color: #94a3b8;
+}
+
+.dark .kamar-tab:hover {
+  color: #f1f5f9;
+}
+
+.dark .kamar-tab.active {
+  color: #10b981;
+  border-bottom-color: #10b981;
+}
+
+/* Info Row */
+.dark .kamar-info-icon {
+  color: #10b981;
+}
+
+.dark .kamar-info-label {
+  color: #94a3b8;
+}
+
+.dark .kamar-info-value {
+  color: #f1f5f9;
+}
+
+/* Divider */
+.dark .kamar-divider {
+  background-color: #334155;
+}
+
+/* Loading Spinner */
+.dark .kamar-spinner {
+  border-color: #334155;
+  border-top-color: #10b981;
+}

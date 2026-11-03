@@ -1,7 +1,7 @@
 require("dotenv").config();
 
 const app = require("./src/app");
-const connectDatabase = require("./src/config/database");
+const { connectDatabase } = require("./src/config/database");
 const { connectMQTT, disconnectMQTT } = require("./src/config/mqtt");
 const { subscribeToPZEMData } = require("./src/services/mqttService");
 
@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 5000;
 
 const startServer = async () => {
     try {
-        // Connect to MongoDB
+        // Connect to MongoDB (both main and IoT databases)
         await connectDatabase();
 
         // Connect to MQTT Broker
@@ -21,6 +21,8 @@ const startServer = async () => {
         // Start Express server
         app.listen(PORT, () => {
             console.log(`🚀 WattWise Backend running on port ${PORT}`);
+            console.log(`📊 Environment: ${process.env.NODE_ENV || 'development'}`);
+            console.log(`🌐 API URL: http://localhost:${PORT}`);
         });
     } catch (error) {
         console.error("❌ Failed to start server:", error);

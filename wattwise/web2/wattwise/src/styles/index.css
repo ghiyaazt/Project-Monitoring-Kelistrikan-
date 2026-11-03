@@ -9,6 +9,15 @@
   box-sizing: border-box;
 }
 
+/* Ensure full height for html, body, and root */
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
 /* ============================================
    GLOBAL COLOR VARIABLES
    ============================================ */
@@ -168,9 +177,10 @@
 @import './common/index.css';
 @import './auth/index.css';
 @import './dashboard/index.css';
-@import './monitoring/index.css';
+@import './daftarkos/index.css';
+@import './kamar/index.css';
+@import './landing/index.css';
+@import './profil/index.css';
 @import './settings/index.css';
 @import './sidebar/index.css';
-@import './smartwattwise/index.css';
-@import './profil/profil.css';
 

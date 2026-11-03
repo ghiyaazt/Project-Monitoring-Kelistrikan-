@@ -1,0 +1,868 @@
+/* ============================================ */
+/* WattWise Tab - Dashboard Cards & Components */
+/* ============================================ */
+
+/* Cards Grid Layout */
+.wattwise-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Card Base Styles */
+.wattwise-card {
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: all 0.2s;
+}
+
+/* Card - Total Perangkat (Abu) */
+.wattwise-card-devices {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  border: 1px solid #e2e8f0;
+}
+
+.wattwise-card-devices.dark {
+  background: linear-gradient(135deg, #334155 0%, #475569 100%);
+  border-color: #475569;
+}
+
+/* Card - Total Daya (Biru) */
+.wattwise-card-power {
+  background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+  border: 1px solid #c7d2fe;
+}
+
+/* Card - Tegangan (Hijau) */
+.wattwise-card-voltage {
+  background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
+  border: 1px solid #a7f3d0;
+}
+
+/* Card - Arus (Ungu) */
+.wattwise-card-current {
+  background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);
+  border: 1px solid #ddd6fe;
+}
+
+/* Card Labels */
+.wattwise-card-label {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.wattwise-card-label-devices {
+  color: #475569;
+}
+
+.wattwise-card-label-devices.dark {
+  color: #94a3b8;
+}
+
+.wattwise-card-label-power {
+  color: #4f46e5;
+}
+
+.wattwise-card-label-voltage {
+  color: #059669;
+}
+
+.wattwise-card-label-current {
+  color: #7c3aed;
+}
+
+/* Card Values */
+.wattwise-card-value-container {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.wattwise-card-value {
+  font-size: 42px;
+  font-weight: 700;
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+}
+
+.wattwise-card-value-devices {
+  color: #1e293b;
+}
+
+.wattwise-card-value-devices.dark {
+  color: #f1f5f9;
+}
+
+.wattwise-card-value-power {
+  color: #1e1b4b;
+}
+
+.wattwise-card-value-voltage {
+  color: #064e3b;
+}
+
+.wattwise-card-value-current {
+  color: #3b0764;
+}
+
+/* Card Units */
+.wattwise-card-unit {
+  font-weight: 600;
+}
+
+.wattwise-card-unit-small {
+  font-size: 16px;
+}
+
+.wattwise-card-unit-large {
+  font-size: 20px;
+}
+
+.wattwise-card-unit-devices {
+  color: #64748b;
+}
+
+.wattwise-card-unit-devices.dark {
+  color: #94a3b8;
+}
+
+.wattwise-card-unit-power {
+  color: #6366f1;
+}
+
+.wattwise-card-unit-voltage {
+  color: #10b981;
+}
+
+.wattwise-card-unit-current {
+  color: #8b5cf6;
+}
+
+/* Card Subtitles */
+.wattwise-card-subtitle {
+  font-size: 12px;
+  margin-top: 0.25rem;
+}
+
+.wattwise-card-subtitle-devices {
+  color: #64748b;
+}
+
+.wattwise-card-subtitle-devices.dark {
+  color: #94a3b8;
+}
+
+.wattwise-card-subtitle-power {
+  color: #6366f1;
+}
+
+.wattwise-card-subtitle-voltage {
+  color: #10b981;
+}
+
+.wattwise-card-subtitle-current {
+  color: #8b5cf6;
+}
+
+/* Graph Section */
+.wattwise-graph-header {
+  margin-bottom: 1rem;
+}
+
+.wattwise-graph-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.02em;
+}
+
+.wattwise-graph-description {
+  font-size: 13px;
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+/* View Toggle Buttons */
+.wattwise-view-toggle-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.wattwise-view-toggle {
+  display: inline-flex;
+  gap: 4px;
+  padding: 3px;
+  background: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.wattwise-view-toggle-btn {
+  padding: 0.3rem 0.875rem;
+  border-radius: 9px;
+  font-size: 12px;
+  font-weight: 600;
+  border: none;
+  background: transparent;
+  color: var(--muted-foreground);
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+
+.wattwise-view-toggle-btn.active {
+  background: var(--card);
+  box-shadow: var(--shadow-sm);
+  color: var(--primary);
+}
+
+/* Legend Section */
+.wattwise-legend-container {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+.wattwise-legend-container-light {
+  background: rgba(241, 245, 249, 0.8);
+  border: 1px solid #e2e8f0;
+}
+
+.wattwise-legend-container-dark {
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.wattwise-legend-title {
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.wattwise-legend-title-light {
+  color: #64748b;
+}
+
+.wattwise-legend-title-dark {
+  color: #94a3b8;
+}
+
+.wattwise-legend-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.75rem;
+}
+
+/* Legend Items */
+.wattwise-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+.wattwise-legend-item-light {
+  background: white;
+}
+
+.wattwise-legend-item-dark {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.wattwise-legend-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.wattwise-legend-text-container {
+  flex: 1;
+  min-width: 0;
+}
+
+.wattwise-legend-device-name {
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wattwise-legend-device-name-light {
+  color: #0f172a;
+}
+
+.wattwise-legend-device-name-dark {
+  color: white;
+}
+
+.wattwise-legend-device-power {
+  font-size: 11px;
+  font-family: var(--font-mono);
+}
+
+.wattwise-legend-device-power-light {
+  color: #64748b;
+}
+
+.wattwise-legend-device-power-dark {
+  color: #94a3b8;
+}
+
+/* Legend Total Item */
+.wattwise-legend-total {
+  background: rgba(239, 68, 68, 0.05);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.wattwise-legend-total.dark {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.wattwise-legend-total-icon {
+  background: #ef4444;
+}
+
+.wattwise-legend-total-title {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.wattwise-legend-total-title-light {
+  color: #0f172a;
+}
+
+.wattwise-legend-total-title-dark {
+  color: white;
+}
+
+/* Device List Section */
+.wattwise-devices-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.wattwise-devices-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  margin-bottom: 0.25rem;
+  letter-spacing: -0.02em;
+}
+
+.wattwise-devices-description {
+  font-size: 13px;
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+/* Empty State */
+.wattwise-empty-state {
+  padding: 3rem 1.5rem;
+  text-align: center;
+}
+
+.wattwise-empty-icon-container {
+  margin-bottom: 1rem;
+  opacity: 0.3;
+}
+
+.wattwise-empty-icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto;
+}
+
+.wattwise-empty-text {
+  color: var(--muted-foreground);
+  font-size: 14px;
+  margin-bottom: 1rem;
+}
+
+/* Device Cards Grid */
+.wattwise-devices-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+/* Device Card */
+.wattwise-device-card {
+  border-radius: 16px;
+  padding: 1.25rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s;
+}
+
+.wattwise-device-card-light {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.wattwise-device-card-dark {
+  background: #1e293b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Device Card Badge */
+.wattwise-device-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: #10b981;
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.wattwise-device-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: white;
+}
+
+/* Device Card Header */
+.wattwise-device-header {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  margin-bottom: 1.25rem;
+}
+
+.wattwise-device-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.wattwise-device-name {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.wattwise-device-name-light {
+  color: #0f172a;
+}
+
+.wattwise-device-name-dark {
+  color: white;
+}
+
+.wattwise-device-id {
+  font-size: 11px;
+  font-family: var(--font-mono);
+}
+
+.wattwise-device-id-light {
+  color: #64748b;
+}
+
+.wattwise-device-id-dark {
+  color: #94a3b8;
+}
+
+/* Device Stats */
+.wattwise-device-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  padding-top: 1rem;
+}
+
+.wattwise-device-stats-light {
+  border-top: 1px solid #e2e8f0;
+}
+
+.wattwise-device-stats-dark {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.wattwise-device-stat-label {
+  font-size: 10px;
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.wattwise-device-stat-label-light {
+  color: #64748b;
+}
+
+.wattwise-device-stat-label-dark {
+  color: #94a3b8;
+}
+
+.wattwise-device-stat-value {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.wattwise-device-stat-value-light {
+  color: #0f172a;
+}
+
+.wattwise-device-stat-value-dark {
+  color: white;
+}
+
+.wattwise-device-stat-unit {
+  font-size: 13px;
+  font-weight: 600;
+  margin-left: 0.25rem;
+}
+
+/* Device Footer */
+.wattwise-device-footer {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  font-size: 11px;
+}
+
+.wattwise-device-footer-light {
+  border-top: 1px solid #e2e8f0;
+  color: #64748b;
+}
+
+.wattwise-device-footer-dark {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+}
+
+/* Add Device Button/Card */
+.wattwise-add-device-card {
+  background: rgba(59, 130, 246, 0.05);
+  border: 2px dashed rgba(59, 130, 246, 0.3);
+  border-radius: 16px;
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  min-height: 200px;
+  font-family: inherit;
+}
+
+.wattwise-add-device-card.dark {
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.wattwise-add-device-card:hover {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.5);
+}
+
+.wattwise-add-device-card.dark:hover {
+  background: rgba(59, 130, 246, 0.15);
+}
+
+.wattwise-add-device-icon-wrapper {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: rgba(59, 130, 246, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wattwise-add-device-text-container {
+  text-align: center;
+}
+
+.wattwise-add-device-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #3b82f6;
+  margin-bottom: 0.25rem;
+}
+
+.wattwise-add-device-subtitle {
+  font-size: 12px;
+  color: var(--muted-foreground);
+}
+
+/* Modal Overlay */
+.wattwise-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1rem;
+}
+
+/* Modal Container */
+.wattwise-modal-container {
+  border-radius: 24px;
+  max-width: 480px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.wattwise-modal-container-light {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.wattwise-modal-container-dark {
+  background: #1e293b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+}
+
+/* Modal Header */
+.wattwise-modal-header {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  padding: 1.75rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.wattwise-modal-header-pattern {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(30%, -30%);
+}
+
+.wattwise-modal-header-content {
+  position: relative;
+  z-index: 1;
+}
+
+.wattwise-modal-header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.wattwise-modal-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.wattwise-modal-close-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.wattwise-modal-close-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.wattwise-modal-description {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
+
+/* Modal Form */
+.wattwise-modal-form {
+  padding: 2rem;
+}
+
+.wattwise-form-group {
+  margin-bottom: 1.5rem;
+}
+
+.wattwise-form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.01em;
+}
+
+.wattwise-form-label-light {
+  color: #334155;
+}
+
+.wattwise-form-label-dark {
+  color: #e2e8f0;
+}
+
+.wattwise-form-required {
+  color: #ef4444;
+}
+
+.wattwise-form-input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border-radius: 12px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.wattwise-form-input-light {
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.wattwise-form-input-dark {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #0f172a;
+  color: white;
+}
+
+.wattwise-form-input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.wattwise-form-input-mono {
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+
+/* Info Box */
+.wattwise-info-box {
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.wattwise-info-box-light {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.08) 0%, rgba(139, 92, 246, 0.08) 100%);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.wattwise-info-box-dark {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+}
+
+.wattwise-info-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.wattwise-info-text {
+  font-size: 12px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.wattwise-info-text-light {
+  color: #4f46e5;
+}
+
+.wattwise-info-text-dark {
+  color: #c7d2fe;
+}
+
+/* Form Footer Buttons */
+.wattwise-form-footer {
+  display: flex;
+  gap: 0.75rem;
+  padding-top: 0.5rem;
+}
+
+.wattwise-btn-cancel {
+  flex: 1;
+  padding: 0.875rem 1.5rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.wattwise-btn-cancel-light {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.wattwise-btn-cancel-dark {
+  background: rgba(255, 255, 255, 0.1);
+  color: #e2e8f0;
+}
+
+.wattwise-btn-cancel-light:hover {
+  background: #e2e8f0;
+}
+
+.wattwise-btn-cancel-dark:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.wattwise-btn-submit {
+  flex: 2;
+  padding: 0.875rem 1.5rem;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  font-family: inherit;
+}
+
+.wattwise-btn-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4);
+}
+
+.wattwise-btn-submit-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}

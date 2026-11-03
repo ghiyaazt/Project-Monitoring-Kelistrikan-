@@ -7,7 +7,12 @@
   flex-direction: column;
   height: 100vh;
   overflow-y: auto;
-  transition: width 0.3s;
+  transition: width 0.3s, background-color 0.2s, border-color 0.2s;
+}
+
+.dark .sidebar-nav {
+  background-color: #1e293b;
+  border-right: 1px solid #334155;
 }
 
 .sidebar-header {
@@ -16,6 +21,11 @@
   padding: 1.25rem 0.75rem;
   border-bottom: 1px solid #e2e8f0;
   position: relative;
+  transition: border-color 0.2s;
+}
+
+.dark .sidebar-header {
+  border-bottom: 1px solid #334155;
 }
 
 .sidebar-header-centered {
@@ -54,11 +64,21 @@
   color: #0f172a;
   font-size: 1rem;
   font-family: 'Plus Jakarta Sans', sans-serif;
+  transition: color 0.2s;
+}
+
+.dark .sidebar-logo-text {
+  color: #f1f5f9;
 }
 
 .sidebar-logo-subtitle {
   font-size: 0.625rem;
   color: #94a3b8;
+  transition: color 0.2s;
+}
+
+.dark .sidebar-logo-subtitle {
+  color: #64748b;
 }
 
 .sidebar-toggle-btn {
@@ -71,6 +91,15 @@
 .sidebar-toggle-btn:hover {
   color: #64748b;
   background-color: #f1f5f9;
+}
+
+.dark .sidebar-toggle-btn {
+  color: #64748b;
+}
+
+.dark .sidebar-toggle-btn:hover {
+  color: #94a3b8;
+  background-color: #334155;
 }
 
 .sidebar-toggle-btn-collapsed {
@@ -98,6 +127,12 @@
   background-color: #f0fdf4;
   border: 1px solid #bbf7d0;
   border-radius: 0.75rem;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.dark .sidebar-iot-pill {
+  background-color: #064e3b;
+  border: 1px solid #065f46;
 }
 
 .sidebar-iot-dot {
@@ -120,11 +155,21 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  transition: color 0.2s;
+}
+
+.dark .sidebar-iot-label {
+  color: #86efac;
 }
 
 .sidebar-iot-update {
   font-size: 0.5625rem;
   color: #22c55e;
+  transition: color 0.2s;
+}
+
+.dark .sidebar-iot-update {
+  color: #4ade80;
 }
 
 /* Navigation Menu */
@@ -146,6 +191,11 @@
   padding: 0 0.75rem;
   margin-bottom: 0.5rem;
   margin-top: 0.25rem;
+  transition: color 0.2s;
+}
+
+.dark .sidebar-menu-label {
+  color: #64748b;
 }
 
 .sidebar-menu-item {
@@ -172,13 +222,27 @@
   font-weight: 600;
 }
 
+.dark .sidebar-menu-item-active {
+  background-color: #064e3b;
+  color: #86efac;
+}
+
 .sidebar-menu-item-inactive {
   color: #64748b;
+}
+
+.dark .sidebar-menu-item-inactive {
+  color: #94a3b8;
 }
 
 .sidebar-menu-item-inactive:hover {
   background-color: #f8fafc;
   color: #334155;
+}
+
+.dark .sidebar-menu-item-inactive:hover {
+  background-color: #334155;
+  color: #e2e8f0;
 }
 
 .sidebar-menu-icon {
@@ -190,8 +254,16 @@
   color: #16a34a;
 }
 
+.dark .sidebar-menu-icon-active {
+  color: #4ade80;
+}
+
 .sidebar-menu-icon-inactive {
   color: #94a3b8;
+}
+
+.dark .sidebar-menu-icon-inactive {
+  color: #64748b;
 }
 
 .sidebar-menu-label-flex {
@@ -232,6 +304,11 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  transition: border-color 0.2s;
+}
+
+.dark .sidebar-footer {
+  border-top: 1px solid #334155;
 }
 
 .sidebar-profile {
@@ -241,6 +318,11 @@
   padding: 0.5rem 0.75rem;
   border-radius: 0.75rem;
   background-color: #f8fafc;
+  transition: background-color 0.2s;
+}
+
+.dark .sidebar-profile {
+  background-color: #334155;
 }
 
 .sidebar-profile-avatar {
@@ -268,11 +350,21 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  transition: color 0.2s;
+}
+
+.dark .sidebar-profile-name {
+  color: #e2e8f0;
 }
 
 .sidebar-profile-detail {
   font-size: 0.625rem;
   color: #94a3b8;
+  transition: color 0.2s;
+}
+
+.dark .sidebar-profile-detail {
+  color: #64748b;
 }
 
 .sidebar-logout-btn {
@@ -291,6 +383,15 @@
 .sidebar-logout-btn:hover {
   background-color: #fef2f2;
   color: #dc2626;
+}
+
+.dark .sidebar-logout-btn {
+  color: #94a3b8;
+}
+
+.dark .sidebar-logout-btn:hover {
+  background-color: #7f1d1d;
+  color: #fca5a5;
 }
 
 .sidebar-logout-btn-centered {

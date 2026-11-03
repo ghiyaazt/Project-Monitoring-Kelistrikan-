@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { getIoTConnection } = require("../config/database");
 
 const sensorDataSchema = new mongoose.Schema(
     {
@@ -58,4 +59,26 @@ const sensorDataSchema = new mongoose.Schema(
     }
 );
 
-module.exports = mongoose.model("SensorData", sensorDataSchema);
+// Use IoT connection (test database) for sensor data
+// This will be initialized after database connection is established
+let SensorData;
+
+// Export a function that returns the model with correct connection
+const getSensorDataModel = () => {
+    if (!SensorData) {
+        const iotConnection = getIoTConnection();
+        SensorData = iotConnection.model("SensorData", sensorDataSchema);
+    }
+    return SensorData;
+};
+
+// For backward compatibility, also export default model
+// This will use the IoT connection if available
+module.exports = {
+    getSensorDataModel,
+    // Default export for direct import
+    default: mongoose.model("SensorData", sensorDataSchema)
+};
+
+// Also support CommonJS default export
+module.exports = getSensorDataModel();
