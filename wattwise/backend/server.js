@@ -12,17 +12,24 @@ const startServer = async () => {
         // Connect to MongoDB (both main and IoT databases)
         await connectDatabase();
 
-        // Connect to MQTT Broker
-        connectMQTT();
+        // Connect to MQTT Broker (only if enabled)
+        const mqttEnabled = process.env.MQTT_ENABLED !== 'false';
         
-        // Subscribe to sensor data topic
-        subscribeToPZEMData();
+        if (mqttEnabled) {
+            console.log("📡 MQTT is ENABLED - Connecting to broker...");
+            connectMQTT();
+            subscribeToPZEMData();
+        } else {
+            console.log("⚠️  MQTT is DISABLED - Running in Web/Mobile API only mode");
+            console.log("💡 To enable MQTT, set MQTT_ENABLED=true in .env");
+        }
 
         // Start Express server
         app.listen(PORT, () => {
             console.log(`🚀 WattWise Backend running on port ${PORT}`);
             console.log(`📊 Environment: ${process.env.NODE_ENV || 'development'}`);
             console.log(`🌐 API URL: http://localhost:${PORT}`);
+            console.log(`🔌 MQTT Status: ${mqttEnabled ? 'ENABLED' : 'DISABLED'}`);
         });
     } catch (error) {
         console.error("❌ Failed to start server:", error);
