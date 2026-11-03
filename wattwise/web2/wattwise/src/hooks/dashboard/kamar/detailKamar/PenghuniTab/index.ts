@@ -1,1 +1,0 @@
-export { useTenantHandlers } from './useTenantHandlers';
