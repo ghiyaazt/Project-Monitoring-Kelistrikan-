@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './global.css';
 import {
   Platform,
   SafeAreaView,
@@ -146,7 +147,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     backgroundColor: colors.bg,
-    paddingTop: Platform.OS === 'android' ? (StatusBar.currentHeight ?? 0) : 0,
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight ?? 0 : 0,
   },
   inner: { flex: 1, width: '100%', maxWidth: 480, backgroundColor: colors.bg },
 
