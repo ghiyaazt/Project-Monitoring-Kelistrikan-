@@ -1,0 +1,266 @@
+/* Settings Styles */
+
+.settings-container {
+  padding: 1.5rem;
+  max-width: 48rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.settings-section {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1.5rem;
+}
+
+.settings-section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.settings-section-icon {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.settings-section-title {
+  font-weight: 600;
+  color: #0f172a;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Toggle Switch */
+.settings-toggle {
+  position: relative;
+  width: 2.5rem;
+  height: 1.5rem;
+  border-radius: 9999px;
+  transition: background-color 0.2s;
+}
+
+.settings-toggle-active {
+  background-color: #22c55e;
+}
+
+.settings-toggle-inactive {
+  background-color: #e2e8f0;
+}
+
+.settings-toggle-button {
+  position: absolute;
+  top: 0.25rem;
+  width: 1rem;
+  height: 1rem;
+  background-color: #ffffff;
+  border-radius: 9999px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
+}
+
+.settings-toggle-button-active {
+  left: 1.25rem;
+}
+
+.settings-toggle-button-inactive {
+  left: 0.25rem;
+}
+
+/* Settings Item */
+.settings-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid #f8fafc;
+}
+
+.settings-item:last-child {
+  border-bottom: none;
+}
+
+.settings-item-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #334155;
+}
+
+.settings-item-desc {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 0.125rem;
+}
+
+/* Info Card */
+.settings-info-card {
+  background-color: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 0.75rem;
+  padding: 1rem;
+}
+
+.settings-info-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1e40af;
+  margin-bottom: 0.125rem;
+}
+
+.settings-info-desc {
+  font-size: 0.75rem;
+  color: #2563eb;
+}
+
+/* Grid Items */
+.settings-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.settings-grid-item {
+  background-color: #f8fafc;
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+}
+
+.settings-grid-label {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.settings-grid-value {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #334155;
+  margin-top: 0.125rem;
+}
+
+/* Profile Card */
+.settings-profile-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: linear-gradient(to right, #f0fdf4, #eff6ff);
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+}
+
+.settings-profile-avatar {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 1rem;
+  background: linear-gradient(to bottom right, #4ade80, #3b82f6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.settings-profile-name {
+  font-weight: 700;
+  color: #0f172a;
+  font-size: 1.125rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.settings-profile-info {
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+/* Save Button */
+.settings-save-btn {
+  padding: 0.625rem 1.5rem;
+  border-radius: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.settings-save-btn-saved {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+.settings-save-btn-default {
+  background-color: #16a34a;
+  color: #ffffff;
+}
+
+.settings-save-btn-default:hover {
+  background-color: #15803d;
+}
+
+/* Additional Settings Styles */
+
+.settings-section-header-mb-2 {
+  margin-bottom: 0.5rem;
+}
+
+.settings-section-space-y-4 {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.settings-grid-1-sm-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 640px) {
+  .settings-grid-1-sm-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.settings-info-box {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+}
+
+.settings-info-box-label {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-bottom: 0.125rem;
+}
+
+.settings-info-box-value {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #334155;
+}
+
+.settings-flex-end {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.settings-section-badge-right {
+  margin-left: auto;
+}
+
+.settings-header-text {
+  font-size: 0.875rem;
+  color: #64748b;
+  margin-top: 0.125rem;
+}

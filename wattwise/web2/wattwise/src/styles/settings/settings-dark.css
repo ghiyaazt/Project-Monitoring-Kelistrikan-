@@ -1,0 +1,256 @@
+/* Settings Dark Mode Overrides */
+
+.dark .settings-section {
+  background-color: #0f172a;
+  border: 1px solid #1e293b;
+}
+
+.dark .settings-section-title {
+  color: #f1f5f9;
+}
+
+.dark .settings-header-text {
+  color: #94a3b8;
+}
+
+/* Icon Background Colors - Dark Mode */
+.dark .settings-section-icon.bg-blue-50 {
+  background-color: #1e3a8a !important;
+}
+
+.dark .settings-section-icon.bg-green-50 {
+  background-color: #065f46 !important;
+}
+
+.dark .settings-section-icon.bg-blue-50 svg {
+  color: #93c5fd !important;
+}
+
+.dark .settings-section-icon.bg-green-50 svg {
+  color: #86efac !important;
+}
+
+/* Toggle Switch */
+.dark .settings-toggle-inactive {
+  background-color: #475569;
+}
+
+/* Settings Item */
+.dark .settings-item {
+  border-bottom: 1px solid #334155;
+}
+
+.dark .settings-item-label {
+  color: #e2e8f0;
+}
+
+.dark .settings-item-desc {
+  color: #94a3b8;
+}
+
+/* Info Card */
+.dark .settings-info-card {
+  background-color: #1e3a8a;
+  border: 1px solid #1e40af;
+}
+
+.dark .settings-info-title {
+  color: #93c5fd;
+}
+
+.dark .settings-info-desc {
+  color: #bfdbfe;
+}
+
+/* Grid Items */
+.dark .settings-grid-item {
+  background-color: #0f172a;
+}
+
+.dark .settings-grid-label {
+  color: #94a3b8;
+}
+
+.dark .settings-grid-value {
+  color: #e2e8f0;
+}
+
+/* Profile Card */
+.dark .settings-profile-card {
+  background-color: #0f172a;
+  border: 1px solid #334155;
+}
+
+.dark .settings-profile-avatar {
+  /* Gradient stays same - already colorful */
+}
+
+.dark .settings-profile-name {
+  color: #f1f5f9;
+}
+
+.dark .settings-profile-email {
+  color: #94a3b8;
+}
+
+/* Profile Page Specific */
+.dark .profile-header {
+  /* No bg color changes needed */
+}
+
+.dark .profile-name {
+  color: #f1f5f9;
+}
+
+.dark .profile-location {
+  color: #94a3b8;
+}
+
+.dark .profile-badge-active {
+  color: #86efac;
+  background-color: #064e3b;
+  border: 1px solid #065f46;
+}
+
+.dark .profile-badge-admin {
+  color: #93c5fd;
+  background-color: #1e3a8a;
+  border: 1px solid #1e40af;
+}
+
+.dark .profile-edit-btn {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+.dark .profile-edit-btn:hover {
+  background-color: #1d4ed8;
+}
+
+.dark .profile-avatar-edit-btn {
+  background-color: #1e293b;
+  border: 2px solid #334155;
+}
+
+.dark .profile-avatar-edit-btn:hover {
+  background-color: #334155;
+  border-color: #475569;
+}
+
+/* Security Section - Dark cards that should be light in dark mode */
+.dark .security-card {
+  background-color: #0f172a;
+  border: 1px solid #334155;
+}
+
+.dark .security-card:hover {
+  border-color: #475569;
+  background-color: #1e293b;
+}
+
+.dark .security-card-icon {
+  background-color: #1e293b;
+}
+
+.dark .security-card-title {
+  color: #f1f5f9;
+}
+
+.dark .security-card-desc {
+  color: #94a3b8;
+}
+
+.dark .security-card-arrow {
+  color: #64748b;
+}
+
+/* Button Overrides */
+.dark .settings-btn-primary {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+.dark .settings-btn-primary:hover {
+  background-color: #1d4ed8;
+}
+
+.dark .settings-btn-secondary {
+  background-color: #334155;
+  color: #e2e8f0;
+  border: 1px solid #475569;
+}
+
+.dark .settings-btn-secondary:hover {
+  background-color: #475569;
+  border-color: #64748b;
+}
+
+.dark .settings-btn-danger {
+  background-color: #7f1d1d;
+  color: #fca5a5;
+}
+
+.dark .settings-btn-danger:hover {
+  background-color: #991b1b;
+  color: #fecaca;
+}
+
+/* Input Fields */
+.dark .input {
+  background-color: #0f172a;
+  border: 1px solid #334155;
+  color: #e2e8f0;
+}
+
+.dark .input:focus {
+  border-color: #3b82f6;
+  background-color: #1e293b;
+}
+
+.dark .input:disabled {
+  background-color: #1e293b;
+  color: #64748b;
+  border-color: #334155;
+}
+
+.dark .input-label {
+  color: #94a3b8;
+}
+
+/* Textarea */
+.dark textarea.input {
+  background-color: #0f172a;
+  border: 1px solid #334155;
+  color: #e2e8f0;
+}
+
+.dark textarea.input:focus {
+  border-color: #3b82f6;
+  background-color: #1e293b;
+}
+
+/* Select */
+.dark select.input {
+  background-color: #0f172a;
+  border: 1px solid #334155;
+  color: #e2e8f0;
+}
+
+.dark select.input:focus {
+  border-color: #3b82f6;
+  background-color: #1e293b;
+}
+
+/* Space utilities */
+.dark .settings-section-space-y-4 > * + * {
+  /* Spacing doesn't need dark override */
+}
+
+.dark .settings-section-header-mb-2 {
+  /* Margin doesn't need dark override */
+}
+
+/* Grid responsive */
+.dark .settings-grid-1-sm-2 {
+  /* Grid layout doesn't need dark override */
+}

@@ -10,6 +10,7 @@ const roomRoutes = require("./routes/roomRoutes");
 const penghuniRoutes = require("./routes/penghuniRoutes");
 const deviceRoutes = require("./routes/deviceRoutes");
 const financeRoutes = require("./routes/financeRoutes");
+const web2Routes = require("./routes/web2Routes");
 
 const app = express();
 
@@ -30,7 +31,8 @@ app.get("/", (req, res) => {
             rooms: "/api/rooms",
             penghuni: "/api/penghuni",
             devices: "/api/devices",
-            finance: "/api/finance"
+            finance: "/api/finance",
+            web2: "/api/web2 (Frontend Web2 Integration)"
         }
     });
 });
@@ -44,6 +46,9 @@ app.use("/api/rooms", roomRoutes);
 app.use("/api/penghuni", penghuniRoutes);
 app.use("/api/devices", deviceRoutes);
 app.use("/api/finance", financeRoutes);
+
+// Web2 Frontend Integration Routes
+app.use("/api/web2", web2Routes);
 
 // 404 Handler
 app.use((req, res) => {

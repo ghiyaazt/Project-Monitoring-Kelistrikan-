@@ -1,0 +1,492 @@
+/* Common Components Dark Mode Overrides */
+
+/* Cards */
+.dark .card {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+}
+
+.dark .card-hover:hover {
+  border-color: #4ade80;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+.dark .stat-card {
+  background-color: #0f172a;
+  border: 1px solid #1e293b;
+}
+
+.dark .stat-value {
+  color: #f1f5f9;
+}
+
+/* Stat badge colors in dark mode - more vibrant */
+.dark .dashboard-stat-badge.text-blue-600 {
+  background-color: #1e3a8a !important;
+  border-color: #1e40af !important;
+  color: #93c5fd !important;
+}
+
+.dark .dashboard-stat-badge.text-green-600 {
+  background-color: #065f46 !important;
+  border-color: #047857 !important;
+  color: #86efac !important;
+}
+
+.dark .dashboard-stat-badge.text-purple-600 {
+  background-color: #6b21a8 !important;
+  border-color: #7e22ce !important;
+  color: #e9d5ff !important;
+}
+
+.dark .dashboard-stat-badge.text-amber-600 {
+  background-color: #92400e !important;
+  border-color: #b45309 !important;
+  color: #fcd34d !important;
+}
+
+/* Buttons */
+.dark .btn {
+  /* Base button dark styles */
+}
+
+.dark .btn-primary {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+.dark .btn-primary:hover {
+  background-color: #1d4ed8;
+}
+
+.dark .btn-secondary {
+  background-color: #334155;
+  color: #e2e8f0;
+  border: 1px solid #475569;
+}
+
+.dark .btn-secondary:hover {
+  background-color: #475569;
+  border-color: #64748b;
+}
+
+.dark .btn-danger {
+  background-color: #7f1d1d;
+  color: #fca5a5;
+}
+
+.dark .btn-danger:hover {
+  background-color: #991b1b;
+  color: #fecaca;
+}
+
+.dark .btn-success {
+  background-color: #065f46;
+  color: #86efac;
+}
+
+.dark .btn-success:hover {
+  background-color: #064e3b;
+  color: #6ee7b7;
+}
+
+.dark .btn-outline {
+  background-color: transparent;
+  color: #94a3b8;
+  border: 1px solid #475569;
+}
+
+.dark .btn-outline:hover {
+  background-color: #334155;
+  border-color: #64748b;
+  color: #e2e8f0;
+}
+
+/* Inputs */
+.dark .input {
+  background-color: #0f172a;
+  border: 1px solid #334155;
+  color: #e2e8f0;
+}
+
+.dark .input:focus {
+  border-color: #3b82f6;
+  background-color: #1e293b;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.dark .input:disabled {
+  background-color: #1e293b;
+  color: #64748b;
+  border-color: #334155;
+  cursor: not-allowed;
+}
+
+.dark .input::placeholder {
+  color: #64748b;
+}
+
+.dark .input-label {
+  color: #94a3b8;
+}
+
+.dark .input-error {
+  border-color: #991b1b;
+}
+
+.dark .input-error:focus {
+  border-color: #991b1b;
+  box-shadow: 0 0 0 2px rgba(153, 27, 27, 0.2);
+}
+
+/* Textarea */
+.dark textarea.input {
+  background-color: #0f172a;
+  border: 1px solid #334155;
+  color: #e2e8f0;
+}
+
+.dark textarea.input:focus {
+  border-color: #3b82f6;
+  background-color: #1e293b;
+}
+
+/* Select */
+.dark select.input {
+  background-color: #0f172a;
+  border: 1px solid #334155;
+  color: #e2e8f0;
+}
+
+.dark select.input:focus {
+  border-color: #3b82f6;
+  background-color: #1e293b;
+}
+
+/* Checkbox */
+.dark .checkbox {
+  border-color: #475569;
+  background-color: #0f172a;
+}
+
+.dark .checkbox:checked {
+  background-color: #2563eb;
+  border-color: #1e40af;
+}
+
+.dark .checkbox:focus {
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* Radio */
+.dark .radio {
+  border-color: #475569;
+  background-color: #0f172a;
+}
+
+.dark .radio:checked {
+  background-color: #2563eb;
+  border-color: #1e40af;
+}
+
+.dark .radio:focus {
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* Badges */
+.dark .badge {
+  /* Base badge */
+}
+
+.dark .badge-primary {
+  background-color: #1e3a8a;
+  color: #93c5fd;
+}
+
+.dark .badge-success {
+  background-color: #064e3b;
+  color: #86efac;
+}
+
+.dark .badge-danger {
+  background-color: #7f1d1d;
+  color: #fca5a5;
+}
+
+.dark .badge-warning {
+  background-color: #78350f;
+  color: #fcd34d;
+}
+
+.dark .badge-info {
+  background-color: #1e3a8a;
+  color: #93c5fd;
+}
+
+.dark .badge-secondary {
+  background-color: #334155;
+  color: #94a3b8;
+}
+
+/* Modals */
+.dark .modal-overlay {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.dark .modal-content {
+  background-color: #0f172a;
+}
+
+.dark .modal-header {
+  border-bottom-color: #1e293b;
+}
+
+.dark .modal-title {
+  color: #f1f5f9;
+}
+
+.dark .modal-close-btn {
+  color: #94a3b8;
+}
+
+.dark .modal-close-btn:hover {
+  background-color: #1e293b;
+  color: #cbd5e1;
+}
+
+.dark .modal-description {
+  color: #94a3b8;
+}
+
+.dark .modal-hint {
+  color: #64748b;
+}
+
+.dark .modal-body {
+  color: #cbd5e1;
+}
+
+.dark .modal-footer {
+  border-top-color: #1e293b;
+}
+
+.dark .modal-btn-cancel {
+  background-color: #334155;
+  color: #e2e8f0;
+}
+
+.dark .modal-btn-cancel:hover {
+  background-color: #475569;
+  color: #f1f5f9;
+}
+
+.dark .modal-btn-primary {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+.dark .modal-btn-primary:hover {
+  background-color: #1d4ed8;
+}
+
+/* Error Message */
+.dark .error-message {
+  background-color: #7f1d1d;
+  border-color: #991b1b;
+  color: #fca5a5;
+}
+
+/* Success Message */
+.dark .success-message {
+  background-color: #064e3b;
+  border-color: #065f46;
+  color: #86efac;
+}
+
+/* Tooltips */
+.dark .tooltip {
+  background-color: #0f172a;
+  border: 1px solid #334155;
+  color: #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+/* Alerts */
+.dark .alert {
+  /* Base alert */
+}
+
+.dark .alert-info {
+  background-color: #1e3a8a;
+  border: 1px solid #1e40af;
+  color: #bfdbfe;
+}
+
+.dark .alert-success {
+  background-color: #064e3b;
+  border: 1px solid #065f46;
+  color: #86efac;
+}
+
+.dark .alert-warning {
+  background-color: #78350f;
+  border: 1px solid #92400e;
+  color: #fcd34d;
+}
+
+.dark .alert-danger {
+  background-color: #7f1d1d;
+  border: 1px solid #991b1b;
+  color: #fca5a5;
+}
+
+/* Dividers */
+.dark .divider {
+  border-color: #334155;
+}
+
+/* Links */
+.dark a {
+  color: #60a5fa;
+}
+
+.dark a:hover {
+  color: #93c5fd;
+}
+
+/* Headings */
+.dark .heading-xl {
+  color: #f1f5f9;
+}
+
+.dark .heading-lg {
+  color: #f1f5f9;
+}
+
+.dark .heading-md {
+  color: #f1f5f9;
+}
+
+.dark .heading-sm {
+  color: #e2e8f0;
+}
+
+/* Text utilities */
+.dark .text-muted {
+  color: #94a3b8;
+}
+
+.dark .text-secondary {
+  color: #cbd5e1;
+}
+
+.dark .text-primary {
+  color: #f1f5f9;
+}
+
+/* Icon containers */
+.dark .icon-container {
+  /* Icons usually have specific background colors set, no global override */
+}
+
+/* Loading Spinner */
+.dark .spinner {
+  border-color: #334155;
+  border-top-color: #3b82f6;
+}
+
+/* Dropdown */
+.dark .dropdown {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+}
+
+.dark .dropdown-item {
+  color: #e2e8f0;
+}
+
+.dark .dropdown-item:hover {
+  background-color: #334155;
+}
+
+.dark .dropdown-divider {
+  border-color: #334155;
+}
+
+/* Progress Bar */
+.dark .progress-bar-bg {
+  background-color: #334155;
+}
+
+.dark .progress-bar-fill {
+  background-color: #2563eb;
+}
+
+/* Table */
+.dark .table {
+  background-color: #1e293b;
+  border: 1px solid #334155;
+}
+
+.dark .table thead {
+  background-color: #0f172a;
+  border-bottom: 1px solid #334155;
+}
+
+.dark .table th {
+  color: #94a3b8;
+  border-bottom: 1px solid #334155;
+}
+
+.dark .table td {
+  color: #e2e8f0;
+  border-bottom: 1px solid #334155;
+}
+
+.dark .table tbody tr:hover {
+  background-color: #334155;
+}
+
+/* Tabs */
+.dark .tabs {
+  border-bottom: 1px solid #334155;
+}
+
+.dark .tab {
+  color: #94a3b8;
+  border-bottom: 2px solid transparent;
+}
+
+.dark .tab:hover {
+  color: #e2e8f0;
+  background-color: #334155;
+}
+
+.dark .tab-active {
+  color: #3b82f6;
+  border-bottom-color: #3b82f6;
+}
+
+/* Avatar */
+.dark .avatar {
+  /* Avatar gradients usually look good on both themes */
+}
+
+/* Skeleton Loader */
+.dark .skeleton {
+  background-color: #334155;
+}
+
+.dark .skeleton-pulse {
+  animation: skeleton-pulse-dark 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-pulse-dark {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}

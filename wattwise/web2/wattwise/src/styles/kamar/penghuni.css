@@ -1,0 +1,78 @@
+/* ============================================ */
+/* Penghuni Page Styles */
+/* ============================================ */
+
+/* Reset Filter Button */
+.penghuni-reset-btn {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+}
+
+/* Empty State */
+.penghuni-empty-cell {
+  padding: 3rem;
+  text-align: center;
+}
+
+/* Table Cell - Penghuni Info */
+.penghuni-cell-flex {
+  display: flex;
+  align-items: center;
+}
+
+.penghuni-avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.penghuni-avatar-light {
+  background-color: #dbeafe;
+  color: #2563eb;
+}
+
+.penghuni-avatar-dark {
+  background-color: #1e3a8a;
+  color: #60a5fa;
+}
+
+.penghuni-info {
+  margin-left: 0.75rem;
+}
+
+.penghuni-name {
+  font-weight: 500;
+  margin-bottom: 0.125rem;
+}
+
+.penghuni-email {
+  margin: 0;
+}
+
+/* Table Cell - Kos Info */
+.penghuni-kos-name {
+  font-weight: 500;
+  margin-bottom: 0.125rem;
+}
+
+.penghuni-kamar-name {
+  margin: 0;
+}
+
+/* Table Cell - Payment Date */
+.penghuni-payment-date {
+  margin: 0.25rem 0 0 0;
+  font-size: 0.75rem;
+}
+
+/* Table Cell - Action Button */
+.penghuni-action-btn {
+  padding: 0.375rem 0.75rem;
+  opacity: 0.5;
+  cursor: not-allowed;
+}

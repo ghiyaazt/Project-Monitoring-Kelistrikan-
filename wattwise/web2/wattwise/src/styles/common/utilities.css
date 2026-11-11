@@ -1,0 +1,66 @@
+﻿/* Typography & Utility Classes */
+
+/* Typography */
+.heading-xl {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.heading-lg {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.heading-md {
+  font-weight: 600;
+  color: #0f172a;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.text-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.text-mono-bold {
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.text-slate-heading {
+  font-weight: 600;
+  color: #0f172a;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Layout Utilities */
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Loading States */
+.loading-spinner {
+  width: 1rem;
+  height: 1rem;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

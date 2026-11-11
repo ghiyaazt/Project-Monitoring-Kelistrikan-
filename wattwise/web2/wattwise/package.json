@@ -1,0 +1,52 @@
+{
+  "name": "wattwise",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.3",
+    "@testing-library/user-event": "^13.5.0",
+    "axios": "^1.21.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-router-dom": "^7.18.4",
+    "react-scripts": "5.0.1",
+    "recharts": "^3.10.1",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "clear-cache": "powershell -ExecutionPolicy Bypass -File scripts/clear-cache.ps1",
+    "clean-start": "powershell -ExecutionPolicy Bypass -File scripts/clean-start.ps1",
+    "fix": "powershell -ExecutionPolicy Bypass -File scripts/fix-dev.ps1"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/aria-query": "^5.0.4",
+    "@types/node": "^26.5.1",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/react-router-dom": "^5.3.3"
+  }
+}

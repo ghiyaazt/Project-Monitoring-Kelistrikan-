@@ -1,0 +1,36 @@
+/* ============================================ */
+/* Kamar List Page Styles */
+/* ============================================ */
+
+/* Multiple Kos View Container */
+.kamar-list-multi-kos-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Kos Card Container */
+.kamar-list-kos-card {
+  cursor: default;
+}
+
+/* Kos Card Title */
+.kamar-list-kos-title {
+  font-size: 1.25rem;
+}
+
+/* Kos Card Header Actions */
+.kamar-list-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.kamar-list-terisi-info {
+  text-align: right;
+}
+
+.kamar-list-terisi-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+}

@@ -130,6 +130,15 @@ exports.login = async (req, res) => {
             });
         }
 
+        // Restrict penghuni from logging in to web (Web2)
+        // Penghuni can only login via mobile app
+        if (user.role === "penghuni") {
+            return res.status(403).json({
+                success: false,
+                message: "Akun penghuni hanya dapat login melalui aplikasi mobile"
+            });
+        }
+
         // Generate token
         const token = generateToken(user._id);
 
@@ -173,6 +182,47 @@ exports.getMe = async (req, res) => {
         res.status(500).json({
             success: false,
             message: "Terjadi kesalahan saat mengambil data profil",
+            error: error.message
+        });
+    }
+};
+
+
+// @desc    Search users with role "penghuni" (for adding tenant to kamar)
+// @route   GET /api/auth/search-penghuni?query=...
+// @access  Private (owner/admin only)
+exports.searchPenghuni = async (req, res) => {
+    try {
+        const { query } = req.query;
+
+        if (!query || query.trim().length < 2) {
+            return res.status(400).json({
+                success: false,
+                message: "Masukkan minimal 2 karakter untuk pencarian"
+            });
+        }
+
+        // Search users with role "penghuni" by email or nama
+        const users = await User.find({
+            role: "penghuni",
+            isActive: true,
+            $or: [
+                { email: { $regex: query, $options: 'i' } },
+                { nama: { $regex: query, $options: 'i' } }
+            ]
+        })
+        .select('nama email no_telp')
+        .limit(10);
+
+        res.status(200).json({
+            success: true,
+            data: users
+        });
+    } catch (error) {
+        console.error("Search penghuni error:", error);
+        res.status(500).json({
+            success: false,
+            message: "Terjadi kesalahan saat mencari penghuni",
             error: error.message
         });
     }
