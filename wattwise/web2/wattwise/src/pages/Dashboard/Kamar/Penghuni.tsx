@@ -1,5 +1,6 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useApp } from '../../../context/AppContext';
+import { kosService } from '../../../services';
 import { getStatusBadgeClass, getStatusText, PaymentStatus } from '../../../utils/dashboard/kamar/penghuni';
 import '../../../styles/kamar/index.css';
 import '../../../styles/kamar/penghuni.css';
@@ -18,24 +19,58 @@ interface PenghuniData {
 }
 
 const Penghuni: React.FC = () => {
-  const { effectiveTheme, kosList } = useApp();
+  const { effectiveTheme, kosList: localKosList } = useApp();
   const isDark = effectiveTheme === 'dark';
+
+  // State for API data
+  const [kosList, setKosList] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+
+  // Check if API mode is enabled
+  const USE_API = process.env.REACT_APP_USE_API === 'true';
+
+  // Fetch kos list on component mount
+  useEffect(() => {
+    fetchKosListData();
+  }, []);
+
+  async function fetchKosListData() {
+    if (!USE_API) {
+      // Use localStorage data
+      setKosList(localKosList);
+      setLoading(false);
+      return;
+    }
+
+    try {
+      setLoading(true);
+      setError('');
+      const data = await kosService.getKosList();
+      setKosList(data);
+    } catch (err: any) {
+      console.error('Error fetching kos list:', err);
+      setError(err.message || 'Terjadi kesalahan saat memuat data');
+    } finally {
+      setLoading(false);
+    }
+  }
 
   // Generate penghuni list from kosList data
   const penghuniList = useMemo(() => {
     const result: PenghuniData[] = [];
     
-    kosList.forEach(kos => {
-      kos.kamarList.forEach(kamar => {
+    kosList.forEach((kos: any) => {
+      kos.kamarList?.forEach((kamar: any) => {
         // Iterate through penghuniList instead of single penghuni
         if (kamar.penghuniList && kamar.penghuniList.length > 0) {
-          kamar.penghuniList.forEach(penghuni => {
+          kamar.penghuniList.forEach((penghuni: any) => {
             // Find latest payment
             const payments = kamar.payments || [];
-            const latestPayment = payments.find(p => p.status === 'lunas');
-            const hasBelumBayar = payments.some(p => p.status === 'belum_bayar');
-            const hasTerlambat = payments.some(p => p.status === 'terlambat');
-            const hasSudahBayar = payments.some(p => p.status === 'sudah_bayar');
+            const latestPayment = payments.find((p: any) => p.status === 'lunas');
+            const hasBelumBayar = payments.some((p: any) => p.status === 'belum_bayar');
+            const hasTerlambat = payments.some((p: any) => p.status === 'terlambat');
+            const hasSudahBayar = payments.some((p: any) => p.status === 'sudah_bayar');
             
             let statusPembayaran: PaymentStatus = 'lunas';
             if (hasTerlambat) {
@@ -47,10 +82,10 @@ const Penghuni: React.FC = () => {
             }
             
             result.push({
-              id: penghuni.id,
+              id: penghuni.id || penghuni._id,
               nama: penghuni.nama,
               email: penghuni.email,
-              telepon: penghuni.telepon,
+              telepon: penghuni.telepon || penghuni.no_telp || '-',
               kosNama: kos.nama,
               kamarNama: kamar.nama,
               tanggalMasuk: penghuni.tanggalMasuk,
@@ -76,6 +111,44 @@ const Penghuni: React.FC = () => {
     const matchesStatus = !filterStatus || p.statusPembayaran === filterStatus;
     return matchesSearch && matchesStatus;
   });
+
+  // Show loading state
+  if (loading) {
+    return (
+      <div className="kamar-container">
+        <div className="flex items-center justify-center py-12">
+          <div className="text-center">
+            <svg className="animate-spin h-12 w-12 mx-auto text-watt-blue" fill="none" viewBox="0 0 24 24">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+            </svg>
+            <p className={`mt-4 ${isDark ? 'text-gray-400' : 'text-gray-600'}`}>Memuat data penghuni...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Show error state
+  if (error) {
+    return (
+      <div className="kamar-container">
+        <div className="flex items-center justify-center py-12">
+          <div className="text-center">
+            <svg className="h-12 w-12 mx-auto text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <p className="mt-4 text-red-600 dark:text-red-400">{error}</p>
+            <button 
+              onClick={fetchKosListData}
+              className="mt-4 px-4 py-2 bg-watt-blue text-white rounded-lg hover:bg-watt-blue-dark transition">
+              Coba Lagi
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="kamar-container">

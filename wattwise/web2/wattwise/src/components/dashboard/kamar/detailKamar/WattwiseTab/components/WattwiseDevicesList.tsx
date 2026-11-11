@@ -1,11 +1,17 @@
 import React from 'react';
 import { DEVICE_COLORS } from '../../../../../../utils/dashboard/kamar/detailKamar/WattwiseTab';
 
+interface SensorData {
+  power: number;
+  voltage: number;
+  current: number;
+}
+
 interface Perangkat {
   id: string;
   nama: string;
   deviceId: string;
-  dayaWatt: number;
+  sensorData?: SensorData | null;
 }
 
 interface WattwiseDevicesListProps {
@@ -91,7 +97,7 @@ export const WattwiseDevicesList: React.FC<WattwiseDevicesListProps> = ({
                       Daya
                     </div>
                     <div className={`wattwise-device-stat-value ${isDark ? 'wattwise-device-stat-value-dark' : 'wattwise-device-stat-value-light'}`}>
-                      {p.dayaWatt}
+                      {p.sensorData?.power?.toFixed(2) || '0.00'}
                       <span className="wattwise-device-stat-unit" style={{ color: deviceColor }}>W</span>
                     </div>
                   </div>
@@ -100,7 +106,7 @@ export const WattwiseDevicesList: React.FC<WattwiseDevicesListProps> = ({
                       Tegangan
                     </div>
                     <div className={`wattwise-device-stat-value ${isDark ? 'wattwise-device-stat-value-dark' : 'wattwise-device-stat-value-light'}`}>
-                      220
+                      {p.sensorData?.voltage?.toFixed(1) || '0.0'}
                       <span className="wattwise-device-stat-unit" style={{ color: deviceColor }}>V</span>
                     </div>
                   </div>
@@ -109,7 +115,7 @@ export const WattwiseDevicesList: React.FC<WattwiseDevicesListProps> = ({
                       Arus
                     </div>
                     <div className={`wattwise-device-stat-value ${isDark ? 'wattwise-device-stat-value-dark' : 'wattwise-device-stat-value-light'}`}>
-                      {(p.dayaWatt / 220).toFixed(2)}
+                      {p.sensorData?.current?.toFixed(2) || '0.00'}
                       <span className="wattwise-device-stat-unit" style={{ color: deviceColor }}>A</span>
                     </div>
                   </div>

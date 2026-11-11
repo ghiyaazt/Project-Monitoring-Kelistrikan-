@@ -5,6 +5,7 @@ const {
     getLatestData,
     getAllData,
     getDataByDevice,
+    getLatestDataByRoom,
     getStatistics,
     getDataByDateRange
 } = require("../controllers/sensorController");
@@ -25,6 +26,9 @@ router.get("/stats", getStatistics);
 
 // GET - Data by device ID
 router.get("/device/:device_id", getDataByDevice);
+
+// POST - Get latest data for multiple devices in a room
+router.post("/room/latest", getLatestDataByRoom);
 
 // GET - Data by date range
 router.get("/range", getDataByDateRange);

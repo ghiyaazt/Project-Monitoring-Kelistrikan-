@@ -1,10 +1,14 @@
 import React from 'react';
 import { DEVICE_COLORS } from '../../../../../../utils/dashboard/kamar/detailKamar/WattwiseTab';
 
+interface SensorData {
+  power: number;
+}
+
 interface Perangkat {
   id: string;
   nama: string;
-  dayaWatt: number;
+  sensorData?: SensorData | null;
 }
 
 interface WattwiseChartLegendProps {
@@ -42,7 +46,7 @@ export const WattwiseChartLegend: React.FC<WattwiseChartLegendProps> = ({
                   {device.nama}
                 </div>
                 <div className={`wattwise-legend-device-power ${isDark ? 'wattwise-legend-device-power-dark' : 'wattwise-legend-device-power-light'}`}>
-                  {device.dayaWatt} W
+                  {device.sensorData?.power?.toFixed(2) || '0.00'} W
                 </div>
               </div>
             </div>

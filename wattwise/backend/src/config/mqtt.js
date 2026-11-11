@@ -80,5 +80,8 @@ module.exports = {
     connectMQTT,
     getMQTTClient,
     disconnectMQTT,
-    mqttConfig
+    mqttConfig,
+    get client() {
+        return mqttClient;
+    }
 };

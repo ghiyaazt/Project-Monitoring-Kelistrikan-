@@ -89,6 +89,43 @@ const getDataByDevice = async (req, res) => {
     }
 };
 
+// Get latest data for devices in a room
+const getLatestDataByRoom = async (req, res) => {
+    try {
+        const { deviceIds } = req.body; // Array of device IDs
+        
+        if (!deviceIds || !Array.isArray(deviceIds) || deviceIds.length === 0) {
+            return res.status(400).json({
+                success: false,
+                message: "Device IDs array is required"
+            });
+        }
+
+        // Get latest data for each device
+        const latestDataPromises = deviceIds.map(async (deviceId) => {
+            const data = await SensorData.findOne({ device_id: deviceId })
+                .sort({ timestamp: -1 })
+                .limit(1);
+            return {
+                deviceId: deviceId,
+                data: data
+            };
+        });
+
+        const results = await Promise.all(latestDataPromises);
+
+        res.status(200).json({
+            success: true,
+            data: results
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+};
+
 // Get data statistics
 const getStatistics = async (req, res) => {
     try {
@@ -165,6 +202,7 @@ module.exports = {
     getLatestData,
     getAllData,
     getDataByDevice,
+    getLatestDataByRoom,
     getStatistics,
     getDataByDateRange
 };

@@ -68,7 +68,7 @@ export interface Perangkat {
   kamarId: string;
   nama: string;
   deviceId: string;
-  dayaWatt: number;
+  // dayaWatt removed - use sensor data instead
 }
 
 export interface AppContextType {

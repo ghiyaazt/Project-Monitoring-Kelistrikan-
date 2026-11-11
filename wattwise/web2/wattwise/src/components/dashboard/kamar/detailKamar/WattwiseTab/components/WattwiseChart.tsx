@@ -4,12 +4,18 @@ import {
 } from 'recharts';
 import { DEVICE_COLORS } from '../../../../../../utils/dashboard/kamar/detailKamar/WattwiseTab';
 
+interface SensorData {
+  power: number;
+  voltage: number;
+  current: number;
+}
+
 interface Perangkat {
   id: string;
   nama: string;
   deviceId: string;
-  dayaWatt: number;
   kamarId: string;
+  sensorData?: SensorData | null;
 }
 
 interface WattwiseChartProps {

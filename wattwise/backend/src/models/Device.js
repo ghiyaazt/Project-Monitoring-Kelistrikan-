@@ -31,13 +31,7 @@ const deviceSchema = new mongoose.Schema({
     required: [true, 'Owner ID harus diisi']
   },
   
-  // Spesifikasi perangkat
-  dayaWatt: {
-    type: Number,
-    required: [true, 'Daya watt harus diisi'],
-    min: [0, 'Daya watt tidak boleh negatif']
-  },
-  
+  // Tipe perangkat
   tipe: {
     type: String,
     enum: {
